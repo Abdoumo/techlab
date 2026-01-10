@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import Testimonials from "@/components/Testimonials";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { testimonialsData } from "@/data/testimonials";
 import {
   Globe,
@@ -239,8 +239,8 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <Testimonials testimonials={testimonialsData} />
+      {/* Testimonials Carousel Section */}
+      <TestimonialsCarousel testimonials={testimonialsData} />
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-slate-900 to-slate-800 py-20 sm:py-32">

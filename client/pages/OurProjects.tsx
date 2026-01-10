@@ -1,10 +1,18 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import { projectsData } from "@/data/projects";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ImageOff } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 
 export default function OurProjects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
 
   const categories = [
     "All",
@@ -15,6 +23,10 @@ export default function OurProjects() {
     selectedCategory === "All"
       ? projectsData
       : projectsData.filter((p) => p.category === selectedCategory);
+
+  const handleImageError = (projectId: string) => {
+    setFailedImages((prev) => new Set([...prev, projectId]));
+  };
 
   return (
     <Layout>
@@ -28,21 +40,37 @@ export default function OurProjects() {
             </p>
           </div>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-lg font-medium transition-all ${
-                  selectedCategory === category
-                    ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950"
-                    : "bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+          {/* Category Filter Carousel */}
+          <div className="mb-12 relative">
+            <Carousel
+              className="w-full"
+              opts={{
+                align: "center",
+                containScroll: "trimSnaps",
+              }}
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {categories.map((category) => (
+                  <CarouselItem
+                    key={category}
+                    className="basis-auto pl-2 md:pl-4"
+                  >
+                    <button
+                      onClick={() => setSelectedCategory(category)}
+                      className={`px-6 py-2 rounded-lg font-medium transition-all whitespace-nowrap ${
+                        selectedCategory === category
+                          ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-lg shadow-cyan-400/50"
+                          : "bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700"
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-0 h-10 w-10" />
+              <CarouselNext className="right-0 h-10 w-10" />
+            </Carousel>
           </div>
 
           {/* Projects Grid */}
@@ -53,13 +81,23 @@ export default function OurProjects() {
                 className="group bg-slate-800 rounded-lg overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all hover:shadow-lg hover:shadow-cyan-400/20"
               >
                 {/* Project Image */}
-                <div className="relative h-48 overflow-hidden bg-slate-900">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900">
+                  {failedImages.has(project.id) ? (
+                    <div className="w-full h-full flex items-center justify-center bg-slate-800">
+                      <ImageOff className="w-12 h-12 text-slate-600" />
+                    </div>
+                  ) : (
+                    <>
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        onError={() => handleImageError(project.id)}
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </>
+                  )}
                 </div>
 
                 {/* Project Content */}
