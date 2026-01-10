@@ -2,11 +2,5 @@
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "outputDirectory": "dist/spa",
-  "env": {
-    "DATABASE_URL": "@database_url",
-    "GMAIL_EMAIL": "@gmail_email",
-    "GMAIL_APP_PASSWORD": "@gmail_app_password",
-    "NODE_ENV": "production"
-  }
+  "outputDirectory": "dist/spa"
 }
