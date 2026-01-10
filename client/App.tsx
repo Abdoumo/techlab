@@ -14,6 +14,7 @@ import CustomSolutionQuestionnaire from "./pages/CustomSolutionQuestionnaire";
 import WordPressQuestionnaire from "./pages/WordPressQuestionnaire";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import OurProjects from "./pages/OurProjects";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
           <Route path="/service/:serviceId" element={<ServiceDetail />} />
+          <Route path="/our-projects" element={<OurProjects />} />
           <Route path="/ecommerce-questionnaire" element={<EcommerceQuestionnaire />} />
           <Route path="/custom-solution-questionnaire" element={<CustomSolutionQuestionnaire />} />
           <Route path="/wordpress-questionnaire" element={<WordPressQuestionnaire />} />

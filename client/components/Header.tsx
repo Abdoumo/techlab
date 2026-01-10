@@ -35,6 +35,12 @@ export default function Header() {
             Services
           </Link>
           <Link
+            to="/our-projects"
+            className="text-slate-300 hover:text-cyan-400 transition-colors"
+          >
+            Projects
+          </Link>
+          <Link
             to="/about"
             className="text-slate-300 hover:text-cyan-400 transition-colors"
           >
@@ -81,6 +87,13 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Services
+            </Link>
+            <Link
+              to="/our-projects"
+              className="block text-slate-300 hover:text-cyan-400 py-2 transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Projects
             </Link>
             <Link
               to="/about"

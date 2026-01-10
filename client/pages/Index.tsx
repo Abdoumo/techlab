@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import Testimonials from "@/components/Testimonials";
+import { testimonialsData } from "@/data/testimonials";
 import {
   Globe,
   Code2,
@@ -236,6 +238,9 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <Testimonials testimonials={testimonialsData} />
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-slate-900 to-slate-800 py-20 sm:py-32">
