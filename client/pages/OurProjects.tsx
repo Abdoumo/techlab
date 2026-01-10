@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Layout from "@/components/Layout";
 import { projectsData } from "@/data/projects";
 import { ExternalLink, ImageOff } from "lucide-react";
@@ -9,23 +9,42 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
+import { SearchInput } from "@/components/ui/search";
 
 export default function OurProjects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const categories = [
     "All",
     ...Array.from(new Set(projectsData.map((p) => p.category))),
   ];
 
-  const filteredProjects =
+  let filteredProjects =
     selectedCategory === "All"
       ? projectsData
       : projectsData.filter((p) => p.category === selectedCategory);
 
+  // Apply search filter
+  if (searchQuery.trim()) {
+    const query = searchQuery.toLowerCase();
+    filteredProjects = filteredProjects.filter(
+      (p) =>
+        p.title.toLowerCase().includes(query) ||
+        p.description.toLowerCase().includes(query) ||
+        p.category.toLowerCase().includes(query) ||
+        p.technologies.some((t) => t.toLowerCase().includes(query))
+    );
+  }
+
   const handleImageError = (projectId: string) => {
     setFailedImages((prev) => new Set([...prev, projectId]));
+  };
+
+  const handleSearchClear = () => {
+    setSearchQuery("");
   };
 
   return (
@@ -33,11 +52,22 @@ export default function OurProjects() {
       <div className="min-h-screen bg-gradient-to-br from-slate-950 to-slate-900 py-20 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h1 className="text-5xl font-bold text-white mb-4">Our Projects</h1>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
               Explore our portfolio of successful projects across various industries and technologies
             </p>
+          </div>
+
+          {/* Search Bar */}
+          <div className="mb-12 max-w-2xl mx-auto">
+            <SearchInput
+              ref={searchInputRef}
+              placeholder="Search by name, category, technology, or description..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onClear={handleSearchClear}
+            />
           </div>
 
           {/* Category Filter Carousel */}
@@ -157,8 +187,22 @@ export default function OurProjects() {
           {filteredProjects.length === 0 && (
             <div className="text-center py-12">
               <p className="text-slate-400 text-lg">
-                No projects found in this category.
+                {searchQuery.trim()
+                  ? `No projects found matching "${searchQuery}".`
+                  : "No projects found in this category."}
               </p>
+              {(searchQuery.trim() || selectedCategory !== "All") && (
+                <button
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSelectedCategory("All");
+                    searchInputRef.current?.focus();
+                  }}
+                  className="mt-4 px-4 py-2 bg-slate-800 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"
+                >
+                  Clear filters
+                </button>
+              )}
             </div>
           )}
         </div>
