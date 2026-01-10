@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import Layout from "@/components/Layout";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import HeroParallax from "@/components/HeroParallax";
+import Card3D from "@/components/Card3D";
 import { testimonialsData } from "@/data/testimonials";
+import { soundManager } from "@/utils/soundManager";
 import {
   Globe,
   Code2,
@@ -102,63 +106,32 @@ const infrastructureServices = [
 ];
 
 export default function Index() {
+  useEffect(() => {
+    // Enable audio context on first interaction
+    const enableAudio = () => {
+      soundManager.playSuccessSound();
+      document.removeEventListener("click", enableAudio);
+      document.removeEventListener("mousemove", enableAudio);
+    };
+
+    document.addEventListener("click", enableAudio);
+    document.addEventListener("mousemove", enableAudio);
+
+    return () => {
+      document.removeEventListener("click", enableAudio);
+      document.removeEventListener("mousemove", enableAudio);
+    };
+  }, []);
+
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-slate-950 py-20 sm:py-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10" />
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-cyan-400/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-400/5 rounded-full blur-3xl" />
+      {/* Hero Section with Parallax */}
+      <HeroParallax />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Enterprise Tech
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                {" "}
-                Solutions
-              </span>
-            </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-              From web development and cloud infrastructure to AI integration and
-              cybersecurity, TechLab delivers cutting-edge solutions for modern
-              businesses.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button className="px-8 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-shadow">
-                Get Started
-              </button>
-              <Link
-                to="/services"
-                className="px-8 py-3 border border-slate-600 text-slate-300 font-semibold rounded-lg hover:border-cyan-400 hover:text-cyan-400 transition-colors flex items-center gap-2"
-              >
-                Explore Services <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Feature Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-slate-800">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-cyan-400 mb-2">50+</div>
-              <p className="text-slate-400">Services & Solutions</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-cyan-400 mb-2">24/7</div>
-              <p className="text-slate-400">Expert Support</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-cyan-400 mb-2">500+</div>
-              <p className="text-slate-400">Happy Clients</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Grid */}
+      {/* Services Grid with 3D Cards */}
       <section className="bg-slate-900 py-20 sm:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fadeIn">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
               Our Services
             </h2>
@@ -168,40 +141,30 @@ export default function Index() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service) => {
+            {services.map((service, index) => {
               const Icon = service.icon;
+              const colorMap: Array<"cyan" | "blue" | "purple"> = ["cyan", "blue", "purple", "cyan"];
               return (
-                <div
+                <Card3D
                   key={service.category}
-                  className="group bg-slate-800 border border-slate-700 rounded-lg p-6 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-400/10 transition-all duration-300 cursor-pointer"
-                >
-                  <div className="mb-4 inline-block p-3 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-lg group-hover:from-cyan-400/30 group-hover:to-blue-500/30 transition-colors">
-                    <Icon className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">
-                    {service.category}
-                  </h3>
-                  <p className="text-slate-400 text-sm mb-4">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-1">
-                    {service.items.map((item) => (
-                      <li key={item} className="text-xs text-slate-500">
-                        • {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  title={service.category}
+                  description={service.description}
+                  icon={<Icon className="w-6 h-6 text-cyan-400" />}
+                  color={colorMap[index % colorMap.length]}
+                  items={service.items}
+                  delay={index * 100}
+                  onClick={() => soundManager.playTransitionSound(600, 1000)}
+                />
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Infrastructure Section */}
+      {/* Infrastructure Section with 3D Cards */}
       <section className="bg-slate-950 py-20 sm:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fadeIn">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
               Infrastructure & DevOps
             </h2>
@@ -211,28 +174,20 @@ export default function Index() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {infrastructureServices.map((service) => {
+            {infrastructureServices.map((service, index) => {
               const Icon = service.icon;
+              const colorMap: Array<"cyan" | "blue" | "purple"> = ["blue", "purple", "cyan"];
               return (
-                <div
+                <Card3D
                   key={service.title}
-                  className="bg-slate-800 border border-slate-700 rounded-lg p-8 hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-400/10 transition-all duration-300"
-                >
-                  <div className="mb-6 inline-block p-3 bg-gradient-to-br from-blue-400/20 to-cyan-500/20 rounded-lg">
-                    <Icon className="w-8 h-8 text-blue-400" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-6">
-                    {service.title}
-                  </h3>
-                  <ul className="space-y-3">
-                    {service.items.map((item) => (
-                      <li key={item} className="text-slate-400 flex items-start gap-3">
-                        <span className="text-blue-400 mt-1">›</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  title={service.title}
+                  description="Enterprise-grade solutions for modern infrastructure"
+                  icon={<Icon className="w-8 h-8 text-blue-400" />}
+                  color={colorMap[index % colorMap.length]}
+                  items={service.items}
+                  delay={400 + index * 100}
+                  onClick={() => soundManager.playSuccessSound()}
+                />
               );
             })}
           </div>
@@ -242,19 +197,64 @@ export default function Index() {
       {/* Testimonials Carousel Section */}
       <TestimonialsCarousel testimonials={testimonialsData} />
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-slate-900 to-slate-800 py-20 sm:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+      {/* CTA Section with Interactive Effects */}
+      <section className="bg-gradient-to-r from-slate-900 to-slate-800 py-20 sm:py-32 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-3xl animate-pulse"
+            style={{ animation: "float 6s ease-in-out infinite" }}
+          />
+          <div
+            className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl animate-pulse"
+            style={{ animation: "float 8s ease-in-out infinite 1s" }}
+          />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2
+            className="text-4xl sm:text-5xl font-bold text-white mb-6 animate-fadeIn"
+            style={{ animation: "slideInUp 0.8s ease-out" }}
+          >
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
+          <p
+            className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto animate-fadeIn"
+            style={{ animation: "slideInUp 0.8s ease-out 0.2s forwards", opacity: 0 }}
+          >
             Let's discuss how TechLab can help you achieve your technology goals.
           </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-shadow text-lg">
+          <button
+            onMouseEnter={() => soundManager.playSuccessSound()}
+            onClick={() => soundManager.playClickSound()}
+            className="px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 text-lg transform hover:scale-110 active:scale-95"
+            style={{ animation: "slideInUp 0.8s ease-out 0.4s forwards", opacity: 0 }}
+          >
             Schedule a Consultation
           </button>
         </div>
+
+        <style>{`
+          @keyframes float {
+            0%, 100% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-30px);
+            }
+          }
+
+          @keyframes slideInUp {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}</style>
       </section>
     </Layout>
   );

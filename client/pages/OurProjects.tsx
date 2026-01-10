@@ -1,15 +1,18 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import Layout from "@/components/Layout";
 import { projectsData } from "@/data/projects";
-import { ExternalLink, ImageOff, Menu, X, Sparkles } from "lucide-react";
+import { ExternalLink, ImageOff, Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { SearchInput } from "@/components/ui/search";
 import { ScrollArea } from "@/components/ui/scroll-area";
+
+const ITEMS_PER_PAGE = 12;
 
 export default function OurProjects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const categories = [
@@ -17,22 +20,32 @@ export default function OurProjects() {
     ...Array.from(new Set(projectsData.map((p) => p.category))),
   ];
 
-  let filteredProjects =
-    selectedCategory === "All"
-      ? projectsData
-      : projectsData.filter((p) => p.category === selectedCategory);
+  const filteredProjects = useMemo(() => {
+    let projects =
+      selectedCategory === "All"
+        ? projectsData
+        : projectsData.filter((p) => p.category === selectedCategory);
 
-  // Apply search filter
-  if (searchQuery.trim()) {
-    const query = searchQuery.toLowerCase();
-    filteredProjects = filteredProjects.filter(
-      (p) =>
-        p.title.toLowerCase().includes(query) ||
-        p.description.toLowerCase().includes(query) ||
-        p.category.toLowerCase().includes(query) ||
-        p.technologies.some((t) => t.toLowerCase().includes(query))
-    );
-  }
+    // Apply search filter
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      projects = projects.filter(
+        (p) =>
+          p.title.toLowerCase().includes(query) ||
+          p.description.toLowerCase().includes(query) ||
+          p.category.toLowerCase().includes(query) ||
+          p.technologies.some((t) => t.toLowerCase().includes(query))
+      );
+    }
+
+    return projects;
+  }, [selectedCategory, searchQuery]);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const paginatedProjects = filteredProjects.slice(startIndex, endIndex);
 
   const handleImageError = (projectId: string) => {
     setFailedImages((prev) => new Set([...prev, projectId]));
@@ -40,6 +53,25 @@ export default function OurProjects() {
 
   const handleSearchClear = () => {
     setSearchQuery("");
+    setCurrentPage(1);
+  };
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+    setSidebarOpen(false);
+  };
+
+  const handleClearAllFilters = () => {
+    setSearchQuery("");
+    setSelectedCategory("All");
+    setCurrentPage(1);
+    searchInputRef.current?.focus();
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(Math.max(1, Math.min(page, totalPages)));
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const generateColorForCategory = (category: string): string => {
@@ -81,10 +113,7 @@ export default function OurProjects() {
                 {categories.map((category) => (
                   <button
                     key={category}
-                    onClick={() => {
-                      setSelectedCategory(category);
-                      setSidebarOpen(false);
-                    }}
+                    onClick={() => handleCategoryChange(category)}
                     className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
                       selectedCategory === category
                         ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-lg shadow-cyan-400/50"
@@ -149,7 +178,10 @@ export default function OurProjects() {
                     ref={searchInputRef}
                     placeholder="Search by name, category, technology, or description..."
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      setCurrentPage(1);
+                    }}
                     onClear={handleSearchClear}
                   />
                 </div>
@@ -174,13 +206,12 @@ export default function OurProjects() {
                           </span>
                         </span>
                       )}
+                      <span className="ml-4 text-slate-400">
+                        ({filteredProjects.length} result{filteredProjects.length !== 1 ? "s" : ""})
+                      </span>
                     </div>
                     <button
-                      onClick={() => {
-                        setSearchQuery("");
-                        setSelectedCategory("All");
-                        searchInputRef.current?.focus();
-                      }}
+                      onClick={handleClearAllFilters}
                       className="text-xs px-3 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition-colors"
                     >
                       Clear All
@@ -188,10 +219,22 @@ export default function OurProjects() {
                   </div>
                 )}
 
+                {/* Results Info */}
+                {filteredProjects.length > 0 && (
+                  <div className="mb-6 text-sm text-slate-400">
+                    Showing <span className="text-cyan-400 font-semibold">{startIndex + 1}</span> to{" "}
+                    <span className="text-cyan-400 font-semibold">
+                      {Math.min(endIndex, filteredProjects.length)}
+                    </span>{" "}
+                    of <span className="text-cyan-400 font-semibold">{filteredProjects.length}</span> projects
+                  </div>
+                )}
+
                 {/* Projects Grid */}
                 {filteredProjects.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    {filteredProjects.map((project) => (
+                  <>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                      {paginatedProjects.map((project) => (
                       <div
                         key={project.id}
                         className="group bg-slate-800 rounded-lg overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all hover:shadow-lg hover:shadow-cyan-400/20 flex flex-col h-full"
@@ -219,6 +262,9 @@ export default function OurProjects() {
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                                 onError={() => handleImageError(project.id)}
                                 loading="lazy"
+                                decoding="async"
+                                width={400}
+                                height={300}
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                             </>
@@ -276,7 +322,66 @@ export default function OurProjects() {
                         </div>
                       </div>
                     ))}
-                  </div>
+                    </div>
+
+                    {/* Pagination Controls */}
+                    {totalPages > 1 && (
+                      <div className="mt-12 flex flex-col items-center gap-4">
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => handlePageChange(currentPage - 1)}
+                            disabled={currentPage === 1}
+                            className="p-2 rounded-lg border border-slate-600 hover:border-cyan-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            aria-label="Previous page"
+                          >
+                            <ChevronLeft className="w-5 h-5 text-slate-300" />
+                          </button>
+
+                          <div className="flex items-center gap-1">
+                            {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                              let pageNum;
+                              if (totalPages <= 5) {
+                                pageNum = i + 1;
+                              } else if (currentPage <= 3) {
+                                pageNum = i + 1;
+                              } else if (currentPage >= totalPages - 2) {
+                                pageNum = totalPages - 4 + i;
+                              } else {
+                                pageNum = currentPage - 2 + i;
+                              }
+
+                              return (
+                                <button
+                                  key={pageNum}
+                                  onClick={() => handlePageChange(pageNum)}
+                                  className={`px-3 py-2 rounded-lg font-medium transition-all ${
+                                    currentPage === pageNum
+                                      ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-lg shadow-cyan-400/50"
+                                      : "bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700"
+                                  }`}
+                                >
+                                  {pageNum}
+                                </button>
+                              );
+                            })}
+                          </div>
+
+                          <button
+                            onClick={() => handlePageChange(currentPage + 1)}
+                            disabled={currentPage === totalPages}
+                            className="p-2 rounded-lg border border-slate-600 hover:border-cyan-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            aria-label="Next page"
+                          >
+                            <ChevronRight className="w-5 h-5 text-slate-300" />
+                          </button>
+                        </div>
+                        <p className="text-sm text-slate-400">
+                          Page <span className="text-cyan-400 font-semibold">{currentPage}</span> of{" "}
+                          <span className="text-cyan-400 font-semibold">{totalPages}</span>
+                        </p>
+                      </div>
+                    )}
+                  </>
                 ) : (
                   <div className="text-center py-20">
                     <ImageOff className="w-16 h-16 text-slate-600 mx-auto mb-4" />
@@ -286,11 +391,7 @@ export default function OurProjects() {
                         : "No projects found in this category."}
                     </p>
                     <button
-                      onClick={() => {
-                        setSearchQuery("");
-                        setSelectedCategory("All");
-                        searchInputRef.current?.focus();
-                      }}
+                      onClick={handleClearAllFilters}
                       className="px-6 py-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all"
                     >
                       View All Projects

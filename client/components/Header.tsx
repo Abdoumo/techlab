@@ -1,22 +1,28 @@
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { soundManager } from "@/utils/soundManager";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMenu = () => {
+    soundManager.playHoverSound(900);
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const handleNavHover = () => {
+    soundManager.playHoverSound(800 + Math.random() * 200);
+  };
+
   return (
-    <header className="sticky top-0 z-50 bg-slate-950 border-b border-slate-800">
+    <header className="sticky top-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800/50 shadow-lg shadow-cyan-400/5">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group hover:opacity-80 transition-opacity">
           <img
             src="/logo.png"
             alt="TechLab Logo"
-            className="h-10 w-auto"
+            className="h-10 w-auto group-hover:drop-shadow-lg group-hover:drop-shadow-cyan-400/50 transition-all"
           />
         </Link>
 
@@ -24,35 +30,49 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-8">
           <Link
             to="/"
-            className="text-slate-300 hover:text-cyan-400 transition-colors"
+            onMouseEnter={handleNavHover}
+            className="text-slate-300 hover:text-cyan-400 transition-colors relative group"
           >
             Home
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
           </Link>
           <Link
             to="/services"
-            className="text-slate-300 hover:text-cyan-400 transition-colors"
+            onMouseEnter={handleNavHover}
+            className="text-slate-300 hover:text-cyan-400 transition-colors relative group"
           >
             Services
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
           </Link>
           <Link
             to="/our-projects"
-            className="text-slate-300 hover:text-cyan-400 transition-colors"
+            onMouseEnter={handleNavHover}
+            className="text-slate-300 hover:text-cyan-400 transition-colors relative group"
           >
             Projects
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
           </Link>
           <Link
             to="/about"
-            className="text-slate-300 hover:text-cyan-400 transition-colors"
+            onMouseEnter={handleNavHover}
+            className="text-slate-300 hover:text-cyan-400 transition-colors relative group"
           >
             About
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
           </Link>
           <Link
             to="/contact"
-            className="text-slate-300 hover:text-cyan-400 transition-colors"
+            onMouseEnter={handleNavHover}
+            className="text-slate-300 hover:text-cyan-400 transition-colors relative group"
           >
             Contact
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
           </Link>
-          <button className="px-6 py-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-shadow">
+          <button
+            onMouseEnter={handleNavHover}
+            onClick={() => soundManager.playClickSound()}
+            className="px-6 py-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-105 active:scale-95"
+          >
             Get Started
           </button>
         </div>
@@ -72,44 +92,76 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-900 border-t border-slate-800">
+        <div className="md:hidden bg-slate-900/95 backdrop-blur border-t border-slate-800 animate-slideInUp">
           <div className="px-4 py-4 space-y-3">
             <Link
               to="/"
-              className="block text-slate-300 hover:text-cyan-400 py-2 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+              onMouseEnter={handleNavHover}
+              className="block text-slate-300 hover:text-cyan-400 py-2 transition-colors relative group"
+              onClick={() => {
+                soundManager.playTransitionSound(600, 900);
+                setMobileMenuOpen(false);
+              }}
             >
               Home
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link
               to="/services"
-              className="block text-slate-300 hover:text-cyan-400 py-2 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+              onMouseEnter={handleNavHover}
+              className="block text-slate-300 hover:text-cyan-400 py-2 transition-colors relative group"
+              onClick={() => {
+                soundManager.playTransitionSound(600, 900);
+                setMobileMenuOpen(false);
+              }}
             >
               Services
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link
               to="/our-projects"
-              className="block text-slate-300 hover:text-cyan-400 py-2 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+              onMouseEnter={handleNavHover}
+              className="block text-slate-300 hover:text-cyan-400 py-2 transition-colors relative group"
+              onClick={() => {
+                soundManager.playTransitionSound(600, 900);
+                setMobileMenuOpen(false);
+              }}
             >
               Projects
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link
               to="/about"
-              className="block text-slate-300 hover:text-cyan-400 py-2 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+              onMouseEnter={handleNavHover}
+              className="block text-slate-300 hover:text-cyan-400 py-2 transition-colors relative group"
+              onClick={() => {
+                soundManager.playTransitionSound(600, 900);
+                setMobileMenuOpen(false);
+              }}
             >
               About
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link
               to="/contact"
-              className="block text-slate-300 hover:text-cyan-400 py-2 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+              onMouseEnter={handleNavHover}
+              className="block text-slate-300 hover:text-cyan-400 py-2 transition-colors relative group"
+              onClick={() => {
+                soundManager.playTransitionSound(600, 900);
+                setMobileMenuOpen(false);
+              }}
             >
               Contact
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
             </Link>
-            <button className="w-full px-6 py-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-shadow">
+            <button
+              onMouseEnter={handleNavHover}
+              onClick={() => {
+                soundManager.playClickSound();
+                setMobileMenuOpen(false);
+              }}
+              className="w-full px-6 py-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-105 active:scale-95"
+            >
               Get Started
             </button>
           </div>
