@@ -2,13 +2,6 @@ import { useState, useRef } from "react";
 import Layout from "@/components/Layout";
 import { projectsData } from "@/data/projects";
 import { ExternalLink, ImageOff } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from "@/components/ui/carousel";
 import { SearchInput } from "@/components/ui/search";
 
 export default function OurProjects() {
@@ -59,48 +52,34 @@ export default function OurProjects() {
             </p>
           </div>
 
-          {/* Search Bar */}
-          <div className="mb-12 max-w-2xl mx-auto">
-            <SearchInput
-              ref={searchInputRef}
-              placeholder="Search by name, category, technology, or description..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onClear={handleSearchClear}
-            />
-          </div>
+          {/* Search and Category Filter */}
+          <div className="mb-12 max-w-4xl mx-auto">
+            <div className="mb-4">
+              <SearchInput
+                ref={searchInputRef}
+                placeholder="Search by name, category, technology, or description..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onClear={handleSearchClear}
+              />
+            </div>
 
-          {/* Category Filter Carousel */}
-          <div className="mb-12 relative">
-            <Carousel
-              className="w-full"
-              opts={{
-                align: "center",
-                containScroll: "trimSnaps",
-              }}
-            >
-              <CarouselContent className="-ml-2 md:-ml-4">
-                {categories.map((category) => (
-                  <CarouselItem
-                    key={category}
-                    className="basis-auto pl-2 md:pl-4"
-                  >
-                    <button
-                      onClick={() => setSelectedCategory(category)}
-                      className={`px-6 py-2 rounded-lg font-medium transition-all whitespace-nowrap ${
-                        selectedCategory === category
-                          ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-lg shadow-cyan-400/50"
-                          : "bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700"
-                      }`}
-                    >
-                      {category}
-                    </button>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="left-0 h-10 w-10" />
-              <CarouselNext className="right-0 h-10 w-10" />
-            </Carousel>
+            {/* Category Filter Grid */}
+            <div className="flex flex-wrap gap-2 justify-center">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
+                    selectedCategory === category
+                      ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-lg shadow-cyan-400/50"
+                      : "bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 hover:border-cyan-400/50"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Projects Grid */}
