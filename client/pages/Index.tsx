@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Layout from "@/components/Layout";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
-import HeroParallax from "@/components/HeroParallax";
+import AdvancedHeroParallax from "@/components/AdvancedHeroParallax";
 import Card3D from "@/components/Card3D";
 import { testimonialsData } from "@/data/testimonials";
 import { soundManager } from "@/utils/soundManager";
@@ -125,8 +125,8 @@ export default function Index() {
 
   return (
     <Layout>
-      {/* Hero Section with Parallax */}
-      <HeroParallax />
+      {/* Hero Section with Advanced Parallax and Mouse Tracking */}
+      <AdvancedHeroParallax />
 
       {/* Services Grid with 3D Cards */}
       <section className="bg-slate-900 py-20 sm:py-32">
