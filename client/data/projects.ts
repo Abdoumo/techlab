@@ -8,6 +8,11 @@ export interface Project {
   link?: string;
 }
 
+// Helper function to encode UTF-8 strings to base64
+const utf8ToBase64 = (str: string): string => {
+  return btoa(unescape(encodeURIComponent(str)));
+};
+
 // Helper function to generate sophisticated SVG placeholders with icons
 const generatePlaceholderSVG = (color: string, icon: string): string => {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="500" height="300">
@@ -26,7 +31,7 @@ const generatePlaceholderSVG = (color: string, icon: string): string => {
     </g>
   </svg>`;
 
-  return `data:image/svg+xml;base64,${btoa(svg)}`;
+  return `data:image/svg+xml;base64,${utf8ToBase64(svg)}`;
 };
 
 // Map categories to color gradients and icons
