@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import Layout from "@/components/Layout";
 import { projectsData } from "@/data/projects";
-import { ExternalLink, ImageOff, Menu, X } from "lucide-react";
+import { ExternalLink, ImageOff, Menu, X, Sparkles } from "lucide-react";
 import { SearchInput } from "@/components/ui/search";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
