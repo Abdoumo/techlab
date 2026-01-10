@@ -1,0 +1,18 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "GMAIL_EMAIL": "@gmail_email",
+    "GMAIL_APP_PASSWORD": "@gmail_app_password",
+    "NODE_ENV": "production"
+  },
+  "envPrefix": "NEXT_PUBLIC_",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/dist/server/production.mjs"
+    }
+  ]
+}

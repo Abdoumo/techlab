@@ -1,0 +1,13 @@
+.git
+.gitignore
+README.md
+node_modules
+.pnpm-store
+.env.local
+.env.*.local
+pnpm-lock.yaml
+coverage
+.vitest
+.vscode
+.idea
+*.log
