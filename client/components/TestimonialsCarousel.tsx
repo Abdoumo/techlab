@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Star } from "lucide-react";
 import { soundManager } from "@/utils/soundManager";
+import { useTranslation } from "react-i18next";
 import {
   Carousel,
   CarouselContent,
@@ -17,6 +18,7 @@ interface TestimonialsCarouselProps {
 export default function TestimonialsCarousel({
   testimonials,
 }: TestimonialsCarouselProps) {
+  const { t } = useTranslation();
   const [api, setApi] = useState<any>(null);
   const [current, setCurrent] = useState(0);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -65,10 +67,10 @@ export default function TestimonialsCarousel({
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-16 animate-slideInUp">
           <h2 className="text-4xl font-bold text-white mb-4">
-            What Our Clients Say
+            {t("pages:testimonials.heading")}
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Join hundreds of satisfied clients who have transformed their business with TechLab
+            {t("pages:testimonials.description")}
           </p>
         </div>
 

@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Testimonial } from "@/data/testimonials";
 
 interface TestimonialsProps {
@@ -6,15 +7,16 @@ interface TestimonialsProps {
 }
 
 export default function Testimonials({ testimonials }: TestimonialsProps) {
+  const { t } = useTranslation();
   return (
     <section className="py-20 px-4 bg-slate-900">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">
-            What Our Clients Say
+            {t("pages:testimonials.heading")}
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Join hundreds of satisfied clients who have transformed their business with TechLab
+            {t("pages:testimonials.description")}
           </p>
         </div>
 

@@ -56,4 +56,28 @@ i18n
     },
   });
 
+// Set HTML direction based on language
+const setHtmlDirection = (lng: string) => {
+  const htmlElement = document.documentElement;
+  if (lng === "ar") {
+    htmlElement.dir = "rtl";
+    htmlElement.lang = "ar";
+  } else {
+    htmlElement.dir = "ltr";
+    htmlElement.lang = lng;
+  }
+};
+
+// Set initial direction when i18n is initialized
+i18n.on("initialized", () => {
+  setHtmlDirection(i18n.language);
+  console.log("i18n initialized with language:", i18n.language);
+});
+
+// Listen for language changes
+i18n.on("languageChanged", (lng) => {
+  console.log("Language changed to:", lng);
+  setHtmlDirection(lng);
+});
+
 export default i18n;

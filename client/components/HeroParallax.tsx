@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { soundManager } from "@/utils/soundManager";
+import { useTranslation } from "react-i18next";
 
 export default function HeroParallax() {
+  const { t } = useTranslation();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [offsetPosition, setOffsetPosition] = useState({ x: 0, y: 0 });
 
@@ -129,7 +131,7 @@ export default function HeroParallax() {
               onMouseEnter={handleButtonHover}
               className="px-8 py-3 border border-slate-600 text-slate-300 font-semibold rounded-lg hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 flex items-center gap-2 group"
             >
-              Explore Services{" "}
+              {t("pages:hero.exploreServices")}{" "}
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -138,9 +140,9 @@ export default function HeroParallax() {
         {/* Feature Stats with stagger animation */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-slate-800">
           {[
-            { value: "50+", label: "Services & Solutions", delay: 0.8 },
-            { value: "24/7", label: "Expert Support", delay: 1 },
-            { value: "500+", label: "Happy Clients", delay: 1.2 },
+            { value: "50+", label: t("pages:hero.stats.services"), delay: 0.8 },
+            { value: "24/7", label: t("pages:hero.stats.support"), delay: 1 },
+            { value: "500+", label: t("pages:hero.stats.clients"), delay: 1.2 },
           ].map((stat, index) => (
             <div
               key={index}

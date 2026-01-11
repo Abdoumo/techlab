@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, Sparkles } from "lucide-react";
 import { soundManager } from "@/utils/soundManager";
+import { useTranslation } from "react-i18next";
 
 interface MousePosition {
   x: number;
@@ -10,6 +11,7 @@ interface MousePosition {
 }
 
 export default function AdvancedHeroParallax() {
+  const { t } = useTranslation();
   const [mousePosition, setMousePosition] = useState<MousePosition>({
     x: 0,
     y: 0,
@@ -291,7 +293,7 @@ export default function AdvancedHeroParallax() {
               {/* Background glow on hover */}
               <div className="absolute inset-0 bg-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative">
-                Explore Services{" "}
+                {t("pages:hero.exploreServices")}{" "}
                 <ChevronRight className="inline-block w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
@@ -306,9 +308,9 @@ export default function AdvancedHeroParallax() {
           }}
         >
           {[
-            { value: "50+", label: "Services & Solutions", index: 0 },
-            { value: "24/7", label: "Expert Support", index: 1 },
-            { value: "500+", label: "Happy Clients", index: 2 },
+            { value: "50+", label: t("pages:hero.stats.services"), index: 0 },
+            { value: "24/7", label: t("pages:hero.stats.support"), index: 1 },
+            { value: "500+", label: t("pages:hero.stats.clients"), index: 2 },
           ].map((stat) => (
             <div
               key={stat.index}

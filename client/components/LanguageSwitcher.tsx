@@ -12,31 +12,15 @@ export default function LanguageSwitcher() {
     { code: "ar", name: "العربية", flag: "🇸🇦" },
   ];
 
-  useEffect(() => {
-    // Set RTL/LTR on mount and whenever language changes
-    if (i18n.language === "ar") {
-      document.documentElement.dir = "rtl";
-      document.documentElement.lang = "ar";
-    } else {
-      document.documentElement.dir = "ltr";
-      document.documentElement.lang = i18n.language;
-    }
-  }, [i18n.language]);
-
   const handleLanguageChange = (langCode: string) => {
-    i18n.changeLanguage(langCode);
-    setIsOpen(false);
-
-    // Set RTL for Arabic
-    if (langCode === "ar") {
-      document.documentElement.dir = "rtl";
-      document.documentElement.lang = "ar";
-    } else {
-      document.documentElement.dir = "ltr";
-      document.documentElement.lang = langCode;
-    }
-
-    localStorage.setItem("preferredLanguage", langCode);
+    console.log("Changing language to:", langCode);
+    localStorage.setItem("i18nextLng", langCode);
+    i18n.changeLanguage(langCode).then(() => {
+      console.log("Language changed successfully to:", i18n.language);
+      setIsOpen(false);
+    }).catch((err) => {
+      console.error("Error changing language:", err);
+    });
   };
 
   const currentLang = languages.find((l) => l.code === i18n.language);

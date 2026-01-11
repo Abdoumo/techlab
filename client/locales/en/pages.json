@@ -2,7 +2,13 @@
   "hero": {
     "title": "Transform Your Business with Cutting-Edge Technology",
     "subtitle": "Expert solutions in web development, AI, cloud infrastructure, and digital transformation",
-    "cta": "Start Your Journey"
+    "cta": "Start Your Journey",
+    "exploreServices": "Explore Services",
+    "stats": {
+      "services": "Services & Solutions",
+      "support": "Expert Support",
+      "clients": "Happy Clients"
+    }
   },
   "services": {
     "title": "Our Services",
@@ -36,7 +42,9 @@
   },
   "testimonials": {
     "title": "What Our Clients Say",
-    "subtitle": "Real feedback from businesses we've transformed"
+    "subtitle": "Real feedback from businesses we've transformed",
+    "heading": "What Our Clients Say",
+    "description": "Join hundreds of satisfied clients who have transformed their business with TechLab"
   },
   "cta": {
     "title": "Ready to Transform Your Business?",

@@ -2,7 +2,13 @@
   "hero": {
     "title": "Transformez Votre Entreprise avec la Technologie de Pointe",
     "subtitle": "Solutions expertes en développement web, IA, infrastructure cloud et transformation numérique",
-    "cta": "Commencez Votre Voyage"
+    "cta": "Commencez Votre Voyage",
+    "exploreServices": "Explorer les Services",
+    "stats": {
+      "services": "Services et Solutions",
+      "support": "Support Expert",
+      "clients": "Clients Satisfaits"
+    }
   },
   "services": {
     "title": "Nos Services",
@@ -36,7 +42,9 @@
   },
   "testimonials": {
     "title": "Ce que Disent Nos Clients",
-    "subtitle": "Véritables retours de clients que nous avons transformés"
+    "subtitle": "Véritables retours de clients que nous avons transformés",
+    "heading": "Ce que Disent Nos Clients",
+    "description": "Rejoignez des centaines de clients satisfaits qui ont transformé leur entreprise avec TechLab"
   },
   "cta": {
     "title": "Prêt à Transformer Votre Entreprise?",
