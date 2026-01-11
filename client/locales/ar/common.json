@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "services": "الخدمات",
+    "projects": "المشاريع",
+    "about": "حول",
+    "contact": "اتصل",
+    "getStarted": "ابدأ الآن"
+  },
+  "footer": {
+    "company": "الشركة",
+    "about": "عن الشركة",
+    "blog": "المدونة",
+    "careers": "الوظائف",
+    "services": "الخدمات",
+    "allServices": "جميع الخدمات",
+    "webHosting": "استضافة الويب",
+    "development": "التطوير",
+    "contact": "اتصل",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "callWhatsapp": "اتصل / واتساب",
+    "businessHours": "ساعات العمل",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الخدمة",
+    "allRightsReserved": "جميع الحقوق محفوظة",
+    "followUs": "تابعنا",
+    "hours": "الساعات",
+    "monday": "الاثنين",
+    "friday": "الجمعة",
+    "saturday": "السبت",
+    "closed": "مغلق"
+  },
+  "buttons": {
+    "submit": "إرسال",
+    "cancel": "إلغاء",
+    "next": "التالي",
+    "previous": "السابق",
+    "back": "العودة",
+    "moreInfo": "مزيد من المعلومات",
+    "learnMore": "تعرف على المزيد",
+    "contactUs": "اتصل بنا",
+    "scheduleConsultation": "حدد موعد استشارة",
+    "submitInquiry": "إرسال الاستفسار",
+    "submitting": "جاري الإرسال...",
+    "completeSetup": "إكمال الإعداد",
+    "exploreMore": "استكشاف المزيد من الخدمات",
+    "backToHome": "العودة إلى الرئيسية",
+    "sendMessage": "إرسال الرسالة",
+    "sending": "جاري الإرسال..."
+  },
+  "messages": {
+    "loading": "جاري التحميل...",
+    "success": "تم بنجاح!",
+    "error": "خطأ",
+    "required": "هذا الحقل مطلوب",
+    "placeholders": {
+      "selectOption": "اختر خيار",
+      "enterText": "أدخل النص..."
+    }
+  },
+  "validation": {
+    "fieldRequired": "{{field}} مطلوب",
+    "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+    "invalidPhone": "يرجى إدخال رقم هاتف صحيح"
+  },
+  "common": {
+    "loading": "جاري التحميل",
+    "error": "خطأ",
+    "success": "نجاح",
+    "warning": "تحذير",
+    "info": "معلومات"
+  }
+}

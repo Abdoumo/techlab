@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
 import ConfirmationPage from "@/components/ConfirmationPage";
 import { ChevronLeft, ChevronRight, CheckCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface EcommerceFormData {
   businessName: string;
@@ -22,6 +23,7 @@ interface EcommerceFormData {
 }
 
 export default function EcommerceQuestionnaire() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
@@ -67,7 +69,7 @@ export default function EcommerceQuestionnaire() {
       !formData.budget ||
       !formData.timeline
     ) {
-      alert("Please fill in all required fields");
+      alert(t("forms:messages.fillAllRequired"));
       return;
     }
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FormField } from "@/data/services";
 import { AlertCircle } from "lucide-react";
 
@@ -13,6 +14,7 @@ export default function ServiceForm({
   onSubmit,
   isLoading = false,
 }: ServiceFormProps) {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<Record<string, any>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -54,7 +56,7 @@ export default function ServiceForm({
       if (field.required) {
         const value = formData[field.name];
         if (!value || (Array.isArray(value) && value.length === 0)) {
-          newErrors[field.name] = `${field.label} is required`;
+          newErrors[field.name] = t("forms:messages.fillAllRequired");
         }
       }
     });

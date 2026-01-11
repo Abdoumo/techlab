@@ -1,0 +1,217 @@
+{
+  "categories": {
+    "webHosting": "الويب والاستضافة",
+    "softwareDevelopment": "تطوير البرمجيات",
+    "aiLlm": "الذكاء الاصطناعي / LLM",
+    "cybersecurity": "الأمن السيبراني",
+    "dataServices": "خدمات البيانات",
+    "3dPrinting": "الطباعة ثلاثية الأبعاد",
+    "iotEmbedded": "إنترنت الأشياء والمدمجة",
+    "consultingTraining": "الاستشارات والتدريب"
+  },
+  "services": {
+    "websiteCreation": {
+      "name": "إنشاء موقع ويب",
+      "description": "موقع ويب تجاري، صفحة هبوط، محفظة",
+      "price": "20,000 – 120,000 دينار جزائري"
+    },
+    "ecommerceWebsite": {
+      "name": "موقع التجارة الإلكترونية",
+      "description": "متجر على الإنترنت + المدفوعات",
+      "price": "80,000 – 300,000 دينار جزائري"
+    },
+    "webHostingShared": {
+      "name": "استضافة الويب (مشتركة)",
+      "description": "خطط استضافة أساسية",
+      "price": "1,000 – 6,000 دينار جزائري / شهر"
+    },
+    "managedHostingVps": {
+      "name": "استضافة مدارة (VPS)",
+      "description": "إعداد وإدارة الخادم",
+      "price": "6,000 – 25,000 دينار جزائري / شهر"
+    },
+    "domainRegistration": {
+      "name": "تسجيل المجال",
+      "description": "المجال .dz / .com",
+      "price": "2,000 – 6,000 دينار جزائري / سنة"
+    },
+    "mvpCreation": {
+      "name": "إنشاء MVP",
+      "description": "نموذج أولي سريع ويب/تطبيق",
+      "price": "80,000 – 500,000 دينار جزائري"
+    },
+    "appCreation": {
+      "name": "إنشاء التطبيق",
+      "description": "تطبيقات Android / iOS",
+      "price": "120,000 – 1,200,000 دينار جزائري"
+    },
+    "customSoftware": {
+      "name": "برنامج مخصص",
+      "description": "ERP / CRM / الأتمتة",
+      "price": "150,000 – 1,500,000 دينار جزائري"
+    },
+    "apiDevelopment": {
+      "name": "تطوير API",
+      "description": "التكامل والأتمتة",
+      "price": "30,000 – 300,000 دينار جزائري"
+    },
+    "llmIntegration": {
+      "name": "تكامل LLM",
+      "description": "روبوتات ذكاء اصطناعي والأتمتة",
+      "price": "50,000 – 400,000 دينار جزائري"
+    },
+    "mlModelTraining": {
+      "name": "تدريب نموذج ML",
+      "description": "التعلم الآلي المخصص",
+      "price": "80,000 – 600,000 دينار جزائري"
+    },
+    "dataAnalysis": {
+      "name": "تحليل البيانات",
+      "description": "لوحات المعلومات والرؤى",
+      "price": "30,000 – 200,000 دينار جزائري"
+    },
+    "securityAudit": {
+      "name": "تدقيق الأمان",
+      "description": "موقع ويب وتدقيق النظام",
+      "price": "50,000 – 200,000 دينار جزائري"
+    },
+    "penetrationTesting": {
+      "name": "اختبار الاختراق",
+      "description": "القرصنة الأخلاقية",
+      "price": "100,000 – 500,000 دينار جزائري"
+    },
+    "firewallSetup": {
+      "name": "إعداد جدار الحماية",
+      "description": "حماية الخادم والتطبيق",
+      "price": "10,000 – 80,000 دينار جزائري"
+    },
+    "dataRecovery": {
+      "name": "استرجاع البيانات",
+      "description": "استرجاع HDD و SSD و USB",
+      "price": "5,000 – 60,000 دينار جزائري"
+    },
+    "backupSystems": {
+      "name": "أنظمة النسخ الاحتياطية",
+      "description": "النسخ الاحتياطية السحابية والمحلية",
+      "price": "10,000 – 70,000 دينار جزائري"
+    },
+    "disasterRecovery": {
+      "name": "استرجاع الكوارث",
+      "description": "استمرارية الأعمال",
+      "price": "30,000 – 200,000 دينار جزائري"
+    },
+    "3dPrinting": {
+      "name": "طباعة ثلاثية الأبعاد",
+      "description": "نماذج وأجزاء بلاستيكية",
+      "price": "500 – 5,000 دينار جزائري / قطعة"
+    },
+    "3dCadModeling": {
+      "name": "نمذجة CAO ثلاثية الأبعاد",
+      "description": "تصاميم للطباعة",
+      "price": "2,000 – 30,000 دينار جزائري"
+    },
+    "hardwarePrototyping": {
+      "name": "نماذج أولية الأجهزة",
+      "description": "إنترنت الأشياء + أجزاء مطبوعة ثلاثية الأبعاد",
+      "price": "10,000 – 150,000 دينار جزائري"
+    },
+    "iotDeviceDevelopment": {
+      "name": "تطوير جهاز IoT",
+      "description": "الحساسات والأتمتة",
+      "price": "30,000 – 300,000 دينار جزائري"
+    },
+    "predictiveMaintenance": {
+      "name": "الصيانة التنبؤية",
+      "description": "تحليلات الحساسات",
+      "price": "50,000 – 500,000 دينار جزائري"
+    },
+    "microcontrollerProgramming": {
+      "name": "برمجة المتحكم الدقيق",
+      "description": "Arduino / ESP32",
+      "price": "5,000 – 50,000 دينار جزائري"
+    },
+    "techGuidance": {
+      "name": "التوجيه التكنولوجي",
+      "description": "نصيحة الشركات الناشئة والأعمال",
+      "price": "3,000 – 8,000 دينار جزائري / ساعة"
+    }
+  },
+  "infrastructure": {
+    "cloudVirtualization": {
+      "title": "السحابة والمحاكاة الافتراضية",
+      "description": "حلول على مستوى المؤسسات للبنية التحتية الحديثة",
+      "items": [
+        "إعداد خادم Proxmox",
+        "مجموعة HA (2-3 عقدة)",
+        "نشر Nextcloud",
+        "Docker / Portainer"
+      ]
+    },
+    "infrastructureMonitoring": {
+      "title": "البنية التحتية والمراقبة",
+      "description": "حلول على مستوى المؤسسات للبنية التحتية الحديثة",
+      "items": [
+        "تثبيت TrueNAS",
+        "أتمتة النسخ الاحتياطية",
+        "Prometheus + Grafana",
+        "إعداد خادم البريد الإلكتروني"
+      ]
+    },
+    "devopsAutomation": {
+      "title": "DevOps والأتمتة",
+      "description": "حلول على مستوى المؤسسات للبنية التحتية الحديثة",
+      "items": [
+        "خادم GitLab / Gitea",
+        "Jenkins CI/CD",
+        "أتمتة n8n",
+        "أتمتة Ansible"
+      ]
+    }
+  },
+  "projects": [
+    {
+      "id": "project-1",
+      "title": "منصة التجارة الإلكترونية",
+      "description": "منصة تجارة إلكترونية كاملة مع تكامل الدفع",
+      "category": "تطوير الويب",
+      "technologies": ["React", "Node.js", "MongoDB"]
+    },
+    {
+      "id": "project-2",
+      "title": "نظام روبوت الدردشة ذو الذكاء الاصطناعي",
+      "description": "روبوت دردشة ذكاء اصطناعي مخصص لدعم العملاء",
+      "category": "الذكاء الاصطناعي/ML",
+      "technologies": ["Python", "OpenAI API", "React"]
+    },
+    {
+      "id": "project-3",
+      "title": "البنية التحتية السحابية",
+      "description": "إعداد وإدارة البنية التحتية متعددة السحابة",
+      "category": "البنية التحتية",
+      "technologies": ["AWS", "Kubernetes", "Terraform"]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "testimonial-1",
+      "text": "حولت TechLab عملنا بحلول مبتكرة. موصى به بشدة!",
+      "author": "أحمد محمد",
+      "role": "الرئيس التنفيذي",
+      "company": "الابتكارات الرقمية"
+    },
+    {
+      "id": "testimonial-2",
+      "text": "فريق ممتاز، تنفيذ ممتاز. تم تسليم مشروعنا في الوقت المحدد وتجاوز التوقعات.",
+      "author": "فاطمة سعيدي",
+      "role": "مدير المشروع",
+      "company": "حلول تكنولوجيا Ltd"
+    },
+    {
+      "id": "testimonial-3",
+      "text": "احترافي وسريع الاستجابة وموجه نحو النتائج. هذا بالضبط ما احتجنا إليه.",
+      "author": "كريم بنعلي",
+      "role": "المؤسس",
+      "company": "مركز الشركات الناشئة"
+    }
+  ]
+}

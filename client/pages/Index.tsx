@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import Layout from "@/components/Layout";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import AdvancedHeroParallax from "@/components/AdvancedHeroParallax";
@@ -106,6 +107,8 @@ const infrastructureServices = [
 ];
 
 export default function Index() {
+  const { t } = useTranslation();
+
   useEffect(() => {
     // Enable audio context on first interaction
     const enableAudio = () => {
@@ -133,10 +136,10 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fadeIn">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Our Services
+              {t("pages:services.title")}
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Comprehensive solutions across every aspect of your tech stack
+              {t("pages:services.subtitle")}
             </p>
           </div>
 
@@ -166,10 +169,10 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fadeIn">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Infrastructure & DevOps
+              {t("pages:services.infrastructure.title")}
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Enterprise-grade infrastructure solutions and automation
+              {t("pages:services.infrastructure.subtitle")}
             </p>
           </div>
 
@@ -216,13 +219,13 @@ export default function Index() {
             className="text-4xl sm:text-5xl font-bold text-white mb-6 animate-fadeIn"
             style={{ animation: "slideInUp 0.8s ease-out" }}
           >
-            Ready to Transform Your Business?
+            {t("pages:cta.title")}
           </h2>
           <p
             className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto animate-fadeIn"
             style={{ animation: "slideInUp 0.8s ease-out 0.2s forwards", opacity: 0 }}
           >
-            Let's discuss how TechLab can help you achieve your technology goals.
+            {t("pages:cta.subtitle")}
           </p>
           <button
             onMouseEnter={() => soundManager.playSuccessSound()}
@@ -230,7 +233,7 @@ export default function Index() {
             className="px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 text-lg transform hover:scale-110 active:scale-95"
             style={{ animation: "slideInUp 0.8s ease-out 0.4s forwards", opacity: 0 }}
           >
-            Schedule a Consultation
+            {t("pages:cta.button")}
           </button>
         </div>
 

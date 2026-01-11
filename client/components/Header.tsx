@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { soundManager } from "@/utils/soundManager";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   const toggleMenu = () => {
     soundManager.playHoverSound(900);
@@ -33,7 +36,7 @@ export default function Header() {
             onMouseEnter={handleNavHover}
             className="text-slate-300 hover:text-cyan-400 transition-colors relative group"
           >
-            Home
+            {t("nav.home")}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
           </Link>
           <Link
@@ -41,7 +44,7 @@ export default function Header() {
             onMouseEnter={handleNavHover}
             className="text-slate-300 hover:text-cyan-400 transition-colors relative group"
           >
-            Services
+            {t("nav.services")}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
           </Link>
           <Link
@@ -49,7 +52,7 @@ export default function Header() {
             onMouseEnter={handleNavHover}
             className="text-slate-300 hover:text-cyan-400 transition-colors relative group"
           >
-            Projects
+            {t("nav.projects")}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
           </Link>
           <Link
@@ -57,7 +60,7 @@ export default function Header() {
             onMouseEnter={handleNavHover}
             className="text-slate-300 hover:text-cyan-400 transition-colors relative group"
           >
-            About
+            {t("nav.about")}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
           </Link>
           <Link
@@ -65,7 +68,7 @@ export default function Header() {
             onMouseEnter={handleNavHover}
             className="text-slate-300 hover:text-cyan-400 transition-colors relative group"
           >
-            Contact
+            {t("nav.contact")}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
           </Link>
           <button
@@ -73,8 +76,9 @@ export default function Header() {
             onClick={() => soundManager.playClickSound()}
             className="px-6 py-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-105 active:scale-95"
           >
-            Get Started
+            {t("nav.getStarted")}
           </button>
+          <LanguageSwitcher />
         </div>
 
         {/* Mobile Menu Button */}
@@ -103,7 +107,7 @@ export default function Header() {
                 setMobileMenuOpen(false);
               }}
             >
-              Home
+              {t("nav.home")}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link
@@ -115,7 +119,7 @@ export default function Header() {
                 setMobileMenuOpen(false);
               }}
             >
-              Services
+              {t("nav.services")}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link
@@ -127,7 +131,7 @@ export default function Header() {
                 setMobileMenuOpen(false);
               }}
             >
-              Projects
+              {t("nav.projects")}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link
@@ -139,7 +143,7 @@ export default function Header() {
                 setMobileMenuOpen(false);
               }}
             >
-              About
+              {t("nav.about")}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link
@@ -151,7 +155,7 @@ export default function Header() {
                 setMobileMenuOpen(false);
               }}
             >
-              Contact
+              {t("nav.contact")}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
             </Link>
             <button
@@ -162,8 +166,11 @@ export default function Header() {
               }}
               className="w-full px-6 py-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-105 active:scale-95"
             >
-              Get Started
+              {t("nav.getStarted")}
             </button>
+            <div className="flex justify-center py-2">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       )}

@@ -1,0 +1,130 @@
+{
+  "hero": {
+    "title": "Transform Your Business with Cutting-Edge Technology",
+    "subtitle": "Expert solutions in web development, AI, cloud infrastructure, and digital transformation",
+    "cta": "Start Your Journey"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive solutions across every aspect of your tech stack",
+    "categories": {
+      "webHosting": "Web & Hosting",
+      "webHostingDesc": "Build powerful web solutions",
+      "softwareDev": "Software & Dev",
+      "softwareDevDesc": "Custom development solutions",
+      "aiLlm": "AI / LLM",
+      "aiLlmDesc": "Advanced AI integration",
+      "cybersecurity": "Cybersecurity",
+      "cybersecurityDesc": "Protect your business",
+      "dataServices": "Data Services",
+      "dataServicesDesc": "Manage your data",
+      "3dHardware": "3D & Hardware",
+      "3dHardwareDesc": "Hardware innovation",
+      "iotEmbedded": "IoT & Embedded",
+      "iotEmbeddedDesc": "Connected devices",
+      "consulting": "Consulting",
+      "consultingDesc": "Expert guidance"
+    },
+    "infrastructure": {
+      "title": "Infrastructure & DevOps",
+      "subtitle": "Enterprise-grade infrastructure solutions and automation",
+      "cloudVirtualization": "Cloud & Virtualization",
+      "infrastructureMonitoring": "Infrastructure & Monitoring",
+      "devopsAutomation": "DevOps & Automation",
+      "enterpriseGrade": "Enterprise-grade solutions for modern infrastructure"
+    }
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Real feedback from businesses we've transformed"
+  },
+  "cta": {
+    "title": "Ready to Transform Your Business?",
+    "subtitle": "Let's discuss how TechLab can help you achieve your technology goals.",
+    "button": "Schedule a Consultation"
+  },
+  "index": {
+    "ourServices": "Our Services"
+  },
+  "about": {
+    "title": "About TechLab",
+    "subtitle": "Your partner in digital transformation",
+    "mission": "Our Mission",
+    "missionText": "To empower businesses through innovative technology solutions that drive growth, efficiency, and transformation.",
+    "vision": "Our Vision",
+    "visionText": "To be the leading technology partner that enables businesses to thrive in the digital age.",
+    "values": "Our Values",
+    "expertise": "Expertise",
+    "innovation": "Innovation",
+    "excellence": "Excellence",
+    "partnership": "Partnership"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a project in mind? Need technical advice? We're here to help.",
+    "location": "Location",
+    "email": "Email",
+    "callWhatsapp": "Call / WhatsApp",
+    "businessHours": "Business Hours",
+    "monday": "Monday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "closed": "Closed",
+    "form": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+213 555 123456",
+      "subject": "Subject",
+      "subjectPlaceholder": "How can we help?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project...",
+      "successMessage": "Thank you! We'll get back to you shortly.",
+      "errorMessage": "Failed to send message. Please try again.",
+      "sending": "Sending..."
+    }
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Showcase of successful projects we've delivered",
+    "category": "Category"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "subtitle": "We're still building this page. Check back soon!",
+    "backHome": "Back to Home"
+  },
+  "questionnaire": {
+    "ecommerce": {
+      "title": "E-commerce Website Setup",
+      "step": "Step {{current}} of {{total}}",
+      "platformType": "What type of e-commerce platform?",
+      "customBuilt": "Custom Built (Recommended)",
+      "shopify": "Shopify",
+      "wordpress": "WordPress (WooCommerce)",
+      "other": "Other",
+      "completedSetup": "E-commerce website setup completed!"
+    },
+    "customSolution": {
+      "title": "Custom Solution Questionnaire",
+      "step": "Step {{current}} of {{total}}",
+      "completedSetup": "Custom solution questionnaire completed!"
+    },
+    "wordpress": {
+      "title": "WordPress Template Selection",
+      "step": "Step {{current}} of {{total}}",
+      "completedSetup": "WordPress template setup completed!"
+    }
+  },
+  "confirmation": {
+    "requestReceived": "Request Received!",
+    "thankYou": "Thank you for choosing",
+    "whatHappensNext": "What Happens Next?",
+    "step1": "We review your requirements",
+    "step2": "Our team contacts you within 24 hours",
+    "step3": "We prepare a custom proposal",
+    "step4": "Project kicks off immediately"
+  }
+}

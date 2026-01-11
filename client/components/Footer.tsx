@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -24,14 +26,14 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Services</h3>
+            <h3 className="text-white font-semibold mb-4">{t("footer.services")}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   to="/services"
                   className="text-slate-400 hover:text-cyan-400 transition-colors text-sm"
                 >
-                  Web & Hosting
+                  {t("footer.webHosting")}
                 </Link>
               </li>
               <li>
@@ -39,7 +41,7 @@ export default function Footer() {
                   to="/services"
                   className="text-slate-400 hover:text-cyan-400 transition-colors text-sm"
                 >
-                  Software Development
+                  {t("footer.development")}
                 </Link>
               </li>
               <li>
@@ -55,7 +57,7 @@ export default function Footer() {
                   to="/services"
                   className="text-slate-400 hover:text-cyan-400 transition-colors text-sm"
                 >
-                  Cybersecurity
+                  {t("footer.cybersecurity")}
                 </Link>
               </li>
             </ul>
@@ -63,14 +65,14 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Company</h3>
+            <h3 className="text-white font-semibold mb-4">{t("footer.company")}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   to="/about"
                   className="text-slate-400 hover:text-cyan-400 transition-colors text-sm"
                 >
-                  About Us
+                  {t("footer.about")}
                 </Link>
               </li>
               <li>
@@ -78,7 +80,7 @@ export default function Footer() {
                   to="/contact"
                   className="text-slate-400 hover:text-cyan-400 transition-colors text-sm"
                 >
-                  Contact
+                  {t("footer.contact")}
                 </Link>
               </li>
               <li>
@@ -86,7 +88,7 @@ export default function Footer() {
                   href="#"
                   className="text-slate-400 hover:text-cyan-400 transition-colors text-sm"
                 >
-                  Privacy Policy
+                  {t("footer.privacy")}
                 </a>
               </li>
               <li>
@@ -94,7 +96,7 @@ export default function Footer() {
                   href="#"
                   className="text-slate-400 hover:text-cyan-400 transition-colors text-sm"
                 >
-                  Terms of Service
+                  {t("footer.terms")}
                 </a>
               </li>
             </ul>
@@ -102,7 +104,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Contact</h3>
+            <h3 className="text-white font-semibold mb-4">{t("footer.contact")}</h3>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-slate-400 text-sm">
                 <Mail className="w-4 h-4 text-cyan-400" />
@@ -124,7 +126,7 @@ export default function Footer() {
         <div className="border-t border-slate-800 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <p className="text-slate-400 text-sm">
-              &copy; {currentYear} TechLab. All rights reserved.
+              &copy; {currentYear} TechLab. {t("footer.allRightsReserved")}
             </p>
             <div className="flex items-center gap-4 mt-4 md:mt-0">
               <a

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     fullName: "",
     company: "",
@@ -57,10 +59,10 @@ export default function Contact() {
           {/* Hero Section */}
           <section className="mb-16">
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-              Contact Us
+              {t("pages:contact.title")}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mb-4">
-              Have a project in mind? Need technical advice? Want to secure, automate, or scale your systems?
+              {t("pages:contact.subtitle")}
             </p>
             <p className="text-lg text-primary font-semibold">
               TechLab is ready to help you.
@@ -73,7 +75,7 @@ export default function Contact() {
               <div className="flex items-start gap-4">
                 <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">Location</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{t("pages:contact.location")}</h3>
                   <p className="text-muted-foreground">
                     TechLab – Technology & Innovation Lab
                   </p>
@@ -88,7 +90,7 @@ export default function Contact() {
               <div className="flex items-start gap-4">
                 <Phone className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">Call / WhatsApp</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{t("pages:contact.callWhatsapp")}</h3>
                   <a
                     href="tel:+213699326406"
                     className="text-primary hover:text-primary/80 font-medium"
@@ -103,7 +105,7 @@ export default function Contact() {
               <div className="flex items-start gap-4">
                 <Mail className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">Email</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{t("pages:contact.email")}</h3>
                   <a
                     href="mailto:contact@techlab.dz"
                     className="text-primary hover:text-primary/80 block"
@@ -124,7 +126,7 @@ export default function Contact() {
               <div className="flex items-start gap-4">
                 <Clock className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">Business Hours</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{t("pages:contact.businessHours")}</h3>
                   <p className="text-muted-foreground">
                     Saturday – Thursday: 9:00 – 18:00
                   </p>

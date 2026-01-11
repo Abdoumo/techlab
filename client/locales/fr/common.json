@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "projects": "Projets",
+    "about": "À Propos",
+    "contact": "Contact",
+    "getStarted": "Commencer"
+  },
+  "footer": {
+    "company": "Entreprise",
+    "about": "À Propos de Nous",
+    "blog": "Blog",
+    "careers": "Carrières",
+    "services": "Services",
+    "allServices": "Tous les Services",
+    "webHosting": "Hébergement Web",
+    "development": "Développement",
+    "contact": "Contact",
+    "email": "Email",
+    "phone": "Téléphone",
+    "callWhatsapp": "Appel / WhatsApp",
+    "businessHours": "Horaires d'Affaires",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "allRightsReserved": "Tous les droits réservés",
+    "followUs": "Suivez-nous",
+    "hours": "Heures",
+    "monday": "Lundi",
+    "friday": "Vendredi",
+    "saturday": "Samedi",
+    "closed": "Fermé"
+  },
+  "buttons": {
+    "submit": "Soumettre",
+    "cancel": "Annuler",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "back": "Retour",
+    "moreInfo": "Plus d'Informations",
+    "learnMore": "En Savoir Plus",
+    "contactUs": "Nous Contacter",
+    "scheduleConsultation": "Planifier une Consultation",
+    "submitInquiry": "Soumettre la Demande",
+    "submitting": "Envoi en cours...",
+    "completeSetup": "Terminer la Configuration",
+    "exploreMore": "Explorer Plus de Services",
+    "backToHome": "Retour à l'Accueil",
+    "sendMessage": "Envoyer le Message",
+    "sending": "Envoi..."
+  },
+  "messages": {
+    "loading": "Chargement...",
+    "success": "Succès!",
+    "error": "Erreur",
+    "required": "Ce champ est obligatoire",
+    "placeholders": {
+      "selectOption": "Sélectionner une option",
+      "enterText": "Entrer le texte..."
+    }
+  },
+  "validation": {
+    "fieldRequired": "{{field}} est obligatoire",
+    "invalidEmail": "Veuillez entrer une adresse e-mail valide",
+    "invalidPhone": "Veuillez entrer un numéro de téléphone valide"
+  },
+  "common": {
+    "loading": "Chargement",
+    "error": "Erreur",
+    "success": "Succès",
+    "warning": "Avertissement",
+    "info": "Informations"
+  }
+}

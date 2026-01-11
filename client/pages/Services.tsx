@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { servicesData, getAllCategories } from "@/data/services";
 import { ChevronRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Services() {
+  const { t } = useTranslation();
   const categories = getAllCategories();
 
   return (
@@ -13,7 +15,7 @@ export default function Services() {
           {/* Header */}
           <div className="text-center mb-16">
             <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
-              Our Services
+              {t("pages:services.title")}
             </h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
               Explore our complete range of technology services designed to help your business
@@ -73,7 +75,7 @@ export default function Services() {
 
           {/* CTA Section */}
           <div className="mt-20 bg-gradient-to-r from-cyan-400/10 to-blue-500/10 border border-cyan-400/30 rounded-lg p-12 text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">{t("pages:cta.title")}</h2>
             <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
               Pick any service above and fill out the inquiry form. Our team will review your
               requirements and provide a detailed proposal within 24-48 hours.
@@ -82,7 +84,7 @@ export default function Services() {
               to="/"
               className="inline-block px-8 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-shadow"
             >
-              Back to Home
+              {t("buttons.back")}
             </Link>
           </div>
         </div>

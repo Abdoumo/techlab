@@ -1,6 +1,9 @@
 import Layout from "@/components/Layout";
+import { useTranslation } from "react-i18next";
 
 export default function About() {
+  const { t } = useTranslation();
+
   return (
     <Layout>
       <div className="min-h-screen bg-background py-20 px-4">
@@ -8,7 +11,7 @@ export default function About() {
           {/* Hero Section */}
           <section className="mb-20">
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-              About TechLab
+              {t("pages:about.title")}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl">
               TechLab is a modern technology laboratory specialized in building, securing, automating, and scaling digital systems for businesses, startups, and institutions.
@@ -17,7 +20,7 @@ export default function About() {
 
           {/* Mission */}
           <section className="mb-20 bg-card rounded-lg p-8 border border-border">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Our Mission</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4">{t("pages:about.mission")}</h2>
             <p className="text-lg text-muted-foreground mb-4">
               We bring together software development, cybersecurity, AI, DevOps, cloud infrastructure, IoT, and 3D prototyping under one roof to deliver complete end-to-end tech solutions.
             </p>
@@ -86,7 +89,7 @@ export default function About() {
 
           {/* Vision */}
           <section className="mb-20">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Our Vision</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4">{t("pages:about.vision")}</h2>
             <p className="text-lg text-muted-foreground">
               To become a leading technology innovation hub in Algeria and North Africa, providing world-class digital solutions using open technologies, artificial intelligence, and cybersecurity excellence.
             </p>
@@ -94,7 +97,7 @@ export default function About() {
 
           {/* Core Values */}
           <section>
-            <h2 className="text-3xl font-bold text-foreground mb-8">Our Core Values</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-8">{t("pages:about.values")}</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 { icon: "🔒", title: "Security & Trust", desc: "Building systems you can rely on" },

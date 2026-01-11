@@ -1,0 +1,217 @@
+{
+  "categories": {
+    "webHosting": "Web & Hébergement",
+    "softwareDevelopment": "Développement de Logiciels",
+    "aiLlm": "IA / LLM",
+    "cybersecurity": "Cybersécurité",
+    "dataServices": "Services de Données",
+    "3dPrinting": "Impression 3D",
+    "iotEmbedded": "IoT et Embarqué",
+    "consultingTraining": "Conseil et Formation"
+  },
+  "services": {
+    "websiteCreation": {
+      "name": "Création de Site Web",
+      "description": "Site Web professionnel, page de destination, portfolio",
+      "price": "20 000 – 120 000 DZD"
+    },
+    "ecommerceWebsite": {
+      "name": "Site E-commerce",
+      "description": "Boutique en ligne + paiements",
+      "price": "80 000 – 300 000 DZD"
+    },
+    "webHostingShared": {
+      "name": "Hébergement Web (Partagé)",
+      "description": "Plans d'hébergement de base",
+      "price": "1 000 – 6 000 DZD / mois"
+    },
+    "managedHostingVps": {
+      "name": "Hébergement Géré (VPS)",
+      "description": "Configuration et gestion de serveur",
+      "price": "6 000 – 25 000 DZD / mois"
+    },
+    "domainRegistration": {
+      "name": "Enregistrement de Domaine",
+      "description": "Domaine .dz / .com",
+      "price": "2 000 – 6 000 DZD / année"
+    },
+    "mvpCreation": {
+      "name": "Création de MVP",
+      "description": "Prototype Web/App rapide",
+      "price": "80 000 – 500 000 DZD"
+    },
+    "appCreation": {
+      "name": "Création d'Application",
+      "description": "Applications Android / iOS",
+      "price": "120 000 – 1 200 000 DZD"
+    },
+    "customSoftware": {
+      "name": "Logiciel Personnalisé",
+      "description": "ERP / CRM / automatisation",
+      "price": "150 000 – 1 500 000 DZD"
+    },
+    "apiDevelopment": {
+      "name": "Développement d'API",
+      "description": "Intégration et automatisation",
+      "price": "30 000 – 300 000 DZD"
+    },
+    "llmIntegration": {
+      "name": "Intégration LLM",
+      "description": "Chatbots IA et automatisation",
+      "price": "50 000 – 400 000 DZD"
+    },
+    "mlModelTraining": {
+      "name": "Formation de Modèles ML",
+      "description": "Apprentissage automatique personnalisé",
+      "price": "80 000 – 600 000 DZD"
+    },
+    "dataAnalysis": {
+      "name": "Analyse de Données",
+      "description": "Tableaux de bord et insights",
+      "price": "30 000 – 200 000 DZD"
+    },
+    "securityAudit": {
+      "name": "Audit de Sécurité",
+      "description": "Audit de site Web et système",
+      "price": "50 000 – 200 000 DZD"
+    },
+    "penetrationTesting": {
+      "name": "Test de Pénétration",
+      "description": "Hacking éthique",
+      "price": "100 000 – 500 000 DZD"
+    },
+    "firewallSetup": {
+      "name": "Configuration de Firewall",
+      "description": "Protection serveur et application",
+      "price": "10 000 – 80 000 DZD"
+    },
+    "dataRecovery": {
+      "name": "Récupération de Données",
+      "description": "Récupération HDD, SSD, USB",
+      "price": "5 000 – 60 000 DZD"
+    },
+    "backupSystems": {
+      "name": "Systèmes de Sauvegarde",
+      "description": "Sauvegardes cloud et locales",
+      "price": "10 000 – 70 000 DZD"
+    },
+    "disasterRecovery": {
+      "name": "Récupération d'Urgence",
+      "description": "Continuité de l'activité",
+      "price": "30 000 – 200 000 DZD"
+    },
+    "3dPrinting": {
+      "name": "Impression 3D",
+      "description": "Modèles et pièces en plastique",
+      "price": "500 – 5 000 DZD / pièce"
+    },
+    "3dCadModeling": {
+      "name": "Modélisation CAO 3D",
+      "description": "Conceptions pour impression",
+      "price": "2 000 – 30 000 DZD"
+    },
+    "hardwarePrototyping": {
+      "name": "Prototypage Matériel",
+      "description": "IoT + pièces imprimées en 3D",
+      "price": "10 000 – 150 000 DZD"
+    },
+    "iotDeviceDevelopment": {
+      "name": "Développement d'Appareil IoT",
+      "description": "Capteurs, automatisation",
+      "price": "30 000 – 300 000 DZD"
+    },
+    "predictiveMaintenance": {
+      "name": "Maintenance Prédictive",
+      "description": "Analytique de capteurs",
+      "price": "50 000 – 500 000 DZD"
+    },
+    "microcontrollerProgramming": {
+      "name": "Programmation de Microcontrôleur",
+      "description": "Arduino / ESP32",
+      "price": "5 000 – 50 000 DZD"
+    },
+    "techGuidance": {
+      "name": "Conseils Technologiques",
+      "description": "Conseils aux startups et entreprises",
+      "price": "3 000 – 8 000 DZD / heure"
+    }
+  },
+  "infrastructure": {
+    "cloudVirtualization": {
+      "title": "Cloud et Virtualisation",
+      "description": "Solutions de niveau entreprise pour l'infrastructure moderne",
+      "items": [
+        "Configuration de Serveur Proxmox",
+        "Cluster HA (2-3 Nœuds)",
+        "Déploiement Nextcloud",
+        "Docker / Portainer"
+      ]
+    },
+    "infrastructureMonitoring": {
+      "title": "Infrastructure et Surveillance",
+      "description": "Solutions de niveau entreprise pour l'infrastructure moderne",
+      "items": [
+        "Installation TrueNAS",
+        "Automatisation de Sauvegarde",
+        "Prometheus + Grafana",
+        "Configuration du Serveur Email"
+      ]
+    },
+    "devopsAutomation": {
+      "title": "DevOps et Automatisation",
+      "description": "Solutions de niveau entreprise pour l'infrastructure moderne",
+      "items": [
+        "Serveur GitLab / Gitea",
+        "Jenkins CI/CD",
+        "Automatisation n8n",
+        "Automatisation Ansible"
+      ]
+    }
+  },
+  "projects": [
+    {
+      "id": "project-1",
+      "title": "Plateforme E-commerce",
+      "description": "Plateforme e-commerce complète avec intégration de paiement",
+      "category": "Développement Web",
+      "technologies": ["React", "Node.js", "MongoDB"]
+    },
+    {
+      "id": "project-2",
+      "title": "Système de Chatbot IA",
+      "description": "Chatbot IA personnalisé pour le support client",
+      "category": "IA/ML",
+      "technologies": ["Python", "OpenAI API", "React"]
+    },
+    {
+      "id": "project-3",
+      "title": "Infrastructure Cloud",
+      "description": "Configuration et gestion d'infrastructure multi-cloud",
+      "category": "Infrastructure",
+      "technologies": ["AWS", "Kubernetes", "Terraform"]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "testimonial-1",
+      "text": "TechLab a transformé notre entreprise avec ses solutions innovantes. Fortement recommandé!",
+      "author": "Ahmed Mohamed",
+      "role": "PDG",
+      "company": "Digital Innovations"
+    },
+    {
+      "id": "testimonial-2",
+      "text": "Excellent équipe, excellente exécution. Notre projet a été livré à temps et dépasse les attentes.",
+      "author": "Fatima Saidi",
+      "role": "Chef de Projet",
+      "company": "Tech Solutions Ltd"
+    },
+    {
+      "id": "testimonial-3",
+      "text": "Professionnel, réactif et axé sur les résultats. C'est exactement ce qu'il nous fallait.",
+      "author": "Karim Benali",
+      "role": "Fondateur",
+      "company": "StartUp Hub"
+    }
+  ]
+}

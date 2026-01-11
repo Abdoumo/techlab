@@ -1,0 +1,130 @@
+{
+  "hero": {
+    "title": "حول عملك باستخدام تكنولوجيا متقدمة",
+    "subtitle": "حلول خبيرة في تطوير الويب، والذكاء الاصطناعي، والبنية التحتية السحابية، والتحول الرقمي",
+    "cta": "ابدأ رحلتك"
+  },
+  "services": {
+    "title": "خدماتنا",
+    "subtitle": "حلول شاملة في جميع جوانب مجموعة التكنولوجيا الخاصة بك",
+    "categories": {
+      "webHosting": "الويب والاستضافة",
+      "webHostingDesc": "بناء حلول ويب قوية",
+      "softwareDev": "البرامج والتطوير",
+      "softwareDevDesc": "حلول تطوير مخصصة",
+      "aiLlm": "الذكاء الاصطناعي / LLM",
+      "aiLlmDesc": "تكامل ذكاء اصطناعي متقدم",
+      "cybersecurity": "الأمن السيبراني",
+      "cybersecurityDesc": "حماية عملك",
+      "dataServices": "خدمات البيانات",
+      "dataServicesDesc": "إدارة بياناتك",
+      "3dHardware": "الطباعة ثلاثية الأبعاد والأجهزة",
+      "3dHardwareDesc": "ابتكار الأجهزة",
+      "iotEmbedded": "إنترنت الأشياء والمدمجة",
+      "iotEmbeddedDesc": "الأجهزة المتصلة",
+      "consulting": "الاستشارات",
+      "consultingDesc": "التوجيه من الخبراء"
+    },
+    "infrastructure": {
+      "title": "البنية التحتية و DevOps",
+      "subtitle": "حلول بنية تحتية على مستوى المؤسسات والأتمتة",
+      "cloudVirtualization": "السحابة والمحاكاة الافتراضية",
+      "infrastructureMonitoring": "البنية التحتية والمراقبة",
+      "devopsAutomation": "DevOps والأتمتة",
+      "enterpriseGrade": "حلول على مستوى المؤسسات للبنية التحتية الحديثة"
+    }
+  },
+  "testimonials": {
+    "title": "ماذا يقول عملاؤنا",
+    "subtitle": "تعليقات حقيقية من الشركات التي قمنا بتحويلها"
+  },
+  "cta": {
+    "title": "هل أنت مستعد لتحويل عملك؟",
+    "subtitle": "دعنا نناقش كيفية أن تساعدك TechLab على تحقيق أهدافك التكنولوجية.",
+    "button": "حدد موعد استشارة"
+  },
+  "index": {
+    "ourServices": "خدماتنا"
+  },
+  "about": {
+    "title": "حول TechLab",
+    "subtitle": "شريكك في التحول الرقمي",
+    "mission": "مهمتنا",
+    "missionText": "تمكين الشركات من خلال حلول تكنولوجية مبتكرة تعزز النمو والكفاءة والتحول.",
+    "vision": "رؤيتنا",
+    "visionText": "أن نكون الشريك التكنولوجي الرائد الذي يمكن الشركات من الازدهار في العصر الرقمي.",
+    "values": "قيمنا",
+    "expertise": "الخبرة",
+    "innovation": "الابتكار",
+    "excellence": "التميز",
+    "partnership": "الشراكة"
+  },
+  "contact": {
+    "title": "اتصل بنا",
+    "subtitle": "هل لديك مشروع في الاعتبار؟ هل تحتاج إلى نصيحة تقنية؟ نحن هنا للمساعدة.",
+    "location": "الموقع",
+    "email": "البريد الإلكتروني",
+    "callWhatsapp": "اتصل / واتساب",
+    "businessHours": "ساعات العمل",
+    "monday": "الاثنين",
+    "friday": "الجمعة",
+    "saturday": "السبت",
+    "closed": "مغلق",
+    "form": {
+      "fullName": "الاسم الكامل",
+      "fullNamePlaceholder": "اسمك الكامل",
+      "email": "عنوان البريد الإلكتروني",
+      "emailPlaceholder": "your@email.com",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "+213 555 123456",
+      "subject": "الموضوع",
+      "subjectPlaceholder": "كيف يمكننا مساعدتك؟",
+      "message": "الرسالة",
+      "messagePlaceholder": "حدثنا عن مشروعك...",
+      "successMessage": "شكراً! سنعود إليك قريباً.",
+      "errorMessage": "فشل إرسال الرسالة. يرجى المحاولة مجدداً.",
+      "sending": "جاري الإرسال..."
+    }
+  },
+  "projects": {
+    "title": "مشاريعنا",
+    "subtitle": "عرض المشاريع الناجحة التي قدمناها",
+    "category": "الفئة"
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "subtitle": "نحن لا نزال نبني هذه الصفحة. تحقق مرة أخرى قريباً!",
+    "backHome": "العودة إلى الرئيسية"
+  },
+  "questionnaire": {
+    "ecommerce": {
+      "title": "إعداد موقع التجارة الإلكترونية",
+      "step": "الخطوة {{current}} من {{total}}",
+      "platformType": "ما نوع منصة التجارة الإلكترونية؟",
+      "customBuilt": "مبني حسب الطلب (موصى به)",
+      "shopify": "Shopify",
+      "wordpress": "WordPress (WooCommerce)",
+      "other": "أخرى",
+      "completedSetup": "تم إكمال إعداد موقع التجارة الإلكترونية!"
+    },
+    "customSolution": {
+      "title": "استبيان الحل المخصص",
+      "step": "الخطوة {{current}} من {{total}}",
+      "completedSetup": "تم إكمال استبيان الحل المخصص!"
+    },
+    "wordpress": {
+      "title": "اختيار قالب WordPress",
+      "step": "الخطوة {{current}} من {{total}}",
+      "completedSetup": "تم إكمال إعداد قالب WordPress!"
+    }
+  },
+  "confirmation": {
+    "requestReceived": "تم استقبال الطلب!",
+    "thankYou": "شكراً لاختيارك",
+    "whatHappensNext": "ماذا سيحدث بعد ذلك؟",
+    "step1": "نقوم بمراجعة متطلباتك",
+    "step2": "سيتصل بك فريقنا خلال 24 ساعة",
+    "step3": "نحضر عرضاً مخصصاً",
+    "step4": "ينطلق المشروع على الفور"
+  }
+}

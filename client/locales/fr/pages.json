@@ -1,0 +1,130 @@
+{
+  "hero": {
+    "title": "Transformez Votre Entreprise avec la Technologie de Pointe",
+    "subtitle": "Solutions expertes en développement web, IA, infrastructure cloud et transformation numérique",
+    "cta": "Commencez Votre Voyage"
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Solutions complètes dans tous les domaines de votre stack technologique",
+    "categories": {
+      "webHosting": "Web & Hébergement",
+      "webHostingDesc": "Construire des solutions web puissantes",
+      "softwareDev": "Logiciels et Développement",
+      "softwareDevDesc": "Solutions de développement personnalisé",
+      "aiLlm": "IA / LLM",
+      "aiLlmDesc": "Intégration IA avancée",
+      "cybersecurity": "Cybersécurité",
+      "cybersecurityDesc": "Protéger votre entreprise",
+      "dataServices": "Services de Données",
+      "dataServicesDesc": "Gérer vos données",
+      "3dHardware": "3D et Matériel",
+      "3dHardwareDesc": "Innovation matérielle",
+      "iotEmbedded": "IoT et Embarqué",
+      "iotEmbeddedDesc": "Appareils connectés",
+      "consulting": "Conseil",
+      "consultingDesc": "Conseils d'experts"
+    },
+    "infrastructure": {
+      "title": "Infrastructure et DevOps",
+      "subtitle": "Solutions d'infrastructure de niveau entreprise et automatisation",
+      "cloudVirtualization": "Cloud et Virtualisation",
+      "infrastructureMonitoring": "Infrastructure et Surveillance",
+      "devopsAutomation": "DevOps et Automatisation",
+      "enterpriseGrade": "Solutions de niveau entreprise pour l'infrastructure moderne"
+    }
+  },
+  "testimonials": {
+    "title": "Ce que Disent Nos Clients",
+    "subtitle": "Véritables retours de clients que nous avons transformés"
+  },
+  "cta": {
+    "title": "Prêt à Transformer Votre Entreprise?",
+    "subtitle": "Discutons de la façon dont TechLab peut vous aider à atteindre vos objectifs technologiques.",
+    "button": "Planifier une Consultation"
+  },
+  "index": {
+    "ourServices": "Nos Services"
+  },
+  "about": {
+    "title": "À Propos de TechLab",
+    "subtitle": "Votre partenaire en transformation numérique",
+    "mission": "Notre Mission",
+    "missionText": "Responsabiliser les entreprises grâce à des solutions technologiques innovantes qui stimulent la croissance, l'efficacité et la transformation.",
+    "vision": "Notre Vision",
+    "visionText": "Être le partenaire technologique de premier plan qui permet aux entreprises de prospérer à l'ère numérique.",
+    "values": "Nos Valeurs",
+    "expertise": "Expertise",
+    "innovation": "Innovation",
+    "excellence": "Excellence",
+    "partnership": "Partenariat"
+  },
+  "contact": {
+    "title": "Contactez-Nous",
+    "subtitle": "Vous avez un projet en tête? Besoin de conseils techniques? Nous sommes là pour vous aider.",
+    "location": "Localisation",
+    "email": "Email",
+    "callWhatsapp": "Appel / WhatsApp",
+    "businessHours": "Horaires d'Affaires",
+    "monday": "Lundi",
+    "friday": "Vendredi",
+    "saturday": "Samedi",
+    "closed": "Fermé",
+    "form": {
+      "fullName": "Nom Complet",
+      "fullNamePlaceholder": "Votre nom complet",
+      "email": "Adresse Email",
+      "emailPlaceholder": "votre@email.com",
+      "phone": "Numéro de Téléphone",
+      "phonePlaceholder": "+213 555 123456",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Comment pouvons-nous vous aider?",
+      "message": "Message",
+      "messagePlaceholder": "Parlez-nous de votre projet...",
+      "successMessage": "Merci! Nous vous recontacterons bientôt.",
+      "errorMessage": "Erreur lors de l'envoi du message. Veuillez réessayer.",
+      "sending": "Envoi..."
+    }
+  },
+  "projects": {
+    "title": "Nos Projets",
+    "subtitle": "Vitrine des projets réussis que nous avons livrés",
+    "category": "Catégorie"
+  },
+  "notFound": {
+    "title": "Page Non Trouvée",
+    "subtitle": "Nous construisons encore cette page. Revenez bientôt!",
+    "backHome": "Retour à l'Accueil"
+  },
+  "questionnaire": {
+    "ecommerce": {
+      "title": "Configuration de Site E-commerce",
+      "step": "Étape {{current}} sur {{total}}",
+      "platformType": "Quel type de plateforme e-commerce?",
+      "customBuilt": "Construit sur Mesure (Recommandé)",
+      "shopify": "Shopify",
+      "wordpress": "WordPress (WooCommerce)",
+      "other": "Autre",
+      "completedSetup": "Configuration du site e-commerce complétée!"
+    },
+    "customSolution": {
+      "title": "Questionnaire de Solution Personnalisée",
+      "step": "Étape {{current}} sur {{total}}",
+      "completedSetup": "Questionnaire de solution personnalisée complété!"
+    },
+    "wordpress": {
+      "title": "Sélection de Modèle WordPress",
+      "step": "Étape {{current}} sur {{total}}",
+      "completedSetup": "Configuration du modèle WordPress complétée!"
+    }
+  },
+  "confirmation": {
+    "requestReceived": "Demande Reçue!",
+    "thankYou": "Merci d'avoir choisi",
+    "whatHappensNext": "Que Se Passe-t-il Ensuite?",
+    "step1": "Nous examinons vos exigences",
+    "step2": "Notre équipe vous contacte dans les 24 heures",
+    "step3": "Nous préparons une proposition personnalisée",
+    "step4": "Le projet démarre immédiatement"
+  }
+}

@@ -4,10 +4,12 @@ import { projectsData } from "@/data/projects";
 import { ExternalLink, ImageOff, Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { SearchInput } from "@/components/ui/search";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useTranslation } from "react-i18next";
 
 const ITEMS_PER_PAGE = 12;
 
 export default function OurProjects() {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -164,11 +166,10 @@ export default function OurProjects() {
                 {/* Header */}
                 <div className="mb-12">
                   <h1 className="text-4xl lg:text-5xl font-bold text-white mb-2">
-                    Our Projects
+                    {t("pages:projects.title")}
                   </h1>
                   <p className="text-slate-400 text-base lg:text-lg">
-                    Explore our portfolio of successful projects across various
-                    industries and technologies
+                    {t("pages:projects.subtitle")}
                   </p>
                 </div>
 
