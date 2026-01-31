@@ -168,8 +168,8 @@ http://localhost:3000/contact
 1. Push changes to your git branch
 2. Vercel will automatically deploy
 3. Test on mobile device:
-   - Visit `https://techlab-officiel.vercel.app/services`
-   - Visit `https://techlab-officiel.vercel.app/our-projects`
+   - Visit `https://cyberlymph.com/services`
+   - Visit `https://cyberlymph.com/our-projects`
    - Test on mobile browser
    - Test on iOS (install as PWA)
 
@@ -285,7 +285,7 @@ A: Yes! Run `npm run build` then `npm run start` to test the production build.
 
 ### Desktop Browser
 ```
-1. User visits https://techlab-officiel.vercel.app/services
+1. User visits https://cyberlymph.com/services
 2. Vercel rewrites to /index.html
 3. Browser loads React app
 4. React Router detects /services in URL

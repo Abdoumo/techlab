@@ -43,7 +43,7 @@ export function generateClientConfirmationEmail(data: EmailData): {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inquiry Confirmation - TechLab</title>
+  <title>Inquiry Confirmation - cyberlymph</title>
   <style>
     body {
       margin: 0;
@@ -181,14 +181,14 @@ export function generateClientConfirmationEmail(data: EmailData): {
       <div class="logo">
         <span style="font-size: 20px; font-weight: 700; color: white;">T</span>
       </div>
-      <h1>TechLab</h1>
+      <h1>cyberlymph</h1>
       <p style="color: #cbd5e1; margin: 0; font-size: 14px;">Inquiry Confirmation</p>
     </div>
 
     <div class="content">
       <div class="greeting">
         <p>Hi ${clientName},</p>
-        <p>Thank you for reaching out to TechLab! We've received your inquiry for our <strong style="color: #06b6d4;">${serviceName}</strong> service and we're excited to help you!</p>
+        <p>Thank you for reaching out to cyberlymph! We've received your inquiry for our <strong style="color: #06b6d4;">${serviceName}</strong> service and we're excited to help you!</p>
       </div>
 
       <div class="service-highlight">
@@ -220,12 +220,12 @@ export function generateClientConfirmationEmail(data: EmailData): {
       <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
         We're looking forward to working with you and bringing your vision to life!<br><br>
         Best regards,<br>
-        <strong style="color: #06b6d4;">The TechLab Team</strong>
+        <strong style="color: #06b6d4;">The cyberlymph Team</strong>
       </p>
     </div>
 
     <div class="footer">
-      <p style="margin: 0;">© 2024 TechLab. All rights reserved.</p>
+      <p style="margin: 0;">© 2024 cyberlymph. All rights reserved.</p>
       <p style="margin: 8px 0 0 0;">This is an automated confirmation email. Please do not reply to this message.</p>
     </div>
   </div>
@@ -234,11 +234,11 @@ export function generateClientConfirmationEmail(data: EmailData): {
   `;
 
   const text = `
-TechLab - Inquiry Confirmation
+cyberlymph - Inquiry Confirmation
 
 Hi ${clientName},
 
-Thank you for reaching out to TechLab! We've received your inquiry for our ${serviceName} service.
+Thank you for reaching out to cyberlymph! We've received your inquiry for our ${serviceName} service.
 
 SERVICE: ${serviceName}
 
@@ -266,15 +266,15 @@ Email: bedoushop@gmail.com
 Phone: +213699326406
 
 Best regards,
-The TechLab Team
+The cyberlymph Team
 
 ---
-© 2024 TechLab. All rights reserved.
+© 2024 cyberlymph. All rights reserved.
 This is an automated confirmation email. Please do not reply to this message.
   `;
 
   return {
-    subject: `Inquiry Confirmation - ${serviceName} Service | TechLab`,
+    subject: `Inquiry Confirmation - ${serviceName} Service | cyberlymph`,
     html,
     text,
   };
@@ -347,7 +347,7 @@ export function generateAdminNotificationEmail(data: EmailData): {
     </div>
 
     <div style="background-color: #f3f4f6; padding: 20px; text-align: center; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280;">
-      <p style="margin: 0;">TechLab Admin Notification System</p>
+      <p style="margin: 0;">cyberlymph Admin Notification System</p>
     </div>
   </div>
 </body>
@@ -378,7 +378,7 @@ ${Object.entries(formData)
 ACTION: Review this inquiry and follow up with the client within 24 hours.
 
 ---
-TechLab Admin Notification System
+cyberlymph Admin Notification System
   `;
 
   return {
@@ -403,14 +403,14 @@ TechLab Admin Notification System
  *
  *   await sgMail.send({
  *     to: data.clientEmail,
- *     from: 'noreply@techlab.io',
+ *     from: 'noreply@cyberlymph.io',
  *     subject: clientEmail.subject,
  *     html: clientEmail.html,
  *   });
  *
  *   await sgMail.send({
- *     to: data.businessEmail || 'inquiries@techlab.io',
- *     from: 'system@techlab.io',
+ *     to: data.businessEmail || 'inquiries@cyberlymph.io',
+ *     from: 'system@cyberlymph.io',
  *     subject: adminEmail.subject,
  *     html: adminEmail.html,
  *   });
@@ -432,7 +432,7 @@ TechLab Admin Notification System
  *   const clientEmail = generateClientConfirmationEmail(data);
  *
  *   await transporter.sendMail({
- *     from: 'noreply@techlab.io',
+ *     from: 'noreply@cyberlymph.io',
  *     to: data.clientEmail,
  *     subject: clientEmail.subject,
  *     html: clientEmail.html,

@@ -65,7 +65,7 @@ export default function Contact() {
               {t("pages:contact.subtitle")}
             </p>
             <p className="text-lg text-primary font-semibold">
-              TechLab is ready to help you.
+              cyberlymph is ready to help you.
             </p>
           </section>
 
@@ -77,7 +77,7 @@ export default function Contact() {
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">{t("pages:contact.location")}</h3>
                   <p className="text-muted-foreground">
-                    TechLab – Technology & Innovation Lab
+                    cyberlymph – Technology & Innovation Lab
                   </p>
                   <p className="text-muted-foreground">
                     Algeria (On-site & Remote Services Available)
@@ -107,16 +107,16 @@ export default function Contact() {
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">{t("pages:contact.email")}</h3>
                   <a
-                    href="mailto:contact@techlab.dz"
+                    href="mailto:contact@cyberlymph.dz"
                     className="text-primary hover:text-primary/80 block"
                   >
-                    contact@techlab.dz
+                    contact@cyberlymph.dz
                   </a>
                   <a
-                    href="mailto:support@techlab.dz"
+                    href="mailto:support@cyberlymph.dz"
                     className="text-primary hover:text-primary/80 block"
                   >
-                    support@techlab.dz
+                    support@cyberlymph.dz
                   </a>
                 </div>
               </div>
@@ -304,7 +304,7 @@ export default function Contact() {
                   Call Now
                 </a>
                 <a
-                  href="mailto:contact@techlab.dz"
+                  href="mailto:contact@cyberlymph.dz"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground font-semibold rounded-lg hover:shadow-lg hover:shadow-secondary/50 transition-all"
                 >
                   <Mail className="w-5 h-5" />

@@ -100,7 +100,7 @@ export const sendServiceInquiryEmail = async (
 
         <div class="footer">
           <p>This is an automated email from your service inquiry system.</p>
-          <p>&copy; 2026 TechLab. All rights reserved.</p>
+          <p>&copy; 2026 cyberlymph. All rights reserved.</p>
         </div>
       </div>
     </body>
@@ -177,7 +177,7 @@ export const sendCustomerConfirmationEmail = async (email: string, serviceName: 
         </div>
 
         <div class="footer">
-          <p>&copy; 2026 TechLab. All rights reserved.</p>
+          <p>&copy; 2026 cyberlymph. All rights reserved.</p>
         </div>
       </div>
     </body>

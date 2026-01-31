@@ -15,7 +15,7 @@ export default function Footer() {
             <Link to="/" className="inline-block mb-4 hover:opacity-80 transition-opacity">
               <img
                 src="/logo.png"
-                alt="TechLab Logo"
+                alt="cyberlymph Logo"
                 className="h-10 w-auto"
               />
             </Link>
@@ -126,7 +126,7 @@ export default function Footer() {
         <div className="border-t border-slate-800 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <p className="text-slate-400 text-sm">
-              &copy; {currentYear} TechLab. {t("footer.allRightsReserved")}
+              &copy; {currentYear} cyberlymph. {t("footer.allRightsReserved")}
             </p>
             <div className="flex items-center gap-4 mt-4 md:mt-0">
               <a

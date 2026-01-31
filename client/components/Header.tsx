@@ -24,7 +24,7 @@ export default function Header() {
         <Link to="/" className="flex items-center gap-2 group hover:opacity-80 transition-opacity">
           <img
             src="/logo.png"
-            alt="TechLab Logo"
+            alt="cyberlymph Logo"
             className="h-10 w-auto group-hover:drop-shadow-lg group-hover:drop-shadow-cyan-400/50 transition-all"
           />
         </Link>

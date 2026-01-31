@@ -21,7 +21,7 @@
 In Vercel Project Settings → Environment Variables, add:
 
 ```
-DATABASE_URL=postgresql://gym_owner:npg_fnepkSioax49@ep-round-violet-a8dchyne-pooler.eastus2.azure.neon.tech/techlab?sslmode=require&channel_binding=require
+DATABASE_URL=postgresql://gym_owner:npg_fnepkSioax49@ep-round-violet-a8dchyne-pooler.eastus2.azure.neon.tech/cyberlymph?sslmode=require&channel_binding=require
 GMAIL_EMAIL=your-gmail@gmail.com
 GMAIL_APP_PASSWORD=your-app-password
 NODE_ENV=production

@@ -1,7 +1,7 @@
 # Multi-Language Implementation (English, French, Arabic)
 
 ## Overview
-This document summarizes the complete multi-language (i18n) implementation for the TechLab website supporting English (EN), French (FR), and Arabic (AR).
+This document summarizes the complete multi-language (i18n) implementation for the cyberlymph website supporting English (EN), French (FR), and Arabic (AR).
 
 ## What Has Been Implemented
 

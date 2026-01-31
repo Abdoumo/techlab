@@ -14,7 +14,7 @@ export default function About() {
               {t("pages:about.title")}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl">
-              TechLab is a modern technology laboratory specialized in building, securing, automating, and scaling digital systems for businesses, startups, and institutions.
+              cyberlymph is a modern technology laboratory specialized in building, securing, automating, and scaling digital systems for businesses, startups, and institutions.
             </p>
           </section>
 
@@ -31,7 +31,7 @@ export default function About() {
 
           {/* Why Choose Us */}
           <section className="mb-20">
-            <h2 className="text-3xl font-bold text-foreground mb-8">What Makes TechLab Different</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-8">What Makes cyberlymph Different</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 {

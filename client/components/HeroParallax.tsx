@@ -109,7 +109,7 @@ export default function HeroParallax() {
             }}
           >
             From web development and cloud infrastructure to AI integration and
-            cybersecurity, TechLab delivers cutting-edge solutions for modern
+            cybersecurity, cyberlymph delivers cutting-edge solutions for modern
             businesses.
           </p>
 
