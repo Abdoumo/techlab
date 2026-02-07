@@ -48,13 +48,24 @@ export const handleSendInquiry: RequestHandler = async (req, res) => {
       // Continue with email sending even if database fails
     }
 
-    // Send email to admin
-    const adminEmailResult = await sendServiceInquiryEmail(serviceName, inquiryData);
+    // Send emails (non-critical - continue even if emails fail)
+    let adminEmailResult = null;
+    let customerEmailResult = null;
 
-    // Send confirmation email to customer
-    const customerEmailResult = await sendCustomerConfirmationEmail(email, serviceName);
+    try {
+      adminEmailResult = await sendServiceInquiryEmail(serviceName, inquiryData);
+    } catch (emailError) {
+      console.error("Admin email error (non-critical):", emailError);
+    }
 
-    res.json({
+    try {
+      customerEmailResult = await sendCustomerConfirmationEmail(email, serviceName);
+    } catch (emailError) {
+      console.error("Customer email error (non-critical):", emailError);
+    }
+
+    // Always return success response
+    return res.json({
       success: true,
       message: "Inquiry submitted successfully",
       inquiryId,
