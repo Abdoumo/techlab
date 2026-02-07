@@ -18,7 +18,9 @@ export const initializeDatabase = async () => {
 
     console.log("Database initialized successfully");
   } catch (error) {
-    console.error("Failed to initialize database:", error);
-    throw error;
+    console.error("Warning: Failed to initialize database:", error);
+    // Don't throw - allow the server to continue running even if database is unavailable
+    // Email sending will still work
+    console.log("Server will continue running with email functionality only");
   }
 };
