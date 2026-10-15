@@ -845,7 +845,7 @@ export const formationsData: Formation[] = [
     projectsCount: 12,
     prerequisites: "Bases en développement logiciel, administration système ou réseaux",
     location: "Présentiel & Ateliers Cloud",
-    level: "Intermédiaire à Avancé",
+    level: "Débutant",
     summary:
       "Concevez des architectures sécurisées by design. Maîtrisez la modélisation de menaces (STRIDE), la cryptographie moderne (PKI, TLS 1.3), l'IAM d'entreprise (OAuth 2.0, OIDC, Zero-Trust) et le DevSecOps.",
     description:
@@ -1417,7 +1417,7 @@ export const formationsData: Formation[] = [
     projectsCount: 16,
     prerequisites: "Notions de base en informatique, web ou utilisation de modèles IA",
     location: "Laboratoire de Pentest IA & Plateforme Interactive",
-    level: "Tous niveaux",
+    level: "Intermédiaire à Avancé",
     summary:
       "Cursus complet en 5 modules couvrant l'intégralité du cycle de sécurité de l'IA : Fondamentaux AI/ML, Attaque des LLMs (Prompt Injection & Jailbreak), Architecture Sécurisée & OWASP, Empoisonnement de Données & Supply Chain, et Défense avec Guardrails.",
     description:
