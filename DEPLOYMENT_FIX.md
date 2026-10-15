@@ -153,10 +153,10 @@ npm run build
 npm run start
 
 # Test routes on desktop
-http://0.0.0.0:3000
-http://0.0.0.0:3000/services
-http://0.0.0.0:3000/our-projects
-http://0.0.0.0:3000/contact
+http://0.0.0.0: 8001
+http://0.0.0.0: 8001/services
+http://0.0.0.0: 8001/our-projects
+http://0.0.0.0: 8001/contact
 
 # Test mobile viewport (DevTools)
 - Open DevTools (F12)

@@ -96,7 +96,7 @@ npm run build
 npm run start
 ```
 
-Then visit `http://0.0.0.0:3000` to verify everything works.
+Then visit `http://0.0.0.0: 8001` to verify everything works.
 
 ## More Information
 

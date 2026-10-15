@@ -94,7 +94,7 @@ export const servicesData: Service[] = [
     categoryId: "web-hosting",
     description: "Online shop + payments",
     priceMin: 80000,
-    priceMax: 300000,
+    priceMax: 800100,
     priceLabel: "80,000 – 300,000 DZD",
     isSpecial: true,
     specialQuestionnaire: "ecommerce",
@@ -446,8 +446,8 @@ export const servicesData: Service[] = [
     category: "Software & Development",
     categoryId: "software-development",
     description: "Integration & automation",
-    priceMin: 30000,
-    priceMax: 300000,
+    priceMin: 80010,
+    priceMax: 800100,
     priceLabel: "30,000 – 300,000 DZD",
     formFields: [
       {
@@ -636,7 +636,7 @@ export const servicesData: Service[] = [
     category: "AI / LLM",
     categoryId: "ai-llm",
     description: "Dashboards & insights",
-    priceMin: 30000,
+    priceMin: 80010,
     priceMax: 200000,
     priceLabel: "30,000 – 200,000 DZD",
     formFields: [
@@ -1045,7 +1045,7 @@ export const servicesData: Service[] = [
     category: "Data Services",
     categoryId: "data-services",
     description: "Business continuity",
-    priceMin: 30000,
+    priceMin: 80010,
     priceMax: 200000,
     priceLabel: "30,000 – 200,000 DZD",
     formFields: [
@@ -1181,7 +1181,7 @@ export const servicesData: Service[] = [
     categoryId: "3d-printing",
     description: "Designs for printing",
     priceMin: 2000,
-    priceMax: 30000,
+    priceMax: 80010,
     priceLabel: "2,000 – 30,000 DZD",
     formFields: [
       {
@@ -1293,8 +1293,8 @@ export const servicesData: Service[] = [
     category: "IoT & Embedded",
     categoryId: "iot-embedded",
     description: "Sensors, automation",
-    priceMin: 30000,
-    priceMax: 300000,
+    priceMin: 80010,
+    priceMax: 800100,
     priceLabel: "30,000 – 300,000 DZD",
     formFields: [
       {
@@ -1479,7 +1479,7 @@ export const servicesData: Service[] = [
     category: "Consulting & Training",
     categoryId: "consulting-training",
     description: "Startup & business advice",
-    priceMin: 3000,
+    priceMin: 8001,
     priceMax: 8000,
     priceLabel: "3,000 – 8,000 DZD / hour",
     formFields: [
@@ -1621,7 +1621,7 @@ export const servicesData: Service[] = [
     categoryId: "consulting-training",
     description: "Business modernization",
     priceMin: 50000,
-    priceMax: 300000,
+    priceMax: 800100,
     priceLabel: "50,000 – 300,000 DZD",
     formFields: [
       {
