@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import logoImg from "@/assets/logo.png";
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ export default function Footer() {
           <div>
             <Link to="/" className="inline-block mb-4 hover:opacity-80 transition-opacity">
               <img
-                src="/logo.png"
+                src={logoImg}
                 alt="cyberlymph Logo"
                 className="h-10 w-auto"
               />

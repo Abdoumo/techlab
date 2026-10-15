@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { soundManager } from "@/utils/soundManager";
 import LanguageSwitcher from "./LanguageSwitcher";
+import logoImg from "@/assets/logo.png";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,11 +20,11 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800/50 shadow-lg shadow-cyan-400/5">
+    <header className="sticky top-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800/50 shadow-lg shadow-cyan-400/50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group hover:opacity-80 transition-opacity">
           <img
-            src="/logo.png"
+            src={logoImg}
             alt="cyberlymph Logo"
             className="h-10 w-auto group-hover:drop-shadow-lg group-hover:drop-shadow-cyan-400/50 transition-all"
           />
