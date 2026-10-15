@@ -322,6 +322,22 @@ html.light body {
   color: #0f172a !important;
 }
 
+/* Logo switching between light and dark modes */
+html.light .logo-dark {
+  display: none !important;
+}
+html.light .logo-light {
+  display: block !important;
+}
+html.dark .logo-dark,
+html:not(.light) .logo-dark {
+  display: block !important;
+}
+html.dark .logo-light,
+html:not(.light) .logo-light {
+  display: none !important;
+}
+
 /* Background overrides */
 html.light .bg-slate-950 {
   background-color: #f8fafc !important;

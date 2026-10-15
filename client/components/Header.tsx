@@ -5,7 +5,8 @@ import { useTranslation } from "react-i18next";
 import { soundManager } from "@/utils/soundManager";
 import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeToggle from "./ThemeToggle";
-import logoImg from "@/assets/logo.png";
+import logoDarkImg from "@/assets/logo.png";
+import logoLightImg from "@/assets/logo-light.png";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -25,9 +26,14 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group hover:opacity-80 transition-opacity">
           <img
-            src={logoImg}
+            src={logoDarkImg}
             alt="cyberlymph Logo"
-            className="h-10 w-auto group-hover:drop-shadow-lg group-hover:drop-shadow-cyan-400/50 transition-all"
+            className="logo-dark h-10 w-auto group-hover:drop-shadow-lg group-hover:drop-shadow-cyan-400/50 transition-all"
+          />
+          <img
+            src={logoLightImg}
+            alt="cyberlymph Logo"
+            className="logo-light h-10 w-auto group-hover:drop-shadow-lg group-hover:drop-shadow-cyan-400/50 transition-all"
           />
         </Link>
 
