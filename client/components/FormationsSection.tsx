@@ -69,7 +69,7 @@ export default function FormationsSection() {
             soundManager.playTransitionSound(600, 900);
             navigate(`/formation/${zeroToAi.id}`);
           }}
-          className="mb-12 bg-gradient-to-b from-slate-900/95 via-slate-900 to-indigo-950/40 border-2 border-cyan-400/80 hover:border-cyan-400 rounded-3xl p-8 sm:p-12 cursor-pointer shadow-2xl shadow-cyan-500/10 hover:shadow-cyan-500/25 transition-all duration-300 relative group transform hover:-translate-y-1"
+          className="mb-12 bg-white dark:bg-gradient-to-b dark:from-slate-900/95 dark:via-slate-900 dark:to-indigo-950/40 border-2 border-cyan-500/80 dark:border-cyan-400/80 hover:border-cyan-500 rounded-3xl p-8 sm:p-12 cursor-pointer shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/25 transition-all duration-300 relative group transform hover:-translate-y-1"
         >
           {/* Top highlight ribbon */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -196,7 +196,7 @@ export default function FormationsSection() {
                   soundManager.playTransitionSound(600, 900);
                   navigate(`/formation/${item.id}`);
                 }}
-                className="bg-slate-900/70 border border-slate-800 hover:border-cyan-400/50 rounded-2xl p-6 cursor-pointer hover:-translate-y-1 transition-all group flex flex-col justify-between"
+                className="bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 dark:hover:border-cyan-400/50 rounded-2xl p-6 cursor-pointer hover:-translate-y-1 transition-all group flex flex-col justify-between shadow-md hover:shadow-xl"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">

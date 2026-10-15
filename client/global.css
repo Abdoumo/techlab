@@ -333,39 +333,60 @@ html.light .bg-slate-900 {
 
 html.light .bg-slate-950\/95,
 html.light .bg-slate-900\/95 {
-  background-color: rgba(255, 255, 255, 0.94) !important;
+  background-color: rgba(255, 255, 255, 0.96) !important;
 }
 
 html.light .bg-slate-950\/90,
 html.light .bg-slate-900\/90 {
-  background-color: rgba(255, 255, 255, 0.90) !important;
+  background-color: rgba(255, 255, 255, 0.92) !important;
 }
 
 html.light .bg-slate-950\/80,
 html.light .bg-slate-900\/80 {
-  background-color: rgba(255, 255, 255, 0.85) !important;
+  background-color: #ffffff !important;
 }
 
 html.light .bg-slate-950\/70,
 html.light .bg-slate-900\/70 {
-  background-color: #f1f5f9 !important;
+  background-color: #ffffff !important;
 }
 
 html.light .bg-slate-950\/60,
 html.light .bg-slate-900\/60,
 html.light .bg-slate-950\/40,
 html.light .bg-slate-900\/40 {
-  background-color: #f1f5f9 !important;
+  background-color: #f8fafc !important;
 }
 
+/* Cards & containers in light mode */
 html.light .bg-slate-800 {
-  background-color: #e2e8f0 !important;
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
 }
 
 html.light .bg-slate-800\/80,
 html.light .bg-slate-800\/50,
 html.light .bg-slate-800\/40 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Icon container boxes (e.g. Card3D, FormationDetail module icon boxes) */
+html.light .bg-slate-700\/50,
+html.light .bg-slate-700 {
   background-color: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+html.light .group:hover .group-hover\:bg-slate-600 {
+  background-color: #e2e8f0 !important;
+}
+
+/* Inner modules / syllabus boxes */
+html.light .bg-slate-950\/80,
+html.light .bg-slate-950\/70 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
 }
 
 /* Header & Navigation */
@@ -409,6 +430,10 @@ html.light .border-slate-700\/50 {
   border-color: #cbd5e1 !important;
 }
 
+html.light .border-slate-600 {
+  border-color: #cbd5e1 !important;
+}
+
 /* Text typography (protects buttons with solid colored/gradient backgrounds) */
 html.light .text-white:not(button):not(button *):not(.btn):not(.btn *):not([class*="bg-gradient"]):not([class*="bg-emerald"]):not([class*="bg-green"]):not([class*="bg-cyan"]):not([class*="bg-blue"]):not([class*="bg-purple"]):not([class*="bg-indigo"]):not([class*="bg-rose"]):not([class*="bg-red"]):not([class*="bg-amber"]):not([class*="text-transparent"]):not([class*="bg-clip-text"]) {
   color: #0f172a !important;
@@ -428,6 +453,206 @@ html.light .text-slate-400 {
 
 html.light .text-slate-500 {
   color: #64748b !important;
+}
+
+/* ==========================================================================
+   VIBRANT HIGH-CONTRAST ICON AND ACCENT COLORS (WHITE MODE VISIBILITY FIX)
+   ========================================================================== */
+
+/* Cyan: Map pale #22d3ee to deep sky-600 #0284c7 (7:1 contrast on white) */
+html.light .text-cyan-400,
+html.light .text-cyan-300,
+html.light .text-cyan-500 {
+  color: #0284c7 !important;
+}
+
+html.light .fill-cyan-400,
+html.light .fill-cyan-300,
+html.light .fill-cyan-500 {
+  fill: #0284c7 !important;
+}
+
+/* Amber/Yellow: Map washed out #fbbf24 to rich warm amber-600 #d97706 */
+html.light .text-amber-400,
+html.light .text-amber-300,
+html.light .text-amber-500 {
+  color: #d97706 !important;
+}
+
+html.light .fill-amber-400,
+html.light .fill-amber-300 {
+  fill: #d97706 !important;
+}
+
+/* Emerald/Green: Map pale mint #34d399 to vibrant emerald-600 #059669 */
+html.light .text-emerald-400,
+html.light .text-emerald-300,
+html.light .text-emerald-500,
+html.light .text-green-400,
+html.light .text-green-500 {
+  color: #059669 !important;
+}
+
+html.light .fill-emerald-400,
+html.light .fill-emerald-300 {
+  fill: #059669 !important;
+}
+
+/* Blue: Map pastel #60a5fa to deep crisp blue-600 #2563eb */
+html.light .text-blue-400,
+html.light .text-blue-300,
+html.light .text-blue-500 {
+  color: #2563eb !important;
+}
+
+html.light .fill-blue-400,
+html.light .fill-blue-300 {
+  fill: #2563eb !important;
+}
+
+/* Purple/Violet: Map pastel #c084fc to royal purple-600 #7c3aed */
+html.light .text-purple-400,
+html.light .text-purple-300,
+html.light .text-purple-500,
+html.light .text-violet-400 {
+  color: #7c3aed !important;
+}
+
+html.light .fill-purple-400,
+html.light .fill-purple-300 {
+  fill: #7c3aed !important;
+}
+
+/* Rose/Red: Map light rose #fb7185 to deep rose-600 #e11d48 */
+html.light .text-rose-400,
+html.light .text-rose-300,
+html.light .text-rose-500,
+html.light .text-red-400,
+html.light .text-red-500 {
+  color: #e11d48 !important;
+}
+
+html.light .fill-rose-400,
+html.light .fill-rose-300 {
+  fill: #e11d48 !important;
+}
+
+/* Sky/Indigo */
+html.light .text-sky-400,
+html.light .text-sky-300 {
+  color: #0284c7 !important;
+}
+
+html.light .text-indigo-400,
+html.light .text-indigo-300 {
+  color: #4f46e5 !important;
+}
+
+/* Explicit Lucide SVG rules across all components */
+html.light svg.text-cyan-400,
+html.light svg.text-cyan-300,
+html.light .text-cyan-400 svg {
+  color: #0284c7 !important;
+  stroke: #0284c7 !important;
+}
+
+html.light svg.fill-cyan-400 {
+  fill: #0284c7 !important;
+}
+
+html.light svg.text-amber-400,
+html.light svg.text-amber-300,
+html.light .text-amber-400 svg {
+  color: #d97706 !important;
+  stroke: #d97706 !important;
+}
+
+html.light svg.fill-amber-400 {
+  fill: #d97706 !important;
+}
+
+html.light svg.text-emerald-400,
+html.light svg.text-emerald-300,
+html.light .text-emerald-400 svg {
+  color: #059669 !important;
+  stroke: #059669 !important;
+}
+
+html.light svg.fill-emerald-400 {
+  fill: #059669 !important;
+}
+
+html.light svg.text-blue-400,
+html.light svg.text-blue-300,
+html.light .text-blue-400 svg {
+  color: #2563eb !important;
+  stroke: #2563eb !important;
+}
+
+html.light svg.text-purple-400,
+html.light svg.text-purple-300,
+html.light .text-purple-400 svg {
+  color: #7c3aed !important;
+  stroke: #7c3aed !important;
+}
+
+html.light svg.text-rose-400,
+html.light svg.text-rose-300,
+html.light .text-rose-400 svg {
+  color: #e11d48 !important;
+  stroke: #e11d48 !important;
+}
+
+html.light svg.text-slate-400,
+html.light .text-slate-400 svg {
+  color: #64748b !important;
+  stroke: #64748b !important;
+}
+
+html.light svg.text-slate-300,
+html.light .text-slate-300 svg {
+  color: #334155 !important;
+  stroke: #334155 !important;
+}
+
+/* Badges and pills in Light Mode */
+html.light .bg-cyan-500\/10,
+html.light .bg-cyan-400\/10,
+html.light .bg-cyan-400\/20 {
+  background-color: rgba(2, 132, 199, 0.08) !important;
+  border-color: rgba(2, 132, 199, 0.25) !important;
+  color: #0284c7 !important;
+}
+
+html.light .bg-amber-500\/10,
+html.light .bg-amber-400\/10,
+html.light .bg-amber-400\/20 {
+  background-color: rgba(217, 119, 6, 0.08) !important;
+  border-color: rgba(217, 119, 6, 0.25) !important;
+  color: #b45309 !important;
+}
+
+html.light .bg-emerald-500\/10,
+html.light .bg-emerald-400\/10,
+html.light .bg-emerald-400\/20 {
+  background-color: rgba(5, 150, 105, 0.08) !important;
+  border-color: rgba(5, 150, 105, 0.25) !important;
+  color: #047857 !important;
+}
+
+html.light .bg-purple-500\/10,
+html.light .bg-purple-400\/10,
+html.light .bg-purple-400\/20 {
+  background-color: rgba(124, 58, 237, 0.08) !important;
+  border-color: rgba(124, 58, 237, 0.25) !important;
+  color: #6d28d9 !important;
+}
+
+html.light .bg-rose-500\/10,
+html.light .bg-rose-400\/10 {
+  background-color: rgba(225, 29, 72, 0.08) !important;
+  border-color: rgba(225, 29, 72, 0.25) !important;
+  color: #be123c !important;
 }
 
 /* Inputs, Textareas, Selects */
@@ -463,6 +688,37 @@ html.light .to-slate-950 {
   --tw-gradient-to: #f1f5f9 var(--tw-gradient-to-position) !important;
 }
 
+/* Safeguard against dark indigo / dark navy gradients in light mode */
+html.light [class*="to-indigo-950"],
+html.light [class*="via-indigo-950"],
+html.light [class*="from-indigo-950"] {
+  --tw-gradient-to: #ffffff !important;
+  --tw-gradient-stops: #ffffff, #ffffff !important;
+}
+
+html.light [class*="from-cyan-950"],
+html.light [class*="to-blue-950"] {
+  --tw-gradient-from: #f0f9ff !important;
+  --tw-gradient-to: #e0f2fe !important;
+  --tw-gradient-stops: #f0f9ff, #e0f2fe !important;
+}
+
+/* Hero gradient text */
+html.light .bg-clip-text.from-cyan-400 {
+  --tw-gradient-from: #0284c7 !important;
+  --tw-gradient-to: #2563eb !important;
+  --tw-gradient-stops: #0284c7, #2563eb !important;
+}
+
+/* Suppress dark textShadow blur halos on headings in light mode */
+html.light h1 {
+  text-shadow: none !important;
+}
+
+html.light [style*="textShadow"] {
+  text-shadow: none !important;
+}
+
 /* Cards & Elevated Containers */
 html.light .rounded-3xl,
 html.light .rounded-2xl {
@@ -478,6 +734,12 @@ html.light .fixed.bottom-5.right-5 {
   background-color: rgba(255, 255, 255, 0.95) !important;
   border-color: #10b981 !important;
   box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Modals & Overlays */
+html.light .fixed.inset-0.bg-slate-950\/80,
+html.light .fixed.inset-0.bg-black\/50 {
+  background-color: rgba(15, 23, 42, 0.45) !important;
 }
 
 /* Footer in Light Mode */
@@ -509,4 +771,5 @@ html.light .absolute.right-0.mt-2.bg-slate-900 button:hover {
   background-color: #f1f5f9 !important;
   color: #0284c7 !important;
 }
+
 

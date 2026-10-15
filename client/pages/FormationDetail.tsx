@@ -325,8 +325,8 @@ export default function FormationDetail() {
                 }}
                 className={`p-4 rounded-2xl text-left transition-all border flex flex-col justify-between ${
                   activeModuleIndex === idx
-                    ? "bg-gradient-to-br from-cyan-950/80 via-slate-900 to-blue-950/80 border-cyan-400 text-white shadow-xl shadow-cyan-500/10 ring-1 ring-cyan-400/50"
-                    : "bg-slate-900/60 border-slate-800 text-slate-400 hover:text-white hover:border-slate-700"
+                    ? "bg-cyan-50/90 dark:bg-gradient-to-br dark:from-cyan-950/80 dark:via-slate-900 dark:to-blue-950/80 border-cyan-500 text-slate-900 dark:text-white shadow-md shadow-cyan-500/10 ring-1 ring-cyan-500/50"
+                    : "bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-700"
                 }`}
               >
                 <div className="flex items-center justify-between gap-2 mb-2">
@@ -340,7 +340,7 @@ export default function FormationDetail() {
                   <span className="text-[11px] text-slate-400 font-medium">{mod.duration}</span>
                 </div>
                 <h4 className={`text-sm sm:text-base font-bold line-clamp-2 ${
-                  activeModuleIndex === idx ? "text-cyan-300" : "text-slate-200"
+                  activeModuleIndex === idx ? "text-cyan-600 dark:text-cyan-300" : "text-slate-800 dark:text-slate-200"
                 }`}>
                   {mod.title}
                 </h4>
@@ -349,10 +349,10 @@ export default function FormationDetail() {
           </div>
 
           {/* Active Module Presentation */}
-          <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur mb-16">
+          <div className="bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl backdrop-blur mb-16">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-slate-800 mb-8">
               <div className="flex items-start gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center shrink-0">
+                <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
                   {getModuleIcon(currentModule.iconName)}
                 </div>
                 <div>
@@ -463,7 +463,7 @@ export default function FormationDetail() {
 
           {/* Capstone Project Showcase (if present) */}
           {formation.capstoneProject && (
-            <div className="mb-20 bg-gradient-to-r from-slate-900 via-indigo-950/50 to-slate-900 border border-indigo-500/30 rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl">
+            <div className="mb-20 bg-slate-50 dark:bg-gradient-to-r dark:from-slate-900 dark:via-indigo-950/50 dark:to-slate-900 border border-indigo-200 dark:border-indigo-500/30 rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-xl">
               <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
               <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
                 <div className="max-w-2xl">
@@ -568,7 +568,7 @@ export default function FormationDetail() {
               )}
 
               {/* Pack Complet */}
-              <div className="bg-gradient-to-b from-slate-900 via-slate-900 to-indigo-950/60 border-2 border-cyan-400 rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl shadow-cyan-500/10 scale-100 md:scale-105 z-10">
+              <div className="bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950/60 border-2 border-cyan-500 dark:border-cyan-400 rounded-3xl p-8 flex flex-col justify-between relative shadow-xl shadow-cyan-500/10 scale-100 md:scale-105 z-10">
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 text-xs font-black tracking-wider uppercase shadow-md">
                   ⭐ Meilleure Offre · Recommandé
                 </div>
@@ -616,7 +616,7 @@ export default function FormationDetail() {
 
               {/* Early Bird (if available) */}
               {formation.pricing.earlyBird && (
-                <div className="bg-slate-900/80 border border-amber-500/40 rounded-3xl p-8 flex flex-col justify-between hover:border-amber-500/70 transition-all relative overflow-hidden">
+                <div className="bg-white dark:bg-slate-900/80 border border-amber-400/60 dark:border-amber-500/40 rounded-3xl p-8 flex flex-col justify-between hover:border-amber-500 transition-all relative overflow-hidden shadow-md">
                   <div className="absolute top-4 right-4 flex items-center gap-1 text-xs font-bold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-full border border-amber-400/30">
                     <Flame className="w-3.5 h-3.5 fill-amber-400" />
                     <span>Places Limitées</span>
@@ -711,7 +711,7 @@ export default function FormationDetail() {
                   return (
                     <div
                       key={fIdx}
-                      className="border border-slate-800 rounded-2xl bg-slate-900/60 overflow-hidden transition-colors hover:border-slate-700"
+                      className="border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900/60 overflow-hidden transition-colors hover:border-slate-300 dark:hover:border-slate-700 shadow-sm"
                     >
                       <button
                         onClick={() => toggleFaq(fIdx)}

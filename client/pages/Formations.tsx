@@ -96,6 +96,8 @@ export default function Formations() {
         return "bg-amber-500/10 text-amber-400 border-amber-500/30";
       case "Intermédiaire à Avancé":
         return "bg-purple-500/10 text-purple-400 border-purple-500/30";
+      case "Avancé":
+        return "bg-rose-500/10 text-rose-400 border-rose-500/30";
       default:
         return "bg-slate-800 text-slate-300 border-slate-700";
     }
@@ -316,8 +318,8 @@ export default function Formations() {
                     }}
                     className={`rounded-3xl p-7 flex flex-col justify-between cursor-pointer transition-all duration-300 relative group ${
                       isHighlight
-                        ? "bg-gradient-to-b from-slate-900/95 via-slate-900 to-indigo-950/40 border-2 border-cyan-400/80 hover:border-cyan-400 shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/20 hover:-translate-y-1"
-                        : "bg-slate-900/70 border border-slate-800 hover:border-slate-700 hover:-translate-y-1 shadow-lg"
+                        ? "bg-white dark:bg-gradient-to-b dark:from-slate-900/95 dark:via-slate-900 dark:to-indigo-950/40 border-2 border-cyan-500/80 dark:border-cyan-400/80 hover:border-cyan-500 shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/20 hover:-translate-y-1"
+                        : "bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/40 dark:hover:border-slate-700 hover:-translate-y-1 shadow-md hover:shadow-xl"
                     }`}
                   >
                     {/* Top Badge */}
