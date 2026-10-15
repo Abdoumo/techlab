@@ -1006,7 +1006,7 @@ export const formationsData: Formation[] = [
     "projectsCount": 12,
     "prerequisites": "Bonne compréhension de Windows et des concepts de base de la sécurité des systèmes",
     "location": "Laboratoire Numérique Forensics",
-    "level": "Intermédiaire",
+    "level": "Intermédiaire à Avancé",
     "summary": "Intervenez d'urgence en cas d'attaque informatique. Apprenez à contenir une intrusion active, préserver les preuves selon les normes médico-légales, reconstituer la chronologie exacte des événements et éradiquer la menace.",
     "description": "Quand un ransomware frappe ou qu'un pirate s'infiltre dans le réseau d'une organisation, les équipes d'Incident Response sont appelées sur le front. Ce cursus immersif vous apprend la conduite d'enquête post-mortem : collecte à chaud de la mémoire, analyse des journaux d'événements, reconstitution de chronologie (Timeline Analysis) et rédaction de rapports techniques officiels.",
     "accentGradient": "from-blue-600 via-indigo-700 to-purple-800",
