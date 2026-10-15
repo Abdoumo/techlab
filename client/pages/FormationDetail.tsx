@@ -513,7 +513,15 @@ export default function FormationDetail() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            <div
+              className={`grid gap-6 items-stretch ${
+                !formation.pricing.individualModules && !formation.pricing.earlyBird
+                  ? "max-w-xl mx-auto grid-cols-1"
+                  : !formation.pricing.individualModules || !formation.pricing.earlyBird
+                  ? "max-w-4xl mx-auto grid-cols-1 md:grid-cols-2"
+                  : "grid-cols-1 md:grid-cols-3"
+              }`}
+            >
               {/* Individual modules (if available) */}
               {formation.pricing.individualModules && (
                 <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
