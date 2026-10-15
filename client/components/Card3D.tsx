@@ -99,13 +99,13 @@ export default function Card3D({
       <div
         ref={cardRef}
         onClick={handleClick}
-        className="group relative bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 cursor-pointer overflow-hidden h-full transition-all duration-300"
+        className="group relative bg-white dark:bg-slate-800/50 backdrop-blur border border-slate-200 dark:border-slate-700 rounded-xl p-6 cursor-pointer overflow-hidden h-full transition-all duration-300 shadow-md hover:shadow-xl dark:shadow-none"
         style={{
           transform: transform,
           transformStyle: "preserve-3d",
           boxShadow: isHovered
             ? "0 20px 50px rgba(34, 197, 238, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
-            : "0 10px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
+            : "0 10px 25px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
         }}
       >
         {/* Animated background gradient */}
@@ -128,7 +128,7 @@ export default function Card3D({
         <div className="relative z-10 flex flex-col h-full">
           {/* Icon */}
           <div
-            className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-slate-700/50 group-hover:bg-slate-600 transition-all duration-300"
+            className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-700/50 group-hover:bg-slate-200 dark:group-hover:bg-slate-600 border border-slate-200/80 dark:border-transparent transition-all duration-300"
             style={{
               transform: isHovered ? "scale(1.1) rotateZ(5deg)" : "scale(1)",
               animation: isHovered ? "pulse 2s ease-in-out infinite" : "none",
@@ -139,7 +139,7 @@ export default function Card3D({
 
           {/* Title */}
           <h3
-            className="text-lg font-bold text-white mb-2 group-hover:text-transparent bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-500 transition-all duration-300"
+            className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-cyan-600 dark:group-hover:text-transparent dark:group-hover:bg-clip-text dark:group-hover:bg-gradient-to-r dark:group-hover:from-cyan-400 dark:group-hover:to-blue-500 transition-all duration-300"
             style={{
               transform: isHovered ? "translateZ(20px)" : "translateZ(0)",
             }}
@@ -149,7 +149,7 @@ export default function Card3D({
 
           {/* Description */}
           <p
-            className="text-slate-400 text-sm mb-4 group-hover:text-slate-300 transition-colors duration-300 flex-1"
+            className="text-slate-600 dark:text-slate-400 text-sm mb-4 group-hover:text-slate-900 dark:group-hover:text-slate-300 transition-colors duration-300 flex-1"
             style={{
               transform: isHovered ? "translateZ(15px)" : "translateZ(0)",
             }}
@@ -160,13 +160,13 @@ export default function Card3D({
           {/* Items list */}
           {items.length > 0 && (
             <ul
-              className="space-y-1 opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+              className="space-y-1.5 opacity-90 group-hover:opacity-100 transition-opacity duration-300"
               style={{
                 transform: isHovered ? "translateZ(10px)" : "translateZ(0)",
               }}
             >
               {items.map((item) => (
-                <li key={item} className="text-xs text-slate-500 group-hover:text-slate-400">
+                <li key={item} className="text-xs font-medium text-slate-700 dark:text-slate-400 group-hover:text-slate-950 dark:group-hover:text-slate-300">
                   • {item}
                 </li>
               ))}
