@@ -509,7 +509,9 @@ export default function FormationDetail() {
                 Investissez dans votre avenir professionnel
               </h3>
               <p className="text-slate-400 text-sm">
-                Règlements acceptés en espèces, virement CCP et BaridiMob (paiement possible en deux tranches).
+                {formation.pricing.packComplet.price === "Sur devis"
+                  ? "Tarification sur mesure adaptée aux particuliers, étudiants et entreprises. Contactez nos conseillers pour recevoir votre devis personnalisé."
+                  : "Règlements acceptés en espèces, virement CCP et BaridiMob (paiement possible en deux tranches)."}
               </p>
             </div>
 
@@ -604,7 +606,11 @@ export default function FormationDetail() {
                   className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-extrabold text-center text-sm shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 cursor-pointer"
                 >
                   <WhatsAppIcon className="w-5 h-5" />
-                  <span>Réserver le Pack Complet sur WhatsApp</span>
+                  <span>
+                    {formation.pricing.packComplet.price === "Sur devis"
+                      ? "Demander un devis & Réserver sur WhatsApp"
+                      : "Réserver le Pack Complet sur WhatsApp"}
+                  </span>
                 </button>
               </div>
 
@@ -910,7 +916,11 @@ export default function FormationDetail() {
             className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-emerald-500/25 transition-all cursor-pointer"
           >
             <WhatsAppIcon className="w-4 h-4" />
-            <span>Réserver sur WhatsApp</span>
+            <span>
+              {formation.pricing.packComplet.price === "Sur devis"
+                ? "Devis sur WhatsApp"
+                : "Réserver sur WhatsApp"}
+            </span>
           </button>
         </div>
       </div>

@@ -9,14 +9,14 @@ export interface FormationModule {
   number: string;
   title: string;
   duration: string;
-  iconName: "code" | "brain" | "zap" | "shield" | "server" | "layers" | "network" | "terminal" | "search" | "lock";
+  iconName: string;
   description: string;
   weeks: ModuleWeek[];
   price?: string;
 }
 
 export interface FormationBenefit {
-  iconName: "coffee" | "award" | "book" | "users" | "building" | "layers" | "terminal" | "shield" | "zap" | "server" | "lock";
+  iconName: string;
   title: string;
   desc: string;
 }
@@ -32,7 +32,7 @@ export interface Formation {
   title: string;
   shortTitle: string;
   tagline: string;
-  category: "ai" | "security" | "network" | "devops" | "web";
+  category: "ai" | "security" | "network" | "devops" | "web" | "soc" | "pentest";
   categoryLabel: string;
   badge: string;
   badgeType: "hot" | "open" | "upcoming";
@@ -111,1630 +111,3059 @@ export function getWhatsAppReservationUrl(
   const phoneLine = clientPhone ? `\n- Téléphone : ${clientPhone}` : "";
   const paymentLine = paymentMethod ? `\n- Modalité de paiement : ${paymentMethod}` : "";
 
-  const text = `Bonjour CYBERLYMPH,\n\nJe souhaite réserver ma place pour la formation :\n*${formationTitle}*\n\n- Formule choisie : ${option}${price ? ` (${price})` : ""}${nameLine}${phoneLine}${paymentLine}\n- Lieu : Présentiel (Annaba) / En ligne\n\nMerci de m'indiquer la démarche pour confirmer mon inscription.`;
+  const text = `Bonjour CYBERLYMPH,\n\nJe souhaite réserver ma place pour la formation :\n*${formationTitle}*\n\n- Formule choisie : ${option}${price && price !== "Sur devis" ? ` (${price})` : ""}${nameLine}${phoneLine}${paymentLine}\n- Lieu : Présentiel (Annaba) / En ligne\n\nMerci de m'indiquer la démarche pour confirmer mon inscription.`;
 
   return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 }
 
 export const formationsData: Formation[] = [
-  // 1. DE ZERO A L'IA APPLIQUEE (Zero2AI)
   {
-    id: "zero-to-ai",
-    slug: "de-zero-a-ia-appliquee",
-    title: "De Zéro à l'IA Appliquée",
-    shortTitle: "Zero2AI",
-    tagline: "Python 101 · AI Essentials · n8n Automatisation · Chatbot Telegram",
-    category: "ai",
-    categoryLabel: "Intelligence Artificielle & Automatisation",
-    badge: "Inscriptions Ouvertes — Places Limitées",
-    badgeType: "hot",
-    partner: "AIC — Annaba Innovation Center",
-    duration: "48 heures · 12 semaines",
-    totalHours: 48,
-    modulesCount: 3,
-    projectsCount: 12,
-    prerequisites: "0 prérequis — Accessible à tous les débutants",
-    location: "Présentiel à Annaba (AIC Innovation Center)",
-    level: "Tous niveaux",
-    summary:
-      "Formation intensive de 48h pour maîtriser Python, concevoir vos propres modèles de Machine Learning et déployer un Chatbot Telegram intelligent autonome avec n8n.",
-    description:
-      "Un cursus complet orienté 100% pratique pour les étudiants, professionnels et créateurs de projets souhaitant maîtriser l'intelligence artificielle appliquée. Vous développez un portfolio de 12 projets concrets et concevez un chatbot Telegram autonome doté de mémoire conversationnelle et synchronisé avec Google Sheets.",
-    accentGradient: "from-cyan-400 via-blue-500 to-indigo-500",
-    glowColor: "rgba(6, 182, 212, 0.25)",
-    tags: ["Python 3", "Machine Learning", "Scikit-Learn", "LLMs", "Gemini API", "n8n", "Telegram Bot"],
-    isFeatured: true,
-    isOpenForRegistration: true,
-    capstoneProject: {
-      highlightLabel: "Grand Projet Final Réalisé par Chaque Participant ⭐",
-      title: "Chatbot Telegram IA avec Mémoire Conversationnelle & Google Sheets",
-      description:
-        "Vous construisez et déployez de bout en bout un bot Telegram interactif propulsé par des modèles LLM (Gemini / OpenAI), capable de comprendre le langage naturel, de conserver l'historique d'échange, d'exécuter des workflows automatisés n8n et de consigner automatiquement les requêtes et commandes dans Google Sheets.",
-      tags: ["Python", "Google Gemini API", "n8n Workflows", "Telegram Bot API", "Google Sheets DB"],
+    "id": "zero-to-ai",
+    "slug": "de-zero-a-ia-appliquee",
+    "title": "De Zéro à l'IA Appliquée",
+    "shortTitle": "Zero2AI",
+    "tagline": "Python 101 · AI Essentials · n8n Automatisation · Chatbot Telegram",
+    "category": "ai",
+    "categoryLabel": "Intelligence Artificielle & Automatisation",
+    "badge": "Inscriptions Ouvertes — Places Limitées",
+    "badgeType": "hot",
+    "partner": "AIC — Annaba Innovation Center",
+    "duration": "48 heures · 12 semaines",
+    "totalHours": 48,
+    "modulesCount": 3,
+    "projectsCount": 12,
+    "prerequisites": "0 prérequis — Accessible à tous les débutants",
+    "location": "Présentiel à Annaba & Accès En Ligne",
+    "level": "Tous niveaux",
+    "summary": "Formation intensive pour maîtriser Python, concevoir vos propres modèles de Machine Learning et déployer un Chatbot Telegram intelligent autonome avec n8n.",
+    "description": "Un cursus complet orienté 100% pratique pour maîtriser l'intelligence artificielle appliquée. Vous développez un portfolio de 12 projets concrets et concevez un chatbot Telegram autonome doté de mémoire conversationnelle et synchronisé avec Google Sheets.",
+    "accentGradient": "from-cyan-400 via-blue-500 to-indigo-500",
+    "glowColor": "rgba(6, 182, 212, 0.25)",
+    "tags": [
+      "Python 3",
+      "Machine Learning",
+      "Scikit-Learn",
+      "LLMs",
+      "Gemini API",
+      "n8n",
+      "Telegram Bot"
+    ],
+    "isFeatured": true,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Grand Projet Final Réalisé par Chaque Participant ⭐",
+      "title": "Chatbot Telegram IA avec Mémoire Conversationnelle & Google Sheets",
+      "description": "Vous construisez et déployez de bout en bout un bot Telegram interactif propulsé par des modèles LLM (Gemini / OpenAI), capable de comprendre le langage naturel, d'exécuter des workflows automatisés n8n et de consigner automatiquement les requêtes dans Google Sheets.",
+      "tags": [
+        "Python",
+        "Google Gemini API",
+        "n8n Workflows",
+        "Telegram Bot API",
+        "Google Sheets DB"
+      ]
     },
-    modules: [
+    "modules": [
       {
-        number: "01",
-        title: "Python 101",
-        duration: "16 heures · 4 semaines",
-        iconName: "code",
-        description:
-          "Maîtrisez les fondamentaux essentiels de la programmation en Python : variables, flux conditionnels, fonctions modulaires, scraping et automatisation de fichiers.",
-        weeks: [
+        "number": "01",
+        "title": "Python 101 : Fondations & Automatisation",
+        "duration": "16 heures · 4 semaines",
+        "iconName": "code",
+        "description": "Maîtrisez les fondamentaux essentiels de la programmation en Python : variables, flux conditionnels, fonctions modulaires, scraping et automatisation de fichiers.",
+        "weeks": [
           {
-            week: "Semaine 1",
-            title: "Variables, Types de Données & Structures Fondamentales",
-            topic: "Introduction, variables, types et structures de données",
-            project: "Calculatrice interactive avec gestion d'erreurs",
+            "week": "Semaine 1",
+            "title": "Variables, Types de Données & Structures",
+            "topic": "Introduction, variables, types et structures de données",
+            "project": "Calculatrice interactive avec gestion d'erreurs"
           },
           {
-            week: "Semaine 2",
-            title: "Logique Conditionnelle, Boucles & Fonctions Réutilisables",
-            topic: "Conditions, boucles itératives et fonctions réutilisables",
-            project: "Jeu de devinettes + générateur sécurisé de mots de passe",
+            "week": "Semaine 2",
+            "title": "Logique Conditionnelle, Boucles & Fonctions",
+            "topic": "Conditions, boucles itératives et fonctions réutilisables",
+            "project": "Générateur sécurisé de mots de passe"
           },
           {
-            week: "Semaine 3",
-            title: "Manipulation de Fichiers, Collections & Requêtes APIs",
-            topic: "Manipulation de fichiers, listes, dictionnaires & APIs",
-            project: "Web Scraper automatisé + gestionnaire de contacts",
+            "week": "Semaine 3",
+            "title": "Manipulation de Fichiers, Collections & Requêtes APIs",
+            "topic": "Manipulation de fichiers, listes, dictionnaires & requêtes HTTP",
+            "project": "Web Scraper automatisé + gestionnaire de contacts"
           },
           {
-            week: "Semaine 4",
-            title: "Librairies Fondamentales & Automatisation de Flux",
-            topic: "Librairies fondamentales & automatisation avancée",
-            project: "Automatisation de flux de fichiers & analyseur de données",
-          },
-        ],
-        price: "30,000 DA",
+            "week": "Semaine 4",
+            "title": "Librairies Fondamentales & Automatisation de Flux",
+            "topic": "Librairies fondamentales & automatisation avancée",
+            "project": "Automatisation de flux de fichiers & analyseur de données"
+          }
+        ]
       },
       {
-        number: "02",
-        title: "AI Essentials",
-        duration: "16 heures · 4 semaines",
-        iconName: "brain",
-        description:
-          "Comprenez et appliquez le Machine Learning, le Deep Learning et les LLMs modernes. Créez vos premiers modèles d'analyse et de prédiction.",
-        weeks: [
+        "number": "02",
+        "title": "AI Essentials & Machine Learning",
+        "duration": "16 heures · 4 semaines",
+        "iconName": "brain",
+        "description": "Comprenez et appliquez le Machine Learning, le Deep Learning et les LLMs modernes. Créez vos premiers modèles d'analyse et de prédiction.",
+        "weeks": [
           {
-            week: "Semaine 5",
-            title: "Fondamentaux du Machine Learning & Deep Learning",
-            topic: "Fondamentaux IA, ML vs Deep Learning, cas d'usage réels",
-            project: "Analyse exploratoire sur un dataset d'entreprise",
+            "week": "Semaine 5",
+            "title": "Panorama de l'IA Moderne & Datasets",
+            "topic": "Écosystème de l'IA, préparation et nettoyage de données",
+            "project": "Pipeline d'ingestion et nettoyage de données réelles"
           },
           {
-            week: "Semaine 6",
-            title: "Data Science avec NumPy, Pandas & Feature Engineering",
-            topic: "NumPy, Pandas, nettoyage et préparation de données (Feature Engineering)",
-            project: "Modèle de régression pour la prédiction de prix",
+            "week": "Semaine 6",
+            "title": "Apprentissage Supervisé & Régression Linéaire",
+            "topic": "Modèles prédictifs, régression et classification avec Scikit-Learn",
+            "project": "Modèle prédictif de scoring immobilier / commercial"
           },
           {
-            week: "Semaine 7",
-            title: "Classification Supervisée & Évaluation Scikit-Learn",
-            topic: "Scikit-Learn: classification supervisée, métriques & tuning",
-            project: "Analyse automatique de sentiments NLP + classificateur",
+            "week": "Semaine 7",
+            "title": "Classification & Évaluation de Modèles",
+            "topic": "Arbres de décision, Random Forest et métriques d'évaluation",
+            "project": "Classificateur de churn client & détection de fraudes"
           },
           {
-            week: "Semaine 8",
-            title: "LLMs, API Google Gemini / OpenAI & Prompt Engineering",
-            topic: "LLMs, API Google Gemini & OpenAI, Prompt Engineering et RAG",
-            project: "Chatbot IA personnalisé avec l'API Gemini",
-          },
-        ],
-        price: "35,000 DA",
+            "week": "Semaine 8",
+            "title": "Introduction aux LLMs & Prompt Engineering Avancé",
+            "topic": "Architectures Transformers, tokens, context window et prompt crafting",
+            "project": "Système de synthèse documentaire propulsé par Gemini"
+          }
+        ]
       },
       {
-        number: "03",
-        title: "n8n & Automatisation",
-        duration: "16 heures · 4 semaines",
-        iconName: "zap",
-        description:
-          "Passez à la vitesse supérieure en connectant vos solutions IA au monde réel grâce à l'orchestration de workflows n8n et la création d'agents autonomes.",
-        weeks: [
+        "number": "03",
+        "title": "Automatisation n8n & Chatbot Telegram Autonome",
+        "duration": "16 heures · 4 semaines",
+        "iconName": "zap",
+        "description": "Connectez vos modèles à des systèmes du monde réel. Orchestrez des workflows d'automatisation sans code et code avec n8n et déployez un agent Telegram interactif.",
+        "weeks": [
           {
-            week: "Semaine 9",
-            title: "Architecture n8n, Déploiement & Premiers Workflows",
-            topic: "Introduction à n8n, architecture, installation locale & cloud",
-            project: "Workflows de déclenchement emails & alertes webhook",
+            "week": "Semaine 9",
+            "title": "Introduction à n8n & Déclencheurs Événementiels",
+            "topic": "Concepts de nœuds n8n, webhooks, triggers et transformation de JSON",
+            "project": "Flux de veille automatisée d'actualités tech vers Discord"
           },
           {
-            week: "Semaine 10",
-            title: "Intégration Telegram Bot API & Feuilles Google Sheets",
-            topic: "Intégration multi-plateformes: Telegram Bot API & Google Sheets",
-            project: "Bot Telegram interactif connecté à une feuille de calcul",
+            "week": "Semaine 10",
+            "title": "Intégration d'APIs d'IA dans les Workflows n8n",
+            "topic": "Appels aux APIs OpenAI / Gemini au sein de pipelines de traitement",
+            "project": "Générateur automatique de comptes-rendus d'e-mails"
           },
           {
-            week: "Semaine 11",
-            title: "Workflows Intelligents, Agents IA Autonomes & Mémoire",
-            topic: "Workflows intelligents: intégration LLMs, agents autonomes & mémoire",
-            project: "Bot Telegram avec agent IA et réponses contextuelles",
+            "week": "Semaine 11",
+            "title": "Création du Bot Telegram & Gestion de Session",
+            "topic": "BotFather, Telegram API, gestion de l'état utilisateur et mémoire",
+            "project": "Agent Telegram interactif connecté à Google Sheets"
           },
           {
-            week: "Semaine 12",
-            title: "Projet de Clôture : Chatbot IA Complet & Déploiement",
-            topic: "Projet de clôture & déploiement en production",
-            project: "Chatbot Telegram IA complet avec mémoire + synchronisation Sheets",
-          },
-        ],
-        price: "50,000 DA",
-      },
+            "week": "Semaine 12",
+            "title": "Déploiement en Production & Soutenance Finale",
+            "topic": "Hébergement cloud 24/7, monitoring d'erreurs et soutenance",
+            "project": "Soutenance publique du Grand Projet Final"
+          }
+        ]
+      }
     ],
-    pricing: {
-      packComplet: {
-        price: "90,000 DA",
-        originalPrice: "115,000 DA",
-        savings: "Économisez 25,000 DA",
-        durationLabel: "48 heures · Les 3 modules complets",
-        features: [
-          "Les 3 modules complets (Python + AI + n8n)",
-          "48 heures de formation intensive en présentiel",
-          "Chatbot Telegram IA fonctionnel déployé en projet final",
-          "Certificat officiel AIC Annaba × CYBERLYMPH",
-          "12 projets réels intégrables à votre CV & GitHub",
-          "Pause café offerte à chaque session ☕",
-          "Supports complets (slides, notebooks Jupyter, codes sources)",
-          "Groupe WhatsApp privé & mentorat continu",
-        ],
-      },
-      earlyBird: {
-        price: "85,000 DA",
-        originalPrice: "90,000 DA",
-        discountText: "Réduction exclusive de 5,000 DA pour les 10 premières inscriptions",
-        seatsLeft: 4,
-        totalSeats: 10,
-      },
-      individualModules: {
-        fromPrice: "30,000 DA",
-        periodLabel: "par module de 16h",
-        items: [
-          { name: "🐍 Module 01: Python 101", price: "30,000 DA" },
-          { name: "🤖 Module 02: AI Essentials", price: "35,000 DA" },
-          { name: "⚡ Module 03: n8n & Projets", price: "50,000 DA" },
-        ],
-      },
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "48 heures intensives · 12 semaines",
+        "features": [
+          "12 Projets réels dans votre portfolio",
+          "Mentorat direct en présentiel / ligne",
+          "Certificat CYBERLYMPH Certified AI Developer",
+          "Accès à vie aux ressources et communauté"
+        ]
+      }
     },
-    benefits: [
-      { iconName: "coffee", title: "Pause Café Offerte", desc: "Moments d'échange conviviaux inclus à chaque session de formation" },
-      { iconName: "award", title: "Certificat Reconnu", desc: "Co-délivré avec l'AIC Annaba Innovation Center pour attester de vos acquis" },
-      { iconName: "book", title: "Supports & Notebooks", desc: "Accès illimité aux notebooks interactifs, diapositives et corrections" },
-      { iconName: "users", title: "Mentorat Continu", desc: "Assistance directe entre les sessions via un canal privé dédié" },
-      { iconName: "building", title: "Lieu Premium (AIC)", desc: "Espace moderne et connecté au cœur d'Annaba pour apprendre dans les meilleures conditions" },
-      { iconName: "layers", title: "12 Projets Concrets", desc: "Des réalisations palpables qui font la différence lors d'un entretien ou appel d'offres" },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certificat Professionnel",
+        "desc": "Attestation certifiante valorisable sur LinkedIn et CV"
+      },
+      {
+        "iconName": "terminal",
+        "title": "100% Orienté Pratique",
+        "desc": "Vous codez dès la première heure sur des cas concrets d'entreprise"
+      },
+      {
+        "iconName": "coffee",
+        "title": "Espace de Coworking Inclus",
+        "desc": "Environnement propice au travail collaboratif et au networking"
+      },
+      {
+        "iconName": "users",
+        "title": "Réseau d'Ingénieurs",
+        "desc": "Rejoignez une communauté d'apprenants et de professionnels du numérique"
+      }
     ],
-    faqs: [
+    "faqs": [
       {
-        q: "Faut-il des prérequis techniques pour suivre cette formation ?",
-        a: "Non ! La formation Zero2AI a été spécialement pensée pour les débutants complets. Vous n'avez besoin que d'un ordinateur portable et de motivation. Nous reprenons tous les fondamentaux depuis le début avec Python 101 avant de monter en puissance.",
+        "q": "Faut-il savoir programmer avant de commencer ?",
+        "a": "Non, le cursus commence à la racine avec Python 101. Il est conçu pour les débutants motivés."
       },
       {
-        q: "Puis-je m'inscrire à un seul module individuel ?",
-        a: "Oui, chaque module (Python 101, AI Essentials, ou n8n Automatisation) peut être suivi de manière indépendante. Cependant, nous recommandons vivement le Pack Complet (3 modules) pour bénéficier de la continuité pédagogique, du projet final Chatbot Telegram et d'une réduction de 25,000 DA.",
-      },
-      {
-        q: "Quels sont les modes de paiement acceptés ?",
-        a: "Nous acceptons les règlements en espèces sur place, par virement CCP et via BaridiMob. Pour le Pack Complet, le règlement peut être échelonné en 2 tranches.",
-      },
+        "q": "Quel matériel est requis ?",
+        "a": "Un ordinateur portable avec au moins 8 Go de RAM et une connexion Internet."
+      }
     ],
-    registrationUrl: getWhatsAppReservationUrl("De Zéro à l'IA Appliquée", "Pack Complet (3 modules)", "90,000 DA"),
-    externalRegistrationUrl: "https://inscription-zero2-ai.vercel.app/",
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*De%20Z%C3%A9ro%20%C3%A0%20l'IA%20Appliqu%C3%A9e%20(Zero2AI)*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
   },
-
-  // 2. PRE SECURITY
   {
-    id: "pre-security",
-    slug: "pre-security-fondamentaux-cybersecurite",
-    title: "Pre Security : Fondamentaux de la Cybersécurité",
-    shortTitle: "Pre Security",
-    tagline: "Introduction Cyber · Réseaux TCP/IP · Fonctionnement du Web · Linux & Windows Basics",
-    category: "security",
-    categoryLabel: "Fondamentaux de la Cybersécurité",
-    badge: "Idéal pour Débuter — 0 Prérequis",
-    badgeType: "hot",
-    partner: "CYBERLYMPH Cyber Academy",
-    duration: "32 heures · 6 semaines",
-    totalHours: 32,
-    modulesCount: 4,
-    projectsCount: 10,
-    prerequisites: "0 prérequis — Accessible à toute personne motivée",
-    location: "Présentiel & Plateforme Pratique",
-    level: "Débutant",
-    summary:
-      "Le point d'entrée incontournable dans le monde de la sécurité informatique. Comprenez le fonctionnement d'Internet, des réseaux, des systèmes d'exploitation et du Web avant d'apprendre à les défendre.",
-    description:
-      "Pour attaquer ou défendre un système informatique, il faut d'abord comprendre comment il fonctionne en profondeur. Ce programme pose les fondations absolues de la cybersécurité : le modèle de menace (CIA Triad), les protocoles réseau (TCP/IP, DNS, DHCP), l'architecture du Web (HTTP, requêtes, cookies), la maîtrise de la ligne de commande Linux et les mécanismes internes de Windows.",
-    accentGradient: "from-emerald-400 via-teal-500 to-cyan-600",
-    glowColor: "rgba(16, 185, 129, 0.25)",
-    tags: ["Pre Security", "Networking Basics", "Linux Terminal", "Windows Security", "Web Fundamentals", "TCP/IP"],
-    isFeatured: true,
-    isOpenForRegistration: true,
-    capstoneProject: {
-      highlightLabel: "Projet de Synthèse Pre-Security ⭐",
-      title: "Analyse Complète d'un Réseau d'Entreprise & Première Détection d'Attaque",
-      description:
-        "Dans un environnement virtualisé simulant une PME : inspection des flux réseau en direct avec Wireshark, audit des droits d'accès sur machines Linux et Windows, détection d'une transmission en clair de mots de passe sur HTTP et rédaction de vos premières recommandations de sécurité.",
-      tags: ["Wireshark", "Linux Permissions", "Windows Logs", "HTTP vs HTTPS", "Threat Analysis"],
+    "id": "soc-level-1",
+    "slug": "soc-analyst-level-1-defense-et-detection",
+    "title": "SOC Analyst Level 1 : Triage & Détection d'Incidents SIEM",
+    "shortTitle": "SOC Level 1",
+    "tagline": "Architecture SOC · Splunk · Wireshark · Zeek · Snort · Phishing & Alert Triage",
+    "category": "soc",
+    "categoryLabel": "Défense Cyber & Centre Opérationnel (SOC)",
+    "badge": "Formation Professionnelle",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH Cyber Defense Center",
+    "duration": "45 heures · 9 semaines",
+    "totalHours": 45,
+    "modulesCount": 5,
+    "projectsCount": 14,
+    "prerequisites": "Notions de base sur les réseaux IP (TCP/UDP, DNS, HTTP) et les systèmes d'exploitation",
+    "location": "Présentiel & SOC Lab Virtuel",
+    "level": "Intermédiaire",
+    "summary": "Devenez analyste SOC junior opérationnel. Apprenez à surveiller les alertes, trier les faux positifs, analyser les flux réseau et investiguer les tentatives d'intrusion avec Splunk et Wireshark.",
+    "description": "Ce cursus forme les futurs analystes de sécurité de niveau 1. Plongé dans un environnement de SOC virtuel, vous traitez des alertes d'intrusion réelles, manipulez les logs de serveurs et pare-feu, menez des analyses d'e-mails d'hameçonnage et appliquez les procédures standardisées d'escalade d'incidents.",
+    "accentGradient": "from-blue-600 via-cyan-500 to-teal-400",
+    "glowColor": "rgba(14, 165, 233, 0.25)",
+    "tags": [
+      "SOC Operations",
+      "Splunk",
+      "Elastic SIEM",
+      "Wireshark",
+      "Zeek",
+      "Suricata",
+      "Phishing Triage",
+      "Incident Escalation"
+    ],
+    "isFeatured": true,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Grand Projet de Fin de Cursus SOC ⭐",
+      "title": "Gestion Complète d'une Campagne de Cyberattaque Multi-Vecteurs en Environnement SIEM",
+      "description": "Face à une attaque coordonnée simulant une infiltration par e-mail malveillant et mouvement latéral interne, vous triez les alertes dans Splunk, isolez les flux suspects dans Wireshark, déterminez les postes compromis et rédigez le rapport officiel d'escalade d'incident.",
+      "tags": [
+        "Splunk SIEM",
+        "Packet Analysis",
+        "IOC Extraction",
+        "IR Playbook",
+        "Incident Report"
+      ]
     },
-    modules: [
+    "modules": [
       {
-        number: "01",
-        title: "Introduction à la Cybersécurité & Modèle de Menace",
-        duration: "8 heures · Semaine 1",
-        iconName: "shield",
-        description:
-          "Les piliers de la cybersécurité, la triade CIA (Confidentialité, Intégrité, Disponibilité), l'état d'esprit offensif vs défensif et les métiers du secteur.",
-        weeks: [
+        "number": "01",
+        "title": "Fondations du SOC & Modèles de Défense",
+        "duration": "9 heures",
+        "iconName": "shield",
+        "description": "Comprenez l'organisation d'un Security Operations Center, la triade CIA, les niveaux d'analystes, le cycle de vie de l'incident (NIST/SANS) et la taxonomie des cybermenaces.",
+        "weeks": [
           {
-            week: "Semaine 1",
-            title: "Les Piliers de la Sécurité Numérique & Triade CIA",
-            topic: "Les fondements de la sécurité numérique, la triade CIA et les motivations des attaquants",
-            project: "Analyse d'un scénario de cyberattaque réelle et identification des failles",
+            "week": "Semaine 1",
+            "title": "Organisation d'un SOC & Modèle de Responsabilité",
+            "topic": "Rôles L1/L2/L3, métriques MTTD/MTTR et cadre réglementaire",
+            "project": "Cartographie des processus d'un SOC d'entreprise"
           },
-        ],
+          {
+            "week": "Semaine 2",
+            "title": "Modélisation des Cyberattaques & Frameworks",
+            "topic": "Cyber Kill Chain de Lockheed Martin et matrice MITRE ATT&CK",
+            "project": "Reconstitution d'une intrusion via MITRE ATT&CK"
+          }
+        ]
       },
       {
-        number: "02",
-        title: "Fondamentaux des Réseaux Informatiques & Modèle TCP/IP",
-        duration: "8 heures · Semaines 2 à 3",
-        iconName: "network",
-        description:
-          "Comment les ordinateurs communiquent : adresses IP, masques de sous-réseaux, adresses MAC, routeurs, switches, paquets et analyse de trames.",
-        weeks: [
+        "number": "02",
+        "title": "Analyse de Logs & SIEM Opérationnel (Splunk / Elastic)",
+        "duration": "10 heures",
+        "iconName": "search",
+        "description": "Collectez, indexez et corrélez les événements de sécurité à grande échelle. Écrivez des requêtes SPL expertes et concevez des règles de détection d'anomalies.",
+        "weeks": [
           {
-            week: "Semaine 2",
-            title: "Topologies Réseau, Modèles OSI / TCP-IP & Encapsulation",
-            topic: "Topologies réseau, modèles OSI et TCP/IP, encapsulation et routage de paquets",
-            project: "Capture et décodage de paquets réseau avec Wireshark",
+            "week": "Semaine 3",
+            "title": "Architecture SIEM & Ingestion d'Événements",
+            "topic": "Syslog, Event Logs Windows, forwarders et indexation Splunk",
+            "project": "Configuration d'un forwarder et tableau de bord Splunk"
           },
           {
-            week: "Semaine 3",
-            title: "Adresses IP, Masques, DNS, DHCP & Analyse Wireshark",
-            topic: "Protocoles clés de communication : DNS, DHCP, ARP, TCP vs UDP et ports d'écoute",
-            project: "Simulation et diagnostic de pannes réseau sur un mini-LAN",
-          },
-        ],
+            "week": "Semaine 4",
+            "title": "Recherche SPL & Corrélation d'Alertes",
+            "topic": "Commandes de recherche Splunk (stats, eval, transaction, lookup)",
+            "project": "Détection automatisée d'attaques par force brute RDP/SSH"
+          }
+        ]
       },
       {
-        number: "03",
-        title: "Comment Fonctionne le Web (Architecture & Protocoles)",
-        duration: "8 heures · Semaine 4",
-        iconName: "zap",
-        description:
-          "La mécanique interne du Web : requêtes et réponses HTTP/HTTPS, en-têtes, verbes (GET, POST), cookies de session et chiffrement TLS.",
-        weeks: [
+        "number": "03",
+        "title": "Surveillance & Analyse du Trafic Réseau",
+        "duration": "10 heures",
+        "iconName": "network",
+        "description": "Inspectez les trames réseau jusqu'aux octets. Détectez les balises C2, les exfiltrations de données DNS et les attaques par déni de service.",
+        "weeks": [
           {
-            week: "Semaine 4",
-            title: "Cycle Requête-Réponse HTTP/HTTPS, Headers & Cookies",
-            topic: "Cycle requête-réponse, analyse d'en-têtes HTTP, inspection du trafic avec les DevTools et gestion des cookies",
-            project: "Inspection approfondie d'une session web et compréhension des failles de transmission non chiffrée",
+            "week": "Semaine 5",
+            "title": "Inspection Profonde de Paquets avec Wireshark",
+            "topic": "Filtres d'affichage, flux TCP stream, extraction d'objets HTTP",
+            "project": "Extraction d'un binaire malveillant depuis un fichier PCAP"
           },
-        ],
+          {
+            "week": "Semaine 6",
+            "title": "NIDS & Analyseurs de Trafic (Zeek / Suricata)",
+            "topic": "Règles Suricata/Snort, métadonnées de connexion Zeek et alertes",
+            "project": "Mise en place de règles de détection de scans Nmap"
+          }
+        ]
       },
       {
-        number: "04",
-        title: "Maîtrise des Systèmes Linux & Windows",
-        duration: "8 heures · Semaines 5 à 6",
-        iconName: "terminal",
-        description:
-          "Commandes indispensables en terminal Linux, gestion des permissions, utilisateurs, observateur d'événements Windows et PowerShell.",
-        weeks: [
+        "number": "04",
+        "title": "Sécurité des Endpoints & Analyse Sysmon",
+        "duration": "8 heures",
+        "iconName": "terminal",
+        "description": "Surveillez les postes de travail et serveurs. Traquez les créations de processus suspects, les connexions réseau furtives et les modifications du registre.",
+        "weeks": [
           {
-            week: "Semaine 5",
-            title: "Ligne de Commande Linux & Gestion des Permissions (chmod/chown)",
-            topic: "Terminal Linux : arborescence, navigation, manipulation de fichiers, utilisateurs et droits d'accès (chmod/chown)",
-            project: "Script bash d'audit automatisé des permissions de fichiers sensibles",
-          },
-          {
-            week: "Semaine 6",
-            title: "Architecture Windows, Services, Registre & Journaux d'Événements",
-            topic: "Architecture Windows : gestionnaire de tâches, registre Windows, services et journaux d'événements (Event Viewer)",
-            project: "Investigation d'un compte utilisateur suspect via les logs Windows",
-          },
-        ],
+            "week": "Semaine 7",
+            "title": "Télémétrie Sysmon & Événements Critiques",
+            "topic": "Process Creation (Event ID 1), Network Connections, Registry modifications",
+            "project": "Détection d'exécution PowerShell obfusquée via Sysmon"
+          }
+        ]
       },
+      {
+        "number": "05",
+        "title": "Triage de Phishing, Threat Intelligence & Escalade",
+        "duration": "8 heures",
+        "iconName": "lock",
+        "description": "Analysez les en-têtes d'e-mails, décodez les pièces jointes suspectes, vérifiez les indicateurs de compromission (IOCs) sur VirusTotal/AlienVault et rédigez des rapports de triage.",
+        "weeks": [
+          {
+            "week": "Semaine 8",
+            "title": "Analyse d'E-mails d'Hameçonnage (Phishing)",
+            "topic": "En-têtes MIME, SPF/DKIM/DMARC, émulation de liens et sandboxing",
+            "project": "Démantèlement complet d'une campagne de phishing ciblée"
+          },
+          {
+            "week": "Semaine 9",
+            "title": "Threat Intel & Procédures d'Escalade L2",
+            "topic": "Plateformes MISP, feeds d'IOCs, scoring de criticité et playbooks",
+            "project": "Simulation d'escalade d'incident de sécurité critique"
+          }
+        ]
+      }
     ],
-    pricing: {
-      packComplet: {
-        price: "35,000 DA",
-        originalPrice: "45,000 DA",
-        savings: "Programme idéal pour démarrer",
-        durationLabel: "32 heures de formation pratique",
-        features: [
-          "Tous les ateliers pratiques sur environnements Linux & Windows",
-          "Accès aux laboratoires d'analyse réseau Wireshark",
-          "Certificat de réussite CYBERLYMPH Pre-Security",
-          "Accompagnement et mentorat pour choisir sa spécialisation",
-          "Pause café offerte ☕ à chaque session",
-        ],
-      },
-      earlyBird: {
-        price: "29,000 DA",
-        originalPrice: "35,000 DA",
-        discountText: "Tarif spécial débutants pour les 8 premiers inscrits",
-        seatsLeft: 5,
-        totalSeats: 15,
-      },
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "45 heures · 9 semaines",
+        "features": [
+          "Labs pratiques sur machines virtuelles dédiées",
+          "Scénarios réels de SIEM Splunk et PCAP",
+          "Certificat CYBERLYMPH Certified SOC Analyst L1",
+          "Accompagnement vers les carrières en cybersécurité"
+        ]
+      }
     },
-    benefits: [
-      { iconName: "award", title: "Certificat Pre-Security", desc: "Attestation validant vos bases indispensables en cybersécurité" },
-      { iconName: "terminal", title: "Pratique en Ligne de Commande", desc: "Familiarisation immédiate avec le terminal Linux et PowerShell" },
-      { iconName: "coffee", title: "Pause Café Incluse", desc: "Cadre convivial propice à l'apprentissage et au networking" },
-      { iconName: "users", title: "Orientation Carrière Dédiée", desc: "Conseils personnalisés pour s'orienter vers le Pentest ou le SOC" },
-    ],
-    faqs: [
+    "benefits": [
       {
-        q: "Faut-il avoir des connaissances préalables en informatique ?",
-        a: "Non, absolument aucune. Le cours démarre de zéro et explique chaque concept avec des analogies concrètes et des travaux pratiques guidés.",
+        "iconName": "award",
+        "title": "Certificat SOC Analyst L1",
+        "desc": "Reconnaissance de vos compétences en défense et détection opérationnelle"
       },
       {
-        q: "Vers quelles formations puis-je continuer après Pre-Security ?",
-        a: "Pre-Security est le tremplin parfait vers le parcours Junior Penetration Tester (Offensive), le cursus SOC Level 1 (Défensive) ou Cisco CCNA 1.",
-      },
+        "iconName": "shield",
+        "title": "SOC Lab Collaboratif",
+        "desc": "Entraînez-vous sur des données d'attaques d'entreprises réelles"
+      }
     ],
-    registrationUrl: getWhatsAppReservationUrl("Pre Security : Fondamentaux de la Cybersécurité", "Pack Complet", "35,000 DA"),
+    "faqs": [
+      {
+        "q": "Cette formation permet-elle de postuler comme Analyste SOC Junior ?",
+        "a": "Oui, le cursus couvre exactement les compétences techniques et méthodologiques requises lors des entretiens d'embauche en SOC L1."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*SOC%20Analyst%20Level%201*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
   },
-
-  // 3. JUNIOR PENETRATION TESTER
   {
-    id: "junior-penetration-tester",
-    slug: "junior-penetration-tester-pentest-pratique",
-    title: "Junior Penetration Tester : Test d'Intrusion Pratique",
-    shortTitle: "Jr Pentester",
-    tagline: "Reconnaissance Nmap · Metasploit · Burp Suite · OWASP Top 10 · Élévation de Privilèges",
-    category: "security",
-    categoryLabel: "Test d'Intrusion & Sécurité Offensive",
-    badge: "100% Pratique — Offensive Security",
-    badgeType: "hot",
-    partner: "CYBERLYMPH Offensive Lab",
-    duration: "48 heures · 10 semaines",
-    totalHours: 48,
-    modulesCount: 4,
-    projectsCount: 15,
-    prerequisites: "Bases des réseaux (TCP/IP) et manipulation basique de Linux",
-    location: "Laboratoire de Pentest & Sandbox Virtuelle",
-    level: "Intermédiaire",
-    summary:
-      "Devenez Pentester junior opérationnel. Maîtrisez la reconnaissance avec Nmap, l'exploitation réseau avec Metasploit, le pentest web avec Burp Suite et l'élévation de privilèges sous Linux et Windows.",
-    description:
-      "Le métier de Penetration Tester (hacker éthique) consiste à éprouver la résistance des systèmes d'information en utilisant les mêmes tactiques que les attaquants malveillants. Ce programme intensif vous guide de la phase de reconnaissance (OSINT, Nmap) à l'exploitation de vulnérabilités web (OWASP Top 10), jusqu'à l'élévation de privilèges (Root/Admin), le pivoting interne et la rédaction de rapports professionnels.",
-    accentGradient: "from-red-500 via-orange-500 to-amber-500",
-    glowColor: "rgba(239, 68, 68, 0.25)",
-    tags: ["Burp Suite", "Metasploit", "Nmap", "OWASP Top 10", "Privilege Escalation", "Pivoting", "SQLi", "XSS"],
-    isFeatured: true,
-    isOpenForRegistration: true,
-    capstoneProject: {
-      highlightLabel: "Test d'Intrusion Final sur Machine Cible ⭐",
-      title: "Pentest Black-Box Complet : Brèche Initiale, Élévation de Privilèges & Rapport CVSS",
-      description:
-        "Sur une infrastructure cible inconnue : scanning initial de ports avec Nmap, découverte et exploitation d'une faille web avec Burp Suite, obtention d'un shell distant, élévation locale de privilèges (Linux SUID/Capabilities) vers Root, et rédaction d'un rapport de pentest professionnel client-ready.",
-      tags: ["Black-Box Pentest", "Reverse Shell", "Burp Suite Pro", "Linux Root Escalation", "CVSS v3.1"],
+    "id": "soc-level-2",
+    "slug": "soc-analyst-level-2-threat-hunting-malware-analysis",
+    "title": "SOC Analyst Level 2 : Threat Hunting & Analyse de Menaces Avancées",
+    "shortTitle": "SOC Level 2",
+    "tagline": "Chasse aux Menaces · Analyse de Malware · Active Directory Forensics · Volatility · Détection C2",
+    "category": "soc",
+    "categoryLabel": "Défense Cyber & Investigation Avancée (SOC L2)",
+    "badge": "Cursus Spécialisé",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH Incident Response Unit",
+    "duration": "50 heures · 10 semaines",
+    "totalHours": 50,
+    "modulesCount": 5,
+    "projectsCount": 15,
+    "prerequisites": "Avoir suivi le SOC Level 1 ou posséder de solides bases en analyse de logs et protocoles réseau",
+    "location": "Présentiel & Cyber Range Privé",
+    "level": "Intermédiaire à Avancé",
+    "summary": "Montez d'un cran : devenez analyste SOC de niveau 2. Maîtrisez la chasse proactive aux menaces (Threat Hunting), l'analyse statique et dynamique de malwares, la rétro-ingénierie et l'analyse de mémoire vive avec Volatility.",
+    "description": "Le rôle de l'analyste SOC L2 ne se limite pas à trier des alertes : il s'agit d'investiguer des incidents complexes, de désosser des binaires malveillants pour comprendre leur logique, de débusquer les attaquants dissimulés dans Active Directory et de concevoir des règles de détection prédictives (YARA / Sigma).",
+    "accentGradient": "from-indigo-600 via-sky-600 to-cyan-500",
+    "glowColor": "rgba(2, 132, 199, 0.25)",
+    "tags": [
+      "Threat Hunting",
+      "Malware Analysis",
+      "Ghidra",
+      "Volatility 3",
+      "Sigma Rules",
+      "Active Directory Security",
+      "C2 Detection",
+      "YARA"
+    ],
+    "isFeatured": true,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Grand Projet d'Investigation SOC L2 ⭐",
+      "title": "Autopsie d'une Attaque APT Ciblée : Reverse de Charge Utile & Chasse Proactive AD",
+      "description": "Vous enquêtez sur une intrusion avancée attribuée à un groupe étatique : extraction du malware en mémoire, désassemblage dans Ghidra, identification du protocole C2 chiffré, détection des mouvements latéraux Kerberos et publication de règles Sigma pour immuniser l'entreprise.",
+      "tags": [
+        "Malware Reverse Engineering",
+        "Ghidra",
+        "Memory Forensics",
+        "Active Directory",
+        "Sigma Rules"
+      ]
     },
-    modules: [
+    "modules": [
       {
-        number: "01",
-        title: "Méthodologie du Pentest & Reconnaissance Active / Passive",
-        duration: "12 heures · Semaines 1 à 2",
-        iconName: "search",
-        description:
-          "Règles d'engagement, éthique, collecte d'informations OSINT, scanning avancé Nmap, scripts NSE et énumération de services réseau (SMB, SSH, FTP).",
-        weeks: [
+        "number": "01",
+        "title": "Méthodologie de Threat Hunting & Matrice ATT&CK",
+        "duration": "10 heures",
+        "iconName": "search",
+        "description": "Passez de la défense réactive à la traque proactive. Formulez des hypothèses de chasse, exploitez le cadre MITRE ATT&CK et écrivez des règles de détection Sigma et YARA.",
+        "weeks": [
           {
-            week: "Semaine 1",
-            title: "Méthodologie du Test d'Intrusion & Reconnaissance Passive (OSINT)",
-            topic: "Les phases d'un test d'intrusion, reconnaissance passive (OSINT, Shodan, dorks) et périmètres autorisés",
-            project: "Dossier de renseignement et surface d'attaque d'une entreprise virtuelle",
+            "week": "Semaine 1",
+            "title": "Hypothèses de Chasse & Télémétrie Avancée",
+            "topic": "Construction de scénarios de menace, logs Endpoint et réseau",
+            "project": "Campagne de chasse aux techniques de persistance par tâche planifiée"
           },
           {
-            week: "Semaine 2",
-            title: "Scanning Réseau Actif avec Nmap & Scripts NSE",
-            topic: "Scanning réseau en profondeur avec Nmap : techniques de furtivité, détection de versions et scripts NSE",
-            project: "Cartographie et énumération complète des services ouverts sur une cible",
-          },
-        ],
+            "week": "Semaine 2",
+            "title": "Ingénierie de Détection avec Sigma & YARA",
+            "topic": "Syntaxe Sigma, conversion vers Splunk/Elastic et création de signatures YARA",
+            "project": "Création d'un catalogue de règles Sigma contre les outils de dump LSASS"
+          }
+        ]
       },
       {
-        number: "02",
-        title: "Recherche de Vulnérabilités & Exploitation avec Metasploit",
-        duration: "12 heures · Semaines 3 à 4",
-        iconName: "terminal",
-        description:
-          "Exploitation de failles connues avec Exploit-DB, SearchSploit, architecture du Metasploit Framework, payloads Meterpreter et handlers.",
-        weeks: [
+        "number": "02",
+        "title": "Fondements de l'Analyse de Malware (Statique & Dynamique)",
+        "duration": "10 heures",
+        "iconName": "shield",
+        "description": "Désossez les logiciels malveillants en toute sécurité dans un environnement isolé. Analysez les en-têtes PE, débusquez l'obfuscation et observez le comportement en sandbox.",
+        "weeks": [
           {
-            week: "Semaine 3",
-            title: "Recherche de Failles Publiques, Analyse de CVEs & Searchsploit",
-            topic: "Recherche et vérification d'exploits publics, analyse de CVEs et compilation de PoC (Proof of Concept)",
-            project: "Exploitation d'un serveur applicatif obsolète non corrigé",
+            "week": "Semaine 3",
+            "title": "Analyse Statique & Structure du Format Portable Executable",
+            "topic": "Sections PE, tables d'importation (IAT), hachages flous (SSDEEP) et chaînes",
+            "project": "Triage statique de 5 échantillons de ransomwares récents"
           },
           {
-            week: "Semaine 4",
-            title: "Maîtrise de Metasploit Framework & Payloads Meterpreter",
-            topic: "Maîtrise de Metasploit Framework : modules d'exploit, auxiliary scanners, payloads staged vs non-staged et sessions Meterpreter",
-            project: "Obtention d'un shell distant via Metasploit et collecte d'informations système",
-          },
-        ],
+            "week": "Semaine 4",
+            "title": "Analyse Dynamique & Désobfuscation avec Ghidra",
+            "topic": "Surveillance des appels système (Procmon, Regshot, Fiddler) et initiation à Ghidra",
+            "project": "Rétro-ingénierie d'un dropper malveillant et extraction de l'URL C2"
+          }
+        ]
       },
       {
-        number: "03",
-        title: "Test d'Intrusion Web & OWASP Top 10",
-        duration: "12 heures · Semaines 5 à 7",
-        iconName: "zap",
-        description:
-          "Utilisation du proxy Burp Suite, interception de requêtes, Injections SQL manuelles et automatisées (SQLmap), XSS, IDOR et failles d'authentification.",
-        weeks: [
+        "number": "03",
+        "title": "Détection des Attaques sur Active Directory",
+        "duration": "10 heures",
+        "iconName": "lock",
+        "description": "Comprenez comment les attaquants prennent le contrôle d'un domaine d'entreprise et apprenez à détecter les attaques Kerberos et les escalades de privilèges.",
+        "weeks": [
           {
-            week: "Semaine 5",
-            title: "Proxy Burp Suite : Interception & Manipulation de Requêtes HTTP",
-            topic: "Prise en main du proxy Burp Suite : interception, Repeater, Intruder et manipulation de paramètres HTTP",
-            project: "Contournement de formulaires d'authentification avec Burp Suite",
+            "week": "Semaine 5",
+            "title": "Attaques Kerberos : Kerberoasting & AS-REP Roasting",
+            "topic": "Protocole Kerberos, tickets TGT/TGS et détection des demandes anormales",
+            "project": "Détection et corrélation d'une attaque Kerberoasting dans les Event Logs"
           },
           {
-            week: "Semaine 6",
-            title: "Injections SQL Manuelles & Exploitation Automatique avec SQLmap",
-            topic: "Failles d'injection : SQL Injection (in-band, blind, time-based) et exploitation automatique avec SQLmap",
-            project: "Extraction de base de données via injection SQL sur application vulnérable",
-          },
-          {
-            week: "Semaine 7",
-            title: "Cross-Site Scripting (XSS), IDOR & Failles de Contrôle d'Accès",
-            topic: "Cross-Site Scripting (XSS réfléchi/stocké), Broken Access Control et IDOR (Insecure Direct Object References)",
-            project: "Vol de cookie de session administrateur par payload XSS",
-          },
-        ],
+            "week": "Semaine 6",
+            "title": "Mouvements Latéraux & Abus de Droits DCSync",
+            "topic": "WMI, PsExec, réplication malveillante DCSync et détection avec BloodHound",
+            "project": "Identification d'un chemin d'escalade d'attaque Active Directory complexe"
+          }
+        ]
       },
       {
-        number: "04",
-        title: "Élévation de Privilèges, Pivoting & Rapport de Mission",
-        duration: "12 heures · Semaines 8 à 10",
-        iconName: "shield",
-        description:
-          "Passer d'un utilisateur restreint à administrateur Root/SYSTEM (SUID, sudo, tâches cron), pivoting réseau et rédaction du rapport client avec score CVSS.",
-        weeks: [
+        "number": "04",
+        "title": "Forensics Mémoire avec Volatility 3",
+        "duration": "10 heures",
+        "iconName": "terminal",
+        "description": "Plongez dans les dumps de mémoire vive (RAM). Repérez les injections de code DLL, les hooks de noyau et les processus cachés introuvables sur le disque.",
+        "weeks": [
           {
-            week: "Semaine 8",
-            title: "Élévation de Privilèges sous Linux (SUID, Sudo & Noyau)",
-            topic: "Élévation de privilèges sous Linux : binaires SUID mal configurés, droits sudo excessifs et exploits noyau",
-            project: "Élévation de privilèges vers Root sur machine Linux d'entraînement",
+            "week": "Semaine 7",
+            "title": "Collecte & Analyse d'Artefacts Mémoire",
+            "topic": "Plugins Volatility 3 (pslist, pstree, malfind, dlllist, netscan)",
+            "project": "Recherche d'injection de code furtive de type Process Hollowing"
           },
           {
-            week: "Semaine 9",
-            title: "Élévation Windows & Pivoting Réseau (Tunnels SSH)",
-            topic: "Bases de l'élévation de privilèges sous Windows et pivoting réseau (rebond interne avec tunnels SSH)",
-            project: "Pivoting vers un segment réseau interne non exposé à Internet",
-          },
-          {
-            week: "Semaine 10",
-            title: "Grand Test d'Intrusion Black-Box & Rapport d'Audit CVSS v3.1",
-            topic: "Rédaction d'un rapport de test d'intrusion professionnel, cotation CVSS et plan de remédiation technique",
-            project: "Grand Test d'Intrusion Black-Box final et livraison du rapport d'audit",
-          },
-        ],
+            "week": "Semaine 8",
+            "title": "Extraction de Secrets & Clés de Chiffrement en Mémoire",
+            "topic": "Extraction de mots de passe LSASS et analyse de connexions C2 en RAM",
+            "project": "Résolution complète d'un challenge de forensic mémoire forensic CTF"
+          }
+        ]
       },
+      {
+        "number": "05",
+        "title": "Orchestration & Réponse aux Incidents Majeurs (SOAR)",
+        "duration": "10 heures",
+        "iconName": "zap",
+        "description": "Automatisez la neutralisation des menaces. Concevez des playbooks de réponse SOAR pour bloquer instantanément les IP malveillantes et isoler les postes infectés.",
+        "weeks": [
+          {
+            "week": "Semaine 9",
+            "title": "Playbooks SOAR & Automatisation de la Réponse",
+            "topic": "Intégration SIEM + SOAR, enrichissement d'alertes et actions de confinement",
+            "project": "Conception d'un playbook d'isolation automatique d'un hôte compromis"
+          },
+          {
+            "week": "Semaine 10",
+            "title": "Gestion de Crise Cyber & Rapport d'Incident L2",
+            "topic": "Coordination de cellule de crise, communication managériale et remédiation",
+            "project": "Soutenance de l'enquête d'incident d'attaque APT simulée"
+          }
+        ]
+      }
     ],
-    pricing: {
-      packComplet: {
-        price: "52,000 DA",
-        originalPrice: "75,000 DA",
-        savings: "Cursus pratique complet de 48 heures",
-        durationLabel: "48 heures · 10 semaines de laboratoire offensif",
-        features: [
-          "Accès aux machines cibles virtuelles de pentest dédiées",
-          "Licences d'outils et environnements Kali Linux configurés",
-          "Ateliers pratiques sur Nmap, Metasploit, Burp Suite et SQLmap",
-          "Méthodologie d'élévation de privilèges Linux/Windows",
-          "Certificat CYBERLYMPH Junior Penetration Tester",
-          "Templates de rapports d'audit de sécurité professionnels",
-        ],
-      },
-      earlyBird: {
-        price: "45,000 DA",
-        originalPrice: "52,000 DA",
-        discountText: "Tarif spécial pour les 6 premiers inscrits",
-        seatsLeft: 3,
-        totalSeats: 12,
-      },
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "50 heures · 10 semaines",
+        "features": [
+          "Laboratoire d'analyse de malwares hautement sécurisé",
+          "Dumps de mémoire vive réels (Volatility)",
+          "Certificat CYBERLYMPH Certified SOC Analyst L2",
+          "Entraînement orienté scénarios d'équipes d'élite"
+        ]
+      }
     },
-    benefits: [
-      { iconName: "award", title: "Certificat Jr Penetration Tester", desc: "Attestation de vos capacités réelles à exécuter un audit offensif" },
-      { iconName: "terminal", title: "Machines Vulnérables Réelles", desc: "Entraînement sur des cibles configurées avec des vulnérabilités authentiques" },
-      { iconName: "book", title: "Méthodologie Professionnelle", desc: "Normes PTES et conformité aux règles déontologiques" },
-      { iconName: "coffee", title: "Pause Café Incluse", desc: "Sessions conviviales et partage de techniques entre passionnés" },
-      { iconName: "users", title: "Mentorat de Pentesters Actifs", desc: "Formateurs exerçant en cabinet d'audit et cybersécurité offensive" },
-    ],
-    faqs: [
+    "benefits": [
       {
-        q: "Ce cours prépare-t-il à des certifications de pentest reconnues ?",
-        a: "Oui ! Le programme couvre toutes les compétences pratiques attendues pour des certifications d'entrée en pentest comme l'eJPT, le CEH Practical ou le PJPT.",
+        "iconName": "award",
+        "title": "Certification Professionnelle SOC L2",
+        "desc": "Prouve votre aptitude à mener des enquêtes cyber de haute complexité"
       },
       {
-        q: "Faut-il savoir coder pour devenir Pentester ?",
-        a: "Il n'est pas nécessaire d'être un développeur expert, mais être capable de lire du code HTML/PHP/Python et de comprendre la structure d'un script d'exploit est indispensable et enseigné pendant le cursus.",
-      },
+        "iconName": "terminal",
+        "title": "Reverse Engineering Réel",
+        "desc": "Apprenez à manipuler les outils utilisés par les laboratoires d'analyse étatiques"
+      }
     ],
-    registrationUrl: getWhatsAppReservationUrl("Junior Penetration Tester : Test d'Intrusion Pratique", "Pack Complet", "52,000 DA"),
+    "faqs": [
+      {
+        "q": "Quelles sont les opportunités professionnelles après ce cursus ?",
+        "a": "Ce programme ouvre l'accès aux postes d'Analyste SOC Confirmé (L2), Incident Responder, Threat Hunter et Spécialiste Détection."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*SOC%20Analyst%20Level%202*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
   },
-
-  // 4. SOC LEVEL 1 (Security Operations Center Analyst)
   {
-    id: "soc-level-1",
-    slug: "soc-analyst-level-1-defense-et-detection",
-    title: "SOC Analyst Level 1 : Défense & Détection d'Incidents",
-    shortTitle: "SOC Level 1",
-    tagline: "SIEM (Splunk / Elastic) · Wireshark · Triage d'Alertes · MITRE ATT&CK · EDR",
-    category: "security",
-    categoryLabel: "Défense Opérationnelle (Blue Team)",
-    badge: "Métier Très Demandé — Blue Team",
-    badgeType: "hot",
-    partner: "CYBERLYMPH Defense Operations",
-    duration: "45 heures · 9 semaines",
-    totalHours: 45,
-    modulesCount: 4,
-    projectsCount: 14,
-    prerequisites: "Connaissances de base des réseaux (TCP/IP) et des systèmes d'exploitation",
-    location: "Centre Opérationnel de Sécurité Virtuel (SOC Lab)",
-    level: "Intermédiaire",
-    summary:
-      "Devenez Analyste SOC opérationnel. Apprenez à trier des alertes de sécurité en temps réel, analyser des logs sur SIEM (Splunk, Elastic), enquêter sur des captures PCAP Wireshark et neutraliser des malwares.",
-    description:
-      "Le SOC (Security Operations Center) est la tour de contrôle de la sécurité des entreprises. En tant qu'analyste niveau 1, vous êtes en première ligne pour surveiller les flux, distinguer les faux positifs des vraies intrusions, analyser les attaques de phishing, enquêter sur les indicateurs de compromission (IoCs) et déclencher la réponse aux incidents selon le cadre MITRE ATT&CK.",
-    accentGradient: "from-blue-500 via-cyan-500 to-teal-500",
-    glowColor: "rgba(59, 130, 246, 0.25)",
-    tags: ["SOC Analyst", "Splunk", "Elastic SIEM", "Wireshark", "MITRE ATT&CK", "EDR", "Phishing Analysis"],
-    isFeatured: true,
-    isOpenForRegistration: true,
-    capstoneProject: {
-      highlightLabel: "Simulation d'Attaque en Temps Réel en Environnement SOC ⭐",
-      title: "Investigation Complète d'une Brèche Réseau d'Entreprise sur SIEM Splunk",
-      description:
-        "Analyse d'un flux d'alertes simultanées : détection d'une campagne de spear-phishing, analyse de trafic malveillant avec Wireshark/Zeek, corrélation de journaux Windows Event Logs dans Splunk, identification des machines compromises et rédaction du rapport d'escalade d'incident.",
-      tags: ["Splunk SPL", "PCAP Forensics", "IoC Hunting", "Incident Report", "MITRE Matrix"],
+    "id": "advanced-endpoint-investigations",
+    "slug": "advanced-endpoint-investigations-forensics-edr",
+    "title": "Advanced Endpoint Investigations : Forensics & Détection EDR",
+    "shortTitle": "Endpoint Investigations",
+    "tagline": "Windows Internals · MFT & USN Journal · Mémoire RAM · Process Injection · Velociraptor · KAPE",
+    "category": "soc",
+    "categoryLabel": "Forensics Numérique & Détection Endpoint",
+    "badge": "Investigation de Pointe",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH Digital Forensics Lab",
+    "duration": "40 heures · 8 semaines",
+    "totalHours": 40,
+    "modulesCount": 4,
+    "projectsCount": 12,
+    "prerequisites": "Compréhension du fonctionnement des systèmes d'exploitation Windows et des architectures de sécurité",
+    "location": "Ateliers Forensics Présentiel / En Ligne",
+    "level": "Intermédiaire à Avancé",
+    "summary": "Devenez un enquêteur expert des systèmes terminaux. Maîtrisez la collecte et l'analyse approfondie des artefacts Windows (MFT, Registry, Prefetch, Shimcache) et la détection d'intrusions avec les solutions EDR modernes.",
+    "description": "Sur un poste compromis, les attaquants s'efforcent d'effacer leurs traces. Ce cursus vous enseigne les techniques avancées de police scientifique numérique pour exhumer les preuves invisibles : fichiers effacés, processus injectés en mémoire vive, clés de registre de persistance et mécanismes d'évasion de surveillance.",
+    "accentGradient": "from-sky-500 via-indigo-600 to-blue-700",
+    "glowColor": "rgba(56, 189, 248, 0.25)",
+    "tags": [
+      "Endpoint Forensics",
+      "Velociraptor",
+      "KAPE",
+      "Windows Internals",
+      "MFT Analysis",
+      "Process Injection",
+      "EDR Telemetry"
+    ],
+    "isFeatured": false,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Enquête Forensics Complète ⭐",
+      "title": "Reconstitution Numérique Forensics d'une Exfiltration de Données via Endpoint",
+      "description": "Vous recevez l'image disque brute et la capture mémoire d'un poste cadre dirigeant suspecté de compromission. Vous retracez seconde par seconde l'attaque : vecteur d'accès initial, contournement d'EDR, exfiltration de propriété intellectuelle et effacement des journaux.",
+      "tags": [
+        "KAPE",
+        "Velociraptor",
+        "MFT Explorer",
+        "Timeline Analysis",
+        "Forensic Evidence"
+      ]
     },
-    modules: [
+    "modules": [
       {
-        number: "01",
-        title: "Opérations en SOC & Cadres de Cyberdéfense",
-        duration: "10 heures · Semaines 1 à 2",
-        iconName: "shield",
-        description:
-          "Rôle et responsabilités de l'analyste N1, cycle de vie des alertes, gestion des faux/vrais positifs, matrice MITRE ATT&CK et Cyber Kill Chain.",
-        weeks: [
+        "number": "01",
+        "title": "Windows Internals & Artefacts du Système de Fichiers",
+        "duration": "10 heures",
+        "iconName": "terminal",
+        "description": "Comprenez les structures internes de Windows et le fonctionnement du système NTFS : Master File Table ($MFT), $LogFile et Journal USN.",
+        "weeks": [
           {
-            week: "Semaine 1",
-            title: "Organisation d'un SOC, Rôle Analyste N1 & Triage d'Alertes",
-            topic: "Organisation d'un SOC, outillage de l'analyste, ticketing d'incidents et flux de travail opérationnel",
-            project: "Triage et qualification d'un premier jeu d'alertes de sécurité",
+            "week": "Semaine 1",
+            "title": "Architecture NTFS & Artefacts de Fichiers Cachés",
+            "topic": "Attributs $STANDARD_INFORMATION vs $FILE_NAME, Timestomping",
+            "project": "Détection d'anti-forensics par falsification d'horodatage"
           },
           {
-            week: "Semaine 2",
-            title: "Framework MITRE ATT&CK, Cyber Kill Chain & Pyramide de la Douleur",
-            topic: "Les frameworks d'analyse de menaces : MITRE ATT&CK, Unified Kill Chain et cartographie de tactiques TTPs",
-            project: "Mapping d'un rapport de cyberattaque sur la matrice MITRE ATT&CK",
-          },
-        ],
+            "week": "Semaine 2",
+            "title": "Analyse des Journaux de Transactions NTFS",
+            "topic": "Reconstitution des suppressions et déplacements de fichiers via USN Journal",
+            "project": "Récupération des traces de suppression d'outils d'attaque"
+          }
+        ]
       },
       {
-        number: "02",
-        title: "Analyse de Trafic Réseau & Détection de Menaces",
-        duration: "12 heures · Semaines 3 à 4",
-        iconName: "network",
-        description:
-          "Inspection de paquets avec Wireshark et Tcpdump, analyse de protocoles suspects (DNS tunneling, requêtes HTTP anomales) et sondes NIDS (Snort/Suricata).",
-        weeks: [
+        "number": "02",
+        "title": "Artefacts d'Exécution & Preuves de Persistance",
+        "duration": "10 heures",
+        "iconName": "search",
+        "description": "Prouvez qu'un exécutable a tourné sur la machine, même s'il a été supprimé : Shimcache, Amcache, Prefetch, UserAssist et persistance dans le registre.",
+        "weeks": [
           {
-            week: "Semaine 3",
-            title: "Analyse Forensique de Paquets avec Wireshark & Filtres d'Affichage",
-            topic: "Wireshark pour l'analyste SOC : filtres d'affichage avancés, suivi de flux TCP et extraction d'objets malveillants",
-            project: "Enquête sur une capture PCAP contenant un malware téléchargé en clair",
+            "week": "Semaine 3",
+            "title": "Preuves d'Exécution : Prefetch & Shimcache",
+            "topic": "Structure des fichiers .pf, Application Compatibility Cache (Shimcache)",
+            "project": "Reconstitution de la liste des binaires pirates exécutés par l'intrus"
           },
           {
-            week: "Semaine 4",
-            title: "Sondes NIDS Snort & Détection de Flux Suspects / C2",
-            topic: "Systèmes de détection d'intrusion (NIDS) : règles Snort/Suricata, détection de scans et de balises C2 (Command & Control)",
-            project: "Création de règles de détection personnalisées Snort",
-          },
-        ],
+            "week": "Semaine 4",
+            "title": "Mécanismes de Persistance & WMI Subscriptions",
+            "topic": "Run keys, services Windows, scheduled tasks et événements WMI furtifs",
+            "project": "Découverte et neutralisation d'un implant persistant sans fichier (Fileless)"
+          }
+        ]
       },
       {
-        number: "03",
-        title: "SIEM & Analyse de Logs (Splunk & Elastic SIEM)",
-        duration: "12 heures · Semaines 5 à 7",
-        iconName: "server",
-        description:
-          "Architecture SIEM, ingestion de journaux, requêtes de recherche complexes (Splunk SPL / KQL), détection d'anomalies et création de dashboards de surveillance.",
-        weeks: [
+        "number": "03",
+        "title": "Chasse en Mémoire & Techniques d'Injection de Processus",
+        "duration": "10 heures",
+        "iconName": "shield",
+        "description": "Traquez les menaces qui ne touchent jamais le disque dur. Détectez les injections DLL, le Process Hollowing, le Reflective DLL Loading et le Shellcode Injection.",
+        "weeks": [
           {
-            week: "Semaine 5",
-            title: "Architecture SIEM & Maîtrise du Langage de Requêtes SPL (Splunk)",
-            topic: "Introduction à Splunk : indexation de logs, syntaxe du langage de recherche SPL (Search Processing Language) et commandes de base",
-            project: "Recherche et corrélation d'événements de connexion anormaux sur Splunk",
+            "week": "Semaine 5",
+            "title": "Techniques d'Injection de Processus & Évasion EDR",
+            "topic": "Mécanismes VirtualAllocEx, WriteProcessMemory, CreateRemoteThread",
+            "project": "Détection en direct d'une injection de balise C2 dans svchost.exe"
           },
           {
-            week: "Semaine 6",
-            title: "Détection d'Attaques Active Directory & Logs Windows (Event IDs)",
-            topic: "Détection d'attaques sur Active Directory et serveurs Windows : échecs d'authentification massifs, création de comptes non autorisée",
-            project: "Investigation d'une attaque par force brute et propagation latérale dans Splunk",
-          },
-          {
-            week: "Semaine 7",
-            title: "Tableaux de Bord de Surveillance & Alertes Automatiques en Temps Réel",
-            topic: "Création de tableaux de bord de monitoring temps réel et configuration d'alertes automatiques",
-            project: "Conception d'un dashboard de sécurité opérationnel pour l'équipe Blue Team",
-          },
-        ],
+            "week": "Semaine 6",
+            "title": "Analyse de la Mémoire Vive & Dump Processus",
+            "topic": "Outils Process Hacker, Sysinternals, extraction de mémoire de processus",
+            "project": "Extraction de la configuration d'un agent de Command & Control"
+          }
+        ]
       },
       {
-        number: "04",
-        title: "Sécurité des Postes Clients (EDR) & Réponse aux Incidents",
-        duration: "11 heures · Semaines 8 à 9",
-        iconName: "terminal",
-        description:
-          "Analyse d'emails de phishing, extraction d'en-têtes, outils EDR, chasse aux indicateurs de compromission (IoCs) et procédures de confinement.",
-        weeks: [
+        "number": "04",
+        "title": "Triage à l'Échelle de Milliers d'Endpoints (Velociraptor / KAPE)",
+        "duration": "10 heures",
+        "iconName": "zap",
+        "description": "Apprenez à déployer des requêtes VQL avec Velociraptor et à automatiser la collecte d'artefacts sur un parc entier en quelques minutes.",
+        "weeks": [
           {
-            week: "Semaine 8",
-            title: "Analyse Forensique d'Emails de Phishing & Extraction d'IoCs",
-            topic: "Investigation de phishing : décodage d'en-têtes d'emails, analyse de pièces jointes suspectes et réputation d'URLs",
-            project: "Analyse forensique complète d'un email de spear-phishing ciblé",
+            "week": "Semaine 7",
+            "title": "Collecte Rapide d'Artefacts avec KAPE",
+            "topic": "Targets & Modules KAPE, création de packages de collecte de preuves",
+            "project": "Collecte complète d'artefacts d'un poste compromis en moins de 5 minutes"
           },
           {
-            week: "Semaine 9",
-            title: "Agents EDR, Isolement de Postes & Procédure de Réponse à Incident (SANS)",
-            topic: "Introduction aux agents EDR, isolement de machines infectées, collecte d'artefacts et cycle de réponse à incident (SANS/NIST)",
-            project: "Grand exercice de simulation d'incident SOC et rédaction du rapport d'escalade",
-          },
-        ],
-      },
+            "week": "Semaine 8",
+            "title": "Chasse d'Entreprise avec Velociraptor (VQL)",
+            "topic": "Syntaxe VQL, déploiement d'artefacts de chasse et neutralisation à distance",
+            "project": "Recherche en direct d'un hachage malveillant sur un parc de 50 serveurs"
+          }
+        ]
+      }
     ],
-    pricing: {
-      packComplet: {
-        price: "48,000 DA",
-        originalPrice: "65,000 DA",
-        savings: "Formation Blue Team certifiante",
-        durationLabel: "45 heures · 9 semaines de formation pratique",
-        features: [
-          "Accès au laboratoire virtuel SIEM Splunk & Elastic dédié",
-          "Ateliers pratiques sur PCAP Forensics avec Wireshark",
-          "Scénarios réels d'analyse de phishing et de détection d'intrusions",
-          "Maîtrise de la matrice d'attaque MITRE ATT&CK",
-          "Certificat CYBERLYMPH Certified SOC Analyst Level 1",
-          "Pause café offerte ☕ à chaque session",
-        ],
-      },
-      earlyBird: {
-        price: "42,000 DA",
-        originalPrice: "48,000 DA",
-        discountText: "Tarif préférentiel pour les 6 premiers inscrits",
-        seatsLeft: 4,
-        totalSeats: 12,
-      },
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "40 heures · 8 semaines",
+        "features": [
+          "Images disques d'enquêtes médico-légales authentiques",
+          "Maîtrise d'outils professionnels (KAPE, Velociraptor)",
+          "Certificat CYBERLYMPH Certified Endpoint Investigator",
+          "Accompagnement méthodologique rigoureux"
+        ]
+      }
     },
-    benefits: [
-      { iconName: "award", title: "Certificat SOC Analyst Level 1", desc: "Attestation de compétences pour intégrer une équipe de surveillance Blue Team" },
-      { iconName: "server", title: "Laboratoire SIEM Splunk Réel", desc: "Pratique sur des jeux de données d'entreprises authentiques" },
-      { iconName: "book", title: "Playbooks d'Investigation", desc: "Guides méthodologiques pour trier et traiter chaque type d'alerte" },
-      { iconName: "coffee", title: "Pause Café Incluse", desc: "Accueil convivial à chaque session de formation" },
-      { iconName: "users", title: "Formateurs Analysts Seniors", desc: "Accompagnement par des professionnels exerçant en centre de surveillance" },
-    ],
-    faqs: [
+    "benefits": [
       {
-        q: "Quelles sont les opportunités d'emploi pour un analyste SOC L1 ?",
-        a: "Le rôle d'Analyste SOC N1 est l'un des postes les plus ouverts aux nouveaux diplômés en cybersécurité, au sein des banques, des opérateurs télécoms, des MSP et des centres de services managés.",
-      },
-      {
-        q: "Quels outils apprendrai-je à utiliser ?",
-        a: "Vous manipulerez concrètement le SIEM Splunk, Elastic SIEM, Wireshark, des sondes Snort/Suricata, des outils d'analyse d'emails de phishing et des plateformes de Threat Intelligence.",
-      },
+        "iconName": "award",
+        "title": "Certification Endpoint Forensics",
+        "desc": "Validez votre capacité à conduire des enquêtes numériques judiciaires et d'entreprise"
+      }
     ],
-    registrationUrl: getWhatsAppReservationUrl("SOC Analyst Level 1 : Défense & Détection d'Incidents", "Pack Complet", "48,000 DA"),
+    "faqs": [
+      {
+        "q": "Quelles compétences acquiert-on dans ce cursus ?",
+        "a": "Vous saurez analyser un système compromis de A à Z, comprendre comment un attaquant a contourné les défenses et constituer un dossier de preuves recevable."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Advanced%20Endpoint%20Investigations*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
   },
-
-  // 5. SECURITY ENGINEER
   {
-    id: "security-engineer",
-    slug: "security-engineer-architecture-et-ingenierie",
-    title: "Security Engineer : Architecture & Ingénierie Cyber",
-    shortTitle: "Security Engineer",
-    tagline: "Threat Modeling · Cryptographie & PKI · IAM & OAuth · DevSecOps · Zero Trust",
-    category: "security",
-    categoryLabel: "Ingénierie & Architecture de Sécurité",
-    badge: "Cursus Avancé — Ingénierie",
-    badgeType: "hot",
-    partner: "CYBERLYMPH Engineering Lab",
-    duration: "50 heures · 10 semaines",
-    totalHours: 50,
-    modulesCount: 4,
-    projectsCount: 12,
-    prerequisites: "Bases en développement logiciel, administration système ou réseaux",
-    location: "Présentiel & Ateliers Cloud",
-    level: "Débutant",
-    summary:
-      "Concevez des architectures sécurisées by design. Maîtrisez la modélisation de menaces (STRIDE), la cryptographie moderne (PKI, TLS 1.3), l'IAM d'entreprise (OAuth 2.0, OIDC, Zero-Trust) et le DevSecOps.",
-    description:
-      "Le rôle de l'ingénieur de sécurité est d'anticiper et éliminer les failles avant même le déploiement des applications et des infrastructures. Ce cursus de haut niveau vous forme aux méthodologies de modélisation de menaces (STRIDE/PASTA), à l'implémentation de la cryptographie (PKI d'entreprise, coffres-forts HashiCorp Vault), à la gestion d'identités (IAM cloud, fédération SSO) et aux pipelines DevSecOps automatisés.",
-    accentGradient: "from-indigo-500 via-purple-600 to-pink-600",
-    glowColor: "rgba(99, 102, 241, 0.25)",
-    tags: ["Threat Modeling", "STRIDE", "Cryptography", "PKI", "IAM", "OAuth 2.0", "DevSecOps", "Zero Trust"],
-    isFeatured: true,
-    isOpenForRegistration: true,
-    capstoneProject: {
-      highlightLabel: "Grand Projet d'Ingénierie de Sécurité ⭐",
-      title: "Conception & Sécurisation d'une Plateforme Cloud Distribuée (Architecture Zero-Trust)",
-      description:
-        "Modélisation des menaces avec STRIDE, mise en place d'une autorité de certification (PKI) interne avec HashiCorp Vault, configuration de l'authentification forte OIDC/MFA et sécurisation d'un pipeline CI/CD avec scans SAST/DAST automatisés.",
-      tags: ["Threat Dragon", "HashiCorp Vault", "OIDC SSO", "Zero-Trust", "GitHub Actions CI/CD"],
-    },
-    modules: [
-      {
-        number: "01",
-        title: "Threat Modeling & Principes de Conception Sécurisée",
-        duration: "12 heures · Semaines 1 à 3",
-        iconName: "shield",
-        description:
-          "Principes fondamentaux de sécurité logicielle (Defense-in-Depth, Least Privilege), méthodologie STRIDE, diagrammes de flux de données (DFD) et architecture Zero-Trust.",
-        weeks: [
-          {
-            week: "Semaine 1",
-            title: "Architecture Zero Trust (ZTA) & Principes du Moindre Privilège",
-            topic: "Principes de conception sécurisée, surface d'attaque et philosophie Zero-Trust (ZTA)",
-            project: "Analyse d'architecture et identification des points uniques de compromission",
-          },
-          {
-            week: "Semaine 2",
-            title: "Modélisation des Menaces STRIDE avec OWASP Threat Dragon",
-            topic: "Modélisation des menaces avec la méthode STRIDE (Spoofing, Tampering, Repudiation, Info Disclosure, DoS, Elevation)",
-            project: "Modélisation des menaces d'une application de paiement avec OWASP Threat Dragon",
-          },
-          {
-            week: "Semaine 3",
-            title: "Évaluation Quantitative des Risques CVSS v3.1 & Remédiation",
-            topic: "Évaluation quantitative des risques avec les métriques CVSS v3.1 et élaboration de contre-mesures d'architecture",
-            project: "Rédaction d'une matrice de mitigation des risques d'architecture",
-          },
-        ],
-      },
-      {
-        number: "02",
-        title: "Cryptographie Appliquée & Infrastructure PKI",
-        duration: "13 heures · Semaines 4 à 5",
-        iconName: "lock",
-        description:
-          "Algorithmes symétriques/asymétriques (AES, RSA, ECC), hachage cryptographique, protocole TLS 1.3, certificats X.509 et gestion de secrets d'entreprise avec HashiCorp Vault.",
-        weeks: [
-          {
-            week: "Semaine 4",
-            title: "Primitives Cryptographiques (AES, RSA, ECC, Hachage & TLS 1.3)",
-            topic: "Primitives cryptographiques : AES-GCM, RSA vs Courbes Elliptiques (ECC), SHA-256, HMAC et dérivation de clés (Argon2/bcrypt)",
-            project: "Implémentation d'un module de chiffrement/déchiffrement sécurisé de données au repos",
-          },
-          {
-            week: "Semaine 5",
-            title: "Infrastructure à Clés Publiques (PKI) & Gestion de Secrets avec HashiCorp Vault",
-            topic: "Infrastructure à clés publiques (PKI), gestion de certificats TLS/SSL et déploiement d'un coffre-fort de secrets HashiCorp Vault",
-            project: "Déploiement d'une autorité de certification (CA) interne et rotation automatique des clés d'API",
-          },
-        ],
-      },
-      {
-        number: "03",
-        title: "Identity & Access Management (IAM) & Fédération d'Identités",
-        duration: "13 heures · Semaines 6 à 7",
-        iconName: "zap",
-        description:
-          "Authentification forte vs autorisation, protocoles OAuth 2.0, OpenID Connect (OIDC), SAML 2.0 pour le SSO, modèles RBAC/ABAC et sécurisation IAM Multi-Cloud.",
-        weeks: [
-          {
-            week: "Semaine 6",
-            title: "Protocoles d'Authentification Moderne : OAuth 2.0, JWT & OpenID Connect",
-            topic: "Protocoles d'authentification moderne : OAuth 2.0 (flux d'autorisation, JWT), OpenID Connect et SAML 2.0 pour l'entreprise",
-            project: "Mise en place d'un serveur d'authentification centralisé (Keycloak / OIDC) avec support MFA",
-          },
-          {
-            week: "Semaine 7",
-            title: "Contrôle d'Accès Granulaire (RBAC/ABAC) & Politiques Cloud IAM",
-            topic: "Contrôle d'accès granulaire : RBAC (Role-Based), ABAC (Attribute-Based) et durcissement des politiques IAM cloud (AWS/Azure)",
-            project: "Configuration de politiques IAM cloud strictes selon le principe du moindre privilège",
-          },
-        ],
-      },
-      {
-        number: "04",
-        title: "Sécurité Logicielle, Conteneurs & DevSecOps",
-        duration: "12 heures · Semaines 8 à 10",
-        iconName: "terminal",
-        description:
-          "Intégration de la sécurité dans les pipelines CI/CD : analyse statique (SAST), analyse dynamique (DAST), scan de dépendances (SCA) et durcissement Docker/Kubernetes.",
-        weeks: [
-          {
-            week: "Semaine 8",
-            title: "Pipelines DevSecOps Automatisés (SAST Semgrep, DAST & GitHub Actions)",
-            topic: "Méthodologie DevSecOps : automatisation des tests de sécurité dans les pipelines CI/CD (GitHub Actions / GitLab CI)",
-            project: "Intégration de scanners de code statique (Semgrep, SonarQube) bloquant les vulnérabilités au push",
-          },
-          {
-            week: "Semaine 9",
-            title: "Sécurité des Conteneurs Docker & Scans de Vulnérabilités Trivy",
-            topic: "Sécurité des conteneurs : création d'images Docker minimales, scans de vulnérabilités (Trivy) et sécurité Kubernetes",
-            project: "Audit et durcissement complet d'une image Docker de production",
-          },
-          {
-            week: "Semaine 10",
-            title: "Soutenance Finale d'Architecture Sécurisée & Zero-Trust",
-            topic: "Grand projet d'intégration : architecture Zero-Trust complète et revue de code de sécurité",
-            project: "Soutenance du grand projet d'architecture sécurisée",
-          },
-        ],
-      },
+    "id": "defending-azure",
+    "slug": "defending-azure-cloud-security-et-microsoft-sentinel",
+    "title": "Defending Azure : Sécurité Cloud & Microsoft Sentinel",
+    "shortTitle": "Defending Azure",
+    "tagline": "Microsoft Entra ID · Defender for Cloud · Microsoft Sentinel · KQL · Zero Trust Cloud",
+    "category": "soc",
+    "categoryLabel": "Sécurité Cloud & Surveillance Azure",
+    "badge": "Cloud Security",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH Cloud Defense Practice",
+    "duration": "40 heures · 8 semaines",
+    "totalHours": 40,
+    "modulesCount": 4,
+    "projectsCount": 12,
+    "prerequisites": "Bases des services cloud et principes fondamentaux de sécurité",
+    "location": "Laboratoire Cloud Azure Dédié",
+    "level": "Intermédiaire",
+    "summary": "Sécurisez les environnements cloud Microsoft Azure. Protégez les identités Entra ID, configurez Defender for Cloud et menez des investigations de sécurité avancées dans Microsoft Sentinel avec le langage KQL.",
+    "description": "Alors que les entreprises migrent massivement vers le cloud de Microsoft, la sécurisation des architectures Azure est devenue prioritaire. Ce cursus pratique vous apprend à verrouiller les abonnements Azure, détecter les compromissions d'accès privilégiés, surveiller les conteneurs et orchestrer la réponse aux cybermenaces avec Microsoft Sentinel.",
+    "accentGradient": "from-blue-500 via-sky-500 to-indigo-600",
+    "glowColor": "rgba(59, 130, 246, 0.25)",
+    "tags": [
+      "Microsoft Azure",
+      "Entra ID",
+      "Microsoft Sentinel",
+      "KQL",
+      "Defender for Cloud",
+      "Cloud Security",
+      "Conditional Access"
     ],
-    pricing: {
-      packComplet: {
-        price: "55,000 DA",
-        originalPrice: "80,000 DA",
-        savings: "Cursus d'ingénierie de haut niveau",
-        durationLabel: "50 heures · 10 semaines de spécialisation",
-        features: [
-          "Formation complète en Threat Modeling, PKI, IAM et DevSecOps",
-          "Laboratoires pratiques sur HashiCorp Vault, Keycloak et Docker",
-          "Modèles d'architecture Zero-Trust d'entreprises réutilisables",
+    "isFeatured": false,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Architecture & Détection Cloud ⭐",
+      "title": "Déploiement & Sécurisation d'un SIEM/SOAR Microsoft Sentinel en Environnement Hybride",
+      "description": "Vous configurez de bout en bout l'architecture de défense d'une entreprise dans Azure : règles d'accès conditionnel Entra ID, ingestion de logs multi-sources, écriture de règles de détection analytiques en KQL et automatisation de blocage d'utilisateurs compromis avec des Logic Apps.",
+      "tags": [
+        "Microsoft Sentinel",
+        "KQL Queries",
+        "Entra ID PIM",
+        "Security Playbooks",
+        "Cloud IR"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Identités Cloud & Microsoft Entra ID (Azure AD)",
+        "duration": "10 heures",
+        "iconName": "lock",
+        "description": "Maîtrisez le cœur de la sécurité Azure : gestion des identités, politiques d'accès conditionnel, protection contre le vol de jetons et Privileged Identity Management (PIM).",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Architecture Entra ID & Contrôle d'Accès RBAC",
+            "topic": "Rôles intégrés Azure RBAC vs rôles Entra ID, principe de moindre privilège",
+            "project": "Audit de sécurité des rôles administrateurs globaux et assainissement"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Conditional Access & Authentification Forte Phishing-Resistant",
+            "topic": "MFA sans mot de passe, conformité d'appareil et protection des identités",
+            "project": "Implémentation d'une politique d'accès conditionnel basée sur le risque"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Posture de Sécurité & Microsoft Defender for Cloud",
+        "duration": "10 heures",
+        "iconName": "shield",
+        "description": "Gérez la posture de sécurité cloud (CSPM) et protégez les charges de travail (CWPP) : machines virtuelles, stockage Azure Storage et clusters AKS.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Gestion de Posture (CSPM) & Secure Score",
+            "topic": "Recommandations Azure Security Benchmark, remédiation des failles",
+            "project": "Augmentation du score de sécurité Azure de 35% à plus de 85%"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Protection des Charges de Travail (Defender for Servers/Storage)",
+            "topic": "Détection d'activités suspectes sur machines virtuelles et conteneurs",
+            "project": "Simulation et blocage d'une attaque par exfiltration sur Azure Blob Storage"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Microsoft Sentinel & Investigations avec le Langage KQL",
+        "duration": "10 heures",
+        "iconName": "search",
+        "description": "Devenez un virtuose du Kusto Query Language (KQL). Interrogez des milliards de lignes de logs, écrivez des règles de détection et créez des classeurs analytiques.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Syntaxe KQL Avancée & Opérateurs Fondamentaux",
+            "topic": "Where, summarize, extend, join, parse-json et visualisations graphiques",
+            "project": "Création de 10 requêtes KQL de détection des techniques MITRE ATT&CK"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Règles Analytiques & Gestion des Incidents Sentinel",
+            "topic": "Configuration de connecteurs de données, règles d'alerte et enquête visuelle",
+            "project": "Investigation d'une attaque par force brute suivie d'un accès illégitime"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Sécurité Réseau Cloud & Automatisation SOAR",
+        "duration": "10 heures",
+        "iconName": "zap",
+        "description": "Verrouillez le périmètre réseau Azure (NSG, Azure Firewall) et construisez des flux de réponse automatisés avec les Logic Apps de Microsoft Sentinel.",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "Sécurisation Réseau Azure & Endpoints Privés",
+            "topic": "Network Security Groups (NSG), Azure Firewall, Application Gateway WAF",
+            "project": "Architecture réseau Zero-Trust avec Private Link et DMZ sécurisée"
+          },
+          {
+            "week": "Semaine 8",
+            "title": "Automatisation de la Réponse avec Azure Logic Apps",
+            "topic": "Conception de playbooks de remédiation instantanée lors d'alertes critiques",
+            "project": "Déploiement d'un playbook de révocation de sessions et notification SOC"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "40 heures · 8 semaines",
+        "features": [
+          "Souscription Azure de laboratoire fournie",
+          "Maîtrise complète de Microsoft Sentinel et KQL",
+          "Certificat CYBERLYMPH Certified Azure Defense Specialist",
+          "Préparation directe aux certifications cloud sécurité"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certification Azure Security Specialist",
+        "desc": "Atteste de votre expertise sur l'écosystème cloud de sécurité Microsoft"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Les crédits Azure sont-ils inclus ?",
+        "a": "Oui, un environnement Azure dédié vous est mis à disposition pour exécuter tous les travaux pratiques sans coût additionnel."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Defending%20Azure*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  },
+  {
+    "id": "windows-incident-response",
+    "slug": "windows-incident-response-and-forensics",
+    "title": "Windows Incident Response & Forensics : Analyse Post-Intrusion",
+    "shortTitle": "Windows Forensics",
+    "tagline": "Méthodologie IR · NIST SP 800-61 · Artefacts Windows · Timeline Analysis · Chasse au Ransomware",
+    "category": "soc",
+    "categoryLabel": "Réponse aux Incidents & Forensics Numérique",
+    "badge": "Investigation & Enquête",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH Incident Response Unit",
+    "duration": "40 heures · 8 semaines",
+    "totalHours": 40,
+    "modulesCount": 4,
+    "projectsCount": 12,
+    "prerequisites": "Bonne compréhension de Windows et des concepts de base de la sécurité des systèmes",
+    "location": "Laboratoire Numérique Forensics",
+    "level": "Intermédiaire",
+    "summary": "Intervenez d'urgence en cas d'attaque informatique. Apprenez à contenir une intrusion active, préserver les preuves selon les normes médico-légales, reconstituer la chronologie exacte des événements et éradiquer la menace.",
+    "description": "Quand un ransomware frappe ou qu'un pirate s'infiltre dans le réseau d'une organisation, les équipes d'Incident Response sont appelées sur le front. Ce cursus immersif vous apprend la conduite d'enquête post-mortem : collecte à chaud de la mémoire, analyse des journaux d'événements, reconstitution de chronologie (Timeline Analysis) et rédaction de rapports techniques officiels.",
+    "accentGradient": "from-blue-600 via-indigo-700 to-purple-800",
+    "glowColor": "rgba(79, 70, 229, 0.25)",
+    "tags": [
+      "Incident Response",
+      "Windows Forensics",
+      "Timeline Analysis",
+      "NIST Framework",
+      "Plaso",
+      "FTK Imager",
+      "Chain of Custody"
+    ],
+    "isFeatured": false,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Scénario Réel d'Incident Response ⭐",
+      "title": "Enquête Complète sur une Infection Ransomware d'Entreprise : Du Phishing à l'Extorsion",
+      "description": "Vous êtes dépêché auprès d'une entreprise victime d'un chiffrement massif : vous saisissez les preuves, identifiez le point d'entrée initial, suivez le cheminement de propagation de l'intrus sur le réseau, découvrez le malware utilisé et établissez le plan de remédiation définitif.",
+      "tags": [
+        "Ransomware Investigation",
+        "Live IR",
+        "Registry Forensics",
+        "Evidence Chain",
+        "Remediation Plan"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Méthodologie d'Incident Response & Préservation de Preuves",
+        "duration": "10 heures",
+        "iconName": "shield",
+        "description": "Maîtrisez les standards internationaux d'intervention (NIST SP 800-61, SANS PICERL), l'ordre de volatilité des données et la chaîne de traçabilité des preuves (Chain of Custody).",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Cycle de Vie d'un Incident & Premiers Gestes de Préservation",
+            "topic": "Préparation, détection, confinement, éradication, récupération et retour d'expérience",
+            "project": "Élaboration d'une trousse d'intervention d'urgence (IR Triage Toolkit)"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Acquisition Médico-Légale (Forensic Imaging)",
+            "topic": "FTK Imager, acquisition de mémoire vive et calcul de hachages d'intégrité",
+            "project": "Création et validation conforme d'une image disque forensique brute"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Analyse des Événements & Artefacts Système Windows",
+        "duration": "10 heures",
+        "iconName": "search",
+        "description": "Exploitez les trésors cachés des journaux Windows Event Logs (Sécurité, Système, PowerShell, Sysmon) et les registres système.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Détection des Connexions & Authentifications Suspectes",
+            "topic": "Event ID 4624 (Logon Types), 4625, 4720 (User Creation) et 4776",
+            "project": "Détection d'une connexion anormale par vol de session RDP"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Analyse des Ruches du Registre (Registry Forensics)",
+            "topic": "Ruches SYSTEM, SOFTWARE, SAM, NTUSER.DAT : clés USB, MRU, réseaux récents",
+            "project": "Preuve de branchement d'une clé USB pirate ayant servi au vol de données"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Reconstitution Chronologique (Super Timeline Analysis)",
+        "duration": "10 heures",
+        "iconName": "terminal",
+        "description": "Fusionnez toutes les sources de données en une chronologie unifiée pour comprendre à la seconde près les actions entreprises par l'attaquant.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Génération de Super Timelines avec Plaso / log2timeline",
+            "topic": "Extraction et agrégation des horodatages MFT, logs, cache navigateur et registre",
+            "project": "Génération d'une timeline d'intrusion sur une période de 48 heures"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Filtrage & Corrélation Événementielle",
+            "topic": "Élimination du bruit de fond de Windows et isolation des micro-activités de l'attaquant",
+            "project": "Isolement de la seconde exacte du téléchargement du malware"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Éradication, Remédiation & Restitution d'Enquête",
+        "duration": "10 heures",
+        "iconName": "zap",
+        "description": "Concluez l'enquête : assurez-vous qu'aucun accès pirate résiduel ne subsiste, remettez les systèmes en production et rédigez les rapports technique et exécutif.",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "Éradication Complète & Durcissement Post-Incident",
+            "topic": "Réinitialisation des secrets Kerberos, élimination de portes dérobées",
+            "project": "Protocole de remise en service sécurisée du domaine d'entreprise"
+          },
+          {
+            "week": "Semaine 8",
+            "title": "Rédaction du Rapport d'Incident & Présentation Direction",
+            "topic": "Structure d'un rapport professionnel, chronologie visuelle et recommandations",
+            "project": "Rédaction et soutenance du rapport officiel d'incident d'attaque"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "40 heures · 8 semaines",
+        "features": [
+          "Scénarios d'attaques d'entreprises complètes",
+          "Outils d'enquête standard de l'industrie",
+          "Certificat CYBERLYMPH Certified Incident Responder",
+          "Méthodologie conforme aux référentiels judiciaires"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certification Incident Response",
+        "desc": "Atteste de votre capacité à diriger et exécuter des opérations de réponse à incident"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Ce cours forme-t-il aux cyberattaques réelles ?",
+        "a": "Absolument. Les exercices sont basés sur des cas réels de compromissions (ransomwares, vols d'identités, attaques internes)."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Windows%20Incident%20Response%20%26%20Forensics*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  },
+  {
+    "id": "junior-penetration-tester",
+    "slug": "junior-penetration-tester-pentest-pratique",
+    "title": "Junior Penetration Tester : Méthodologie & Pratique Offensive",
+    "shortTitle": "Jr. Penetration Tester",
+    "tagline": "Méthodologie Pentest · Nmap · Burp Suite · Metasploit · Élévation de Privilèges Linux & Windows",
+    "category": "pentest",
+    "categoryLabel": "Test d'Intrusion & Sécurité Offensive (Pentest)",
+    "badge": "Cursus Essentiel Pentest",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH Offensive Security Lab",
+    "duration": "50 heures · 10 semaines",
+    "totalHours": 50,
+    "modulesCount": 5,
+    "projectsCount": 16,
+    "prerequisites": "Bases en réseaux informatiques et utilisation de base de la ligne de commande Linux",
+    "location": "Présentiel & Cyber Range Privé",
+    "level": "Intermédiaire",
+    "summary": "Apprenez à hacker éthiquement comme un professionnel. Maîtrisez la reconnaissance, le scan de vulnérabilités, l'exploitation de systèmes et l'élévation de privilèges sous Linux et Windows.",
+    "description": "Le test d'intrusion est l'art d'évaluer la sécurité d'un système d'information en simulant les actions d'un attaquant malveillant. Ce cursus pratique vous apprend la méthodologie rigoureuse du pentest : de la reconnaissance initiale jusqu'à la compromission totale et la rédaction du rapport d'audit.",
+    "accentGradient": "from-rose-500 via-red-600 to-amber-600",
+    "glowColor": "rgba(225, 29, 72, 0.25)",
+    "tags": [
+      "Penetration Testing",
+      "Ethical Hacking",
+      "Nmap",
+      "Burp Suite",
+      "Metasploit",
+      "Privilege Escalation",
+      "Linux PrivEsc",
+      "Windows PrivEsc"
+    ],
+    "isFeatured": true,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Épreuve Finale Pratique (Challenge CTF d'Entreprise) ⭐",
+      "title": "Test d'Intrusion Complet d'une Infrastructure d'Entreprise en Boîte Noire",
+      "description": "Vous recevez une adresse IP cible sans aucune information préalable. Vous identifiez les services exposés, exploitez une vulnérabilité applicative pour obtenir un accès initial, contournez les restrictions locales, élevez vos privilèges vers root / Administrateur et extrayez la preuve d'audit.",
+      "tags": [
+        "Black-Box Pentest",
+        "Nmap Scan",
+        "Web Exploitation",
+        "Privilege Escalation",
+        "Executive Audit Report"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Méthodologie du Pentest, Éthique & Environnement",
+        "duration": "8 heures",
+        "iconName": "shield",
+        "description": "Comprenez les cadres légaux (droit pénal, conventions d'audit), les méthodologies standard (PTES, OWASP) et configurez votre machine d'attaque Kali Linux.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Cadre Juridique & Méthodologie d'Audit",
+            "topic": "Règles d'engagement, périmètre d'audit et déontologie de l'auditeur",
+            "project": "Rédaction d'une convention de pentest conforme aux normes"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Arsenal de l'Auditeur & Personnalisation de Kali",
+            "topic": "Zsh, tunnels SSH, proxychains, alias d'attaque et scripts d'automatisation",
+            "project": "Configuration complète d'un environnement de pentest opérationnel"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Reconnaissance & Énumération Avancée",
+        "duration": "10 heures",
+        "iconName": "search",
+        "description": "Apprenez à cartographier une cible sans déclencher les alertes : OSINT, DNS recon, cartographie Nmap furtive et énumération de services.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Reconnaissance Passive & OSINT d'Entreprise",
+            "topic": "Recon-ng, theHarvester, Shodan, crt.sh et cartographie d'actifs exposés",
+            "project": "Cartographie de surface d'attaque externe d'une société cible"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Scan Actif de Ports & Énumération Réseau avec Nmap",
+            "topic": "Scripts NSE, scans SYN/ACK/UDP, évasion IDS et identification de versions",
+            "project": "Énumération complète de 10 serveurs hétérogènes"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Exploitation de Vulnérabilités & Metasploit Framework",
+        "duration": "10 heures",
+        "iconName": "terminal",
+        "description": "Exploitez les failles identifiées. Maîtrisez le framework Metasploit, comprenez le fonctionnement des payloads et manipulez les reverse shells.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Architecture Metasploit & Génération de Payloads",
+            "topic": "Exploits, payloads stageless vs staged, msfvenom et handlers",
+            "project": "Exploitation d'un serveur vulnérable et établissement d'une session Meterpreter"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Établissement & Stabilisation de Reverse Shells",
+            "topic": "Netcat, socat, shells interactifs TTY, bypass de pare-feu sortants",
+            "project": "Création et stabilisation de sessions d'accès distant résilientes"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Élévation de Privilèges sous Linux (Linux PrivEsc)",
+        "duration": "11 heures",
+        "iconName": "lock",
+        "description": "Passez d'un compte utilisateur restreint aux droits root absolus sur les serveurs Linux.",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "Failles de Configuration Sudo & Binaires SUID",
+            "topic": "GTFOBins, abus de droits sudo sans mot de passe, binaires SUID mal sécurisés",
+            "project": "Élévation root par exploitation de binaires SUID personnalisés"
+          },
+          {
+            "week": "Semaine 8",
+            "title": "Tâches Cron, Capabilities & Exploits Kernel",
+            "topic": "Injections dans les tâches planifiées, Linux Capabilities et failles du noyau",
+            "project": "Compromission complète de 4 machines cibles Linux"
+          }
+        ]
+      },
+      {
+        "number": "05",
+        "title": "Élévation de Privilèges sous Windows (Windows PrivEsc)",
+        "duration": "11 heures",
+        "iconName": "zap",
+        "description": "Prenez le contrôle total de machines Windows en exploitant les failles de services et de configurations locales.",
+        "weeks": [
+          {
+            "week": "Semaine 9",
+            "title": "Unquoted Service Paths & Droits de Fichiers Abusifs",
+            "topic": "Chemins de service non cités, permissions faibles sur exécutables de services",
+            "project": "Remplacement malveillant de service Windows pour obtenir SYSTEM"
+          },
+          {
+            "week": "Semaine 10",
+            "title": "Token Impersonation & Rédaction du Rapport de Pentest",
+            "topic": "Attaques RottenPotato/PrintSpoofer, vol de jetons et structure de rapport d'audit",
+            "project": "Rédaction finale du rapport d'audit de sécurité technique et managérial"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "50 heures · 10 semaines",
+        "features": [
+          "Cyber range avec cibles réelles Windows et Linux",
+          "Préparation directe aux certifications professionnelles de pentest",
+          "Certificat CYBERLYMPH Certified Junior Penetration Tester",
+          "Méthodologie standardisée d'audit de sécurité"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certification Pentester Junior",
+        "desc": "Atteste de votre capacité à conduire un audit technique offensif et à rédiger le rapport"
+      },
+      {
+        "iconName": "terminal",
+        "title": "Cyber Range Réaliste",
+        "desc": "Attaquez de véritables infrastructures d'entreprises hébergées sur notre réseau de test"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Le hacking enseigné est-il légal ?",
+        "a": "100% légal. Toutes les attaques sont réalisées dans des laboratoires privés autorisés et encadrées par une convention éthique stricte."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Junior%20Penetration%20Tester*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  },
+  {
+    "id": "web-app-pentesting",
+    "slug": "web-application-pentesting-owasp-top-10",
+    "title": "Web Application Pentesting : Audit & Failles Applicatives OWASP",
+    "shortTitle": "Web Pentesting",
+    "tagline": "Burp Suite Pro · OWASP Top 10 · Injections SQL · XSS · SSRF · Insecure Deserialization · APIs",
+    "category": "pentest",
+    "categoryLabel": "Sécurité Applicative Web & OWASP",
+    "badge": "Spécialisation Web",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH AppSec Lab",
+    "duration": "45 heures · 9 semaines",
+    "totalHours": 45,
+    "modulesCount": 5,
+    "projectsCount": 15,
+    "prerequisites": "Compréhension du fonctionnement des applications web (HTML/JS/PHP/Node) et du protocole HTTP",
+    "location": "Laboratoire Web Applicatif Dédié",
+    "level": "Intermédiaire",
+    "summary": "Spécialisez-vous dans la recherche et l'exploitation des failles de sécurité des sites et APIs modernes selon le standard OWASP Top 10.",
+    "description": "La majorité des intrusions débutent par une vulnérabilité sur une application web exposée sur Internet. Ce cursus de référence vous transforme en auditeur d'applications web capable d'identifier, d'exploiter et de corriger les failles critiques : Injections SQL, Cross-Site Scripting (XSS), Server-Side Request Forgery (SSRF) et brèches d'authentification.",
+    "accentGradient": "from-amber-500 via-orange-600 to-rose-600",
+    "glowColor": "rgba(245, 158, 11, 0.25)",
+    "tags": [
+      "Web Pentest",
+      "Burp Suite",
+      "OWASP Top 10",
+      "SQL Injection",
+      "XSS",
+      "SSRF",
+      "IDOR",
+      "JWT Security",
+      "API Pentest"
+    ],
+    "isFeatured": true,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Audit de Sécurité Applicative Réel ⭐",
+      "title": "Audit de Sécurité d'une Plateforme Bancaire Web Moderne (API REST, JWT & Microservices)",
+      "description": "Vous réalisez le test d'intrusion complet d'une application de gestion financière en boîte grise : contournement des filtres d'authentification JWT, exploitation d'une SSRF vers le cloud sous-jacent et extraction de la base de données via une injection aveugle.",
+      "tags": [
+        "Burp Suite Pro",
+        "Blind SQLi",
+        "SSRF Exploitation",
+        "JWT Bypass",
+        "OWASP Remediation"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Maîtrise de Burp Suite & Cartographie Applicative",
+        "duration": "8 heures",
+        "iconName": "search",
+        "description": "Domptez l'outil roi du pentest web : Proxy, Repeater, Intruder, Match and Replace, extensions BApp et cartographie complète de surface d'attaque.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Interception & Manipulation de Requêtes avec Burp",
+            "topic": "Certificats SSL, analyse des en-têtes HTTP, gestion des sessions et historique",
+            "project": "Audit des cookies et en-têtes de sécurité d'un site d'e-commerce"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Fuzzing & Découverte de Paramètres avec Intruder",
+            "topic": "Attaques Sniper/Battering Ram, listes Seclists et détection d'erreurs cachées",
+            "project": "Découverte de paramètres d'administration dissimulés"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Injections de Données : SQLi, Blind SQLi & Command Injection",
+        "duration": "10 heures",
+        "iconName": "code",
+        "description": "Comprenez et exploitez les injections de code côté serveur : Injections SQL basées sur les erreurs, union, aveugles (temps/booléen) et injections de commandes OS.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Injections SQL Classiques & UNION-Based",
+            "topic": "Bypass d'authentification SQL, découverte du nombre de colonnes et dump de schéma",
+            "project": "Extraction complète de la base de données utilisateurs d'une boutique"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Injections SQL Aveugles (Blind SQLi) & sqlmap Avancé",
+            "topic": "Injections conditionnelles par délai temporel, scripts Python et usage expert de sqlmap",
+            "project": "Automatisation scriptée de l'extraction de mot de passe administrateur"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Failles Côté Client : XSS, CSRF & CORS",
+        "duration": "9 heures",
+        "iconName": "shield",
+        "description": "Maîtrisez les attaques ciblant les utilisateurs finaux : XSS Reflected, Stored et DOM, vol de cookies de session et falsification de requêtes (CSRF).",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Cross-Site Scripting (XSS) & Vol de Sessions",
+            "topic": "Payloads XSS, contournement de filtres de caractères, vol de tokens de session",
+            "project": "Prise de contrôle de compte administrateur via une faille XSS stockée"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "CSRF & Mauvaises Configurations CORS",
+            "topic": "Jetons anti-CSRF, contournement SameSite et exploitation de politiques CORS permissives",
+            "project": "Changement de mot de passe forcé via une attaque CSRF"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Failles Côté Serveur : SSRF, XXE & Insecure Deserialization",
+        "duration": "9 heures",
+        "iconName": "terminal",
+        "description": "Exploitez les fonctionnalités serveur pour accéder aux ressources internes protégées : Server-Side Request Forgery, entités externes XML et désérialisation.",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "Server-Side Request Forgery (SSRF) & Métadonnées Cloud",
+            "topic": "Piratage des métadonnées AWS/Azure via SSRF, contournement de filtres de bouclage",
+            "project": "Récupération des clés IAM cloud depuis une faille SSRF"
+          }
+        ]
+      },
+      {
+        "number": "05",
+        "title": "Sécurité des APIs, Tokens JWT & Contrôle d'Accès (IDOR)",
+        "duration": "9 heures",
+        "iconName": "lock",
+        "description": "Auditez les architectures modernes : APIs REST, GraphQL, tokens JWT (signature bypass, algorithme none) et failles d'autorisation IDOR/BOLA.",
+        "weeks": [
+          {
+            "week": "Semaine 8",
+            "title": "Contrôle d'Accès Défaillant : IDOR & BOLA",
+            "topic": "Manipulation d'identifiants directs, énumération d'enregistrements privés",
+            "project": "Consultation des profils confidentiels de tous les clients d'une application"
+          },
+          {
+            "week": "Semaine 9",
+            "title": "Attaques sur les Tokens JSON Web Tokens (JWT)",
+            "topic": "Falsification de signatures JWT, attaques par clé publique/privée et brute force",
+            "project": "Escalade vers le rôle Super-Admin par falsification de token JWT"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "45 heures · 9 semaines",
+        "features": [
+          "Environnement de laboratoire web dédié",
+          "Scénarios OWASP Top 10 réalistes et modernes",
+          "Certificat CYBERLYMPH Certified Web App Pentester",
+          "Accompagnement méthodologique et rédaction de rapports"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certification Web Pentest",
+        "desc": "Attestation certifiante attestant de votre capacité à auditer des applications web complexes"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Ce cours couvre-t-il les APIs modernes ?",
+        "a": "Oui, un module entier est dédié aux vulnérabilités d'APIs REST, GraphQL et à la manipulation des tokens JWT."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Web%20Application%20Pentesting*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  },
+  {
+    "id": "web-app-red-teaming",
+    "slug": "web-application-red-teaming-waf-evasion",
+    "title": "Web Application Red Teaming : Évasion WAF & Exploitation Avancée",
+    "shortTitle": "Web Red Teaming",
+    "tagline": "Évasion WAF · Bypasses Cloudflare · Attaques SSO/SAML · Prototype Pollution · RCE Chaining",
+    "category": "pentest",
+    "categoryLabel": "Opérations Web Offensives Avancées",
+    "badge": "Niveau Avancé",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH Red Team Practice",
+    "duration": "45 heures · 9 semaines",
+    "totalHours": 45,
+    "modulesCount": 5,
+    "projectsCount": 14,
+    "prerequisites": "Maîtrise préalable du pentest web classique (OWASP Top 10) et de Burp Suite",
+    "location": "Laboratoire Red Team Avancé",
+    "level": "Intermédiaire à Avancé",
+    "summary": "Dépassez les audits web traditionnels. Apprenez à contourner les Web Application Firewalls (Cloudflare, ModSecurity), attaquer les fédérations d'identités (SAML, OAuth 2.0) et enchaîner les failles pour obtenir une exécution de code (RCE) à travers des défenses renforcées.",
+    "description": "Sur des cibles hautement protégées par des WAF et des EDR, les payloads standards sont immédiatement bloqués. Ce cursus d'élite vous forme aux techniques d'évasion d'auditeurs chevronnés : encodages exotiques, pollution de requêtes HTTP, manipulation de parseurs JSON et exploitation de micro-architectures distribuées.",
+    "accentGradient": "from-red-600 via-rose-700 to-purple-800",
+    "glowColor": "rgba(225, 29, 72, 0.25)",
+    "tags": [
+      "WAF Evasion",
+      "Web Red Team",
+      "Cloudflare Bypass",
+      "SAML Injection",
+      "OAuth Exploitation",
+      "Prototype Pollution",
+      "HTTP Request Smuggling"
+    ],
+    "isFeatured": false,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Opération Red Team Web Réelle ⭐",
+      "title": "Compromission Furtive d'un Portail Corporate Protégé par WAF & SSO avec Pivot Interne",
+      "description": "Face à une cible protégée par Cloudflare et un SSO d'entreprise : vous contournez le filtre WAF par injection de requêtes HTTP décalées (Request Smuggling), détournez un flux OAuth 2.0 pour voler le compte administrateur et exécutez du code distant sur le serveur applicatif.",
+      "tags": [
+        "HTTP Smuggling",
+        "WAF Bypass",
+        "OAuth Hijacking",
+        "RCE Weaponization",
+        "Network Pivot"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Évasion de Pare-feu Applicatifs (WAF Evasion)",
+        "duration": "9 heures",
+        "iconName": "shield",
+        "description": "Comprenez comment fonctionnent les moteurs de détection de WAF (ModSecurity, Cloudflare, AWS WAF) et développez des payloads obfusqués capables de tromper les regex.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Mécanismes de Détection WAF & Analyse de Regex",
+            "topic": "Analyse lexicale, normalisation d'URL, encodages imbriqués (Unicode, Double URL, Hex)",
+            "project": "Bypass complet d'un ensemble de règles ModSecurity CRS standard"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Payload Crafting & Dissimulation Sémantique",
+            "topic": "Manipulation de requêtes multipart, découpage de payloads SQL et techniques JSON/XML",
+            "project": "Exécution réussie d'une injection SQL à travers un pare-feu Cloudflare"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Attaques sur les Fédérations d'Identités (SAML & OAuth 2.0)",
+        "duration": "9 heures",
+        "iconName": "lock",
+        "description": "Attaquez les systèmes de Single Sign-On modernes : altération de signatures SAML (XML Signature Wrapping), usurpation de tokens OAuth et vols de codes d'autorisation.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Attaques sur les Assertions SAML",
+            "topic": "Structure SAML, XML Signature Wrapping (XSW), falsification d'assertions d'identité",
+            "project": "Usurpation de compte sans mot de passe via injection XSW sur un fournisseur SAML"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Détournement de Flux OAuth 2.0 & OpenID Connect",
+            "topic": "Redirect_uri manipulation, fuite de code d'autorisation, échange de jetons illégitime",
+            "project": "Vol de compte utilisateur par redirection malveillante d'authentification OAuth"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Désynchronisation de Requêtes HTTP (Request Smuggling)",
+        "duration": "9 heures",
+        "iconName": "zap",
+        "description": "Exploitez les divergences d'interprétation entre reverse proxies et serveurs backend : attaques CL.TE, TE.CL et TE.TE pour empoisonner les requêtes des autres clients.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Fondements du HTTP Request Smuggling (CL.TE & TE.CL)",
+            "topic": "Différences de traitement Content-Length vs Transfer-Encoding, pipeline HTTP/1.1",
+            "project": "Désynchronisation de proxy et capture de requêtes d'utilisateurs connectés"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Exploitation Avancée : Vol de Cookies & Bypass de Contrôles",
+            "topic": "Empoisonnement de cache web, injection d'en-têtes et contournement de routes privées",
+            "project": "Accès non autorisé à la console d'administration interne via HTTP Smuggling"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Attaques Modernes JavaScript : Prototype Pollution & Node.js RCE",
+        "duration": "9 heures",
+        "iconName": "code",
+        "description": "Attaquez les backends JavaScript modernes : pollution d'objets globaux, escalade vers l'exécution de commandes système et évasion de sandbox.",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "Prototype Pollution Côté Client & Côté Serveur",
+            "topic": "Fusion récursive d'objets, modification de Object.prototype et vecteurs d'attaque",
+            "project": "Exploitation d'une pollution de prototype pour obtenir une RCE sous Node.js"
+          }
+        ]
+      },
+      {
+        "number": "05",
+        "title": "Chaining de Failles Web pour RCE & Mouvement Latéral",
+        "duration": "9 heures",
+        "iconName": "terminal",
+        "description": "Combinez plusieurs vulnérabilités mineures pour provoquer un impact critique : saut du contexte web vers le système d'exploitation et pivot réseau.",
+        "weeks": [
+          {
+            "week": "Semaine 8",
+            "title": "De la Faille Web à l'Accès Shell Système",
+            "topic": "Téléversement de fichiers malveillants, désérialisation Java/PHP et contournement d'antivirus",
+            "project": "Chaînage d'une faille CSRF + upload arbitraire pour un shell interactif"
+          },
+          {
+            "week": "Semaine 9",
+            "title": "Pivot depuis la Machine Web vers le Réseau Interne",
+            "topic": "Chisel, ligolo-ng, tunnels SSH et cartographie des services d'entreprise privés",
+            "project": "Pivot d'attaque réussi depuis le serveur DMZ vers l'Active Directory interne"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "45 heures · 9 semaines",
+        "features": [
+          "Laboratoire avec reverse-proxies et WAF réels",
+          "Scénarios avancés d'équipes d'attaque Red Team",
+          "Certificat CYBERLYMPH Certified Web Red Teamer",
+          "Entraînement sur des techniques d'intrusion non conventionnelles"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certification Web Red Teaming",
+        "desc": "Atteste de votre capacité à auditer et compromettre des applications sous haute protection"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "En quoi ce cours diffère-t-il du Pentest Web classique ?",
+        "a": "Le pentest classique teste les failles OWASP évidentes. Le Web Red Teaming se concentre sur l'évasion des protections actives (WAF, EDR), les chaînages complexes et les protocoles avancés."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Web%20Application%20Red%20Teaming*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  },
+  {
+    "id": "red-teaming",
+    "slug": "red-teaming-adversary-emulation-et-active-directory",
+    "title": "Red Teaming : Simulation d'Adversaires & Opérations Spéciales",
+    "shortTitle": "Red Teaming",
+    "tagline": "Infrastructures C2 · Active Directory Attacks · Évasion EDR · Mouvement Latéral · Cobalt Strike / Sliver",
+    "category": "pentest",
+    "categoryLabel": "Opérations Red Team & Emulation de Menaces",
+    "badge": "Cursus d'Élite",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH Advanced Offensive Division",
+    "duration": "55 heures · 11 semaines",
+    "totalHours": 55,
+    "modulesCount": 5,
+    "projectsCount": 16,
+    "prerequisites": "Solide maîtrise du pentest système/réseau et des environnements Windows / Active Directory",
+    "location": "Cyber Range Red Team Sécurisé",
+    "level": "Intermédiaire à Avancé",
+    "summary": "Le sommet de la sécurité offensive. Apprenez à concevoir une infrastructure d'attaque résiliente (C2), cartographier et compromettre des domaines Active Directory entiers et contourner les EDR modernes comme un groupe d'attaque APT.",
+    "description": "Les opérations de Red Team simulent de véritables campagnes d'espionnage et de sabotage informatique pour tester la résilience globale d'une organisation (technologies, personnes, processus). Vous manipulez les arsenaux d'attaque professionnels, concevez des redirecteurs furtifs, menez des attaques Kerberos dévastatrices et extrayez les drapeaux sans vous faire repérer.",
+    "accentGradient": "from-rose-600 via-red-700 to-slate-900",
+    "glowColor": "rgba(225, 29, 72, 0.3)",
+    "tags": [
+      "Red Teaming",
+      "Command & Control",
+      "Active Directory",
+      "BloodHound",
+      "Kerberoasting",
+      "DCSync",
+      "EDR Bypass",
+      "Sliver C2"
+    ],
+    "isFeatured": true,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Opération Red Team d'Envergure ⭐",
+      "title": "Simulation Complète d'un Groupe APT : Infiltration, Domination Active Directory & Exfiltration",
+      "description": "Sur une infrastructure d'entreprise virtualisée de 40 serveurs avec forêt Active Directory : déploiement d'une infrastructure C2 furtive, accès initial, élévation, prise de contrôle du Domain Controller via DCSync, extraction de la base NTDS.dit et exfiltration de données sans alerte SOC.",
+      "tags": [
+        "Full Red Team Campaign",
+        "C2 Infrastructure",
+        "Domain Admin Compromise",
+        "DCSync Attack",
+        "Executive Red Team Briefing"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Ingénierie d'Infrastructures de Commande & Contrôle (C2)",
+        "duration": "11 heures",
+        "iconName": "server",
+        "description": "Construisez une infrastructure d'attaque distribuée et intraçable : serveurs C2 (Sliver, Havoc), redirecteurs Nginx/Apache, certificats TLS légitimes et DNS domain fronting.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Architecture d'Infrastructure Red Team Moderne",
+            "topic": "Cloaking, redirecteurs fonctionnels vs d'évitement, rotation d'IP",
+            "project": "Déploiement d'un cluster de serveurs de commande Sliver C2 avec redirecteurs"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Profilage Malléable de Trafic C2 (Malleable C2)",
+            "topic": "Camouflage du trafic C2 en flux HTTP/S bénins (trafic Amazon, Google, Microsoft)",
+            "project": "Création d'un profil de communication C2 indétectable par inspection réseau"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Reconnaissance & Cartographie Avancée d'Active Directory",
+        "duration": "11 heures",
+        "iconName": "search",
+        "description": "Maîtrisez la cartographie relationnelle d'entreprises : énumération furtive LDAP, collecte BloodHound / SharpHound et identification des chemins d'attaque les plus courts.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Collecte de Données Active Directory avec SharpHound",
+            "topic": "Sessions utilisateurs, relations de confiance inter-domaines et permissions d'objets",
+            "project": "Cartographie complète d'une forêt Active Directory de 1 000 utilisateurs"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Analyse Cypher & Modélisation de Chemins d'Attaque",
+            "topic": "Requêtes Neo4j, droits GenericAll, WriteDacl et délégation sans contrainte",
+            "project": "Découverte d'un chemin d'escalade vers Domain Admin en 3 rebonds discrets"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Attaques Critiques Active Directory & Persistance de Domaine",
+        "duration": "11 heures",
+        "iconName": "lock",
+        "description": "Exécutez les attaques les plus dévastatrices de l'écosystème Windows : Kerberoasting, AS-REP Roasting, attaques par certificat AD CS et extraction de secrets DCSync.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Attaques sur les Protocoles d'Authentification Windows",
+            "topic": "Extraction de hachages NTLM, relais SMB (ntlmrelayx), attaque Kerberoasting",
+            "project": "Compromission de comptes de service à privilèges élevés par Kerberoasting"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Abus de Services de Certificats (AD CS) & Golden Tickets",
+            "topic": "Vulnérabilités ESC1 à ESC8, forgeage de Golden & Silver Tickets avec Mimikatz",
+            "project": "Création d'un Golden Ticket garantissant 10 ans de persistance administrative"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Évasion de Détection EDR & Techniques Anti-Forensics",
+        "duration": "11 heures",
+        "iconName": "shield",
+        "description": "Désamorcez les défenses des postes de travail : contournement de l'AMSI (Antimalware Scan Interface), Process Injection furtive et désactivation de l'ETW (Event Tracing).",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "Contournement de l'AMSI & Détection de Scripts",
+            "topic": "Patching mémoire de l'AMSI en PowerShell et C#, obfuscation de charge utile",
+            "project": "Exécution réussie de scripts offensifs sur machine protégée par Windows Defender"
+          },
+          {
+            "week": "Semaine 8",
+            "title": "Appels Système Directs (Direct Syscalls) & Évasion EDR",
+            "topic": "Bypass des hooks API utilisateurs placés par les EDR, outils SysWhispers",
+            "project": "Exécution de code en mémoire sans déclencher l'EDR de test"
+          }
+        ]
+      },
+      {
+        "number": "05",
+        "title": "Mouvement Latéral, Conduite d'Opération & Restitution",
+        "duration": "11 heures",
+        "iconName": "zap",
+        "description": "Déplacez-vous de serveur en serveur sans mot de passe : Pass-the-Hash, Overpass-the-Hash, WMI, DCOM et clôture professionnelle d'un engagement Red Team.",
+        "weeks": [
+          {
+            "week": "Semaine 9",
+            "title": "Techniques de Mouvement Latéral Indolores",
+            "topic": "WMI Win32_Process, WinRM sans alerte, DCOM et détournement de sessions RDP",
+            "project": "Propagation latérale à travers 6 sous-réseaux d'entreprise segmentés"
+          },
+          {
+            "week": "Semaine 10",
+            "title": "Débriefing Red Team vs Blue Team (Purple Teaming)",
+            "topic": "Rapprochement des actions offensives avec les alertes défensives enregistrées",
+            "project": "Animation d'un atelier Purple Team et rédaction du plan de durcissement"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "55 heures · 11 semaines",
+        "features": [
+          "Cyber range d'entreprise de 40 machines interconnectées",
+          "Arsenal offensif de pointe (Sliver, BloodHound, Mimikatz)",
+          "Certificat CYBERLYMPH Certified Red Team Operator",
+          "Encadrement par des opérateurs d'intrusion chevronnés"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certification Red Team Operator",
+        "desc": "La certification la plus exigeante attestant de votre compétence en simulation d'adversaires"
+      },
+      {
+        "iconName": "terminal",
+        "title": "Opérations sur Réseau Vivant",
+        "desc": "Testez vos attaques sur des forêts Active Directory complexes et supervisées"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Ce programme s'adresse-t-il aux débutants ?",
+        "a": "Non, c'est un cursus avancé exigeant des connaissances solides préalables en pentest et systèmes Windows/Linux."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Red%20Teaming%20%3A%20Simulation%20d'Adversaires*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  },
+  {
+    "id": "security-engineer",
+    "slug": "security-engineer-architecture-et-ingenierie",
+    "title": "Security Engineer : Architecture & Ingénierie Cyber",
+    "shortTitle": "Security Engineer",
+    "tagline": "Threat Modeling · Cryptographie & PKI · IAM & OAuth · DevSecOps · Zero Trust",
+    "category": "security",
+    "categoryLabel": "Ingénierie & Architecture de Sécurité",
+    "badge": "Cursus d'Ingénierie",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH Engineering Lab",
+    "duration": "50 heures · 10 semaines",
+    "totalHours": 50,
+    "modulesCount": 4,
+    "projectsCount": 12,
+    "prerequisites": "Bases en développement logiciel, administration système ou réseaux",
+    "location": "Présentiel & Ateliers Cloud",
+    "level": "Débutant",
+    "summary": "Concevez des architectures sécurisées by design. Maîtrisez la modélisation de menaces (STRIDE), la cryptographie moderne (PKI, TLS 1.3), l'IAM d'entreprise (OAuth 2.0, OIDC, Zero-Trust) et le DevSecOps.",
+    "description": "Le rôle de l'ingénieur de sécurité est d'anticiper et éliminer les failles avant même le déploiement des applications et des infrastructures. Ce cursus vous forme aux méthodologies de modélisation de menaces (STRIDE/PASTA), à l'implémentation de la cryptographie (PKI d'entreprise, coffres-forts HashiCorp Vault), à la gestion d'identités et aux architectures Zero-Trust.",
+    "accentGradient": "from-indigo-500 via-purple-600 to-pink-600",
+    "glowColor": "rgba(99, 102, 241, 0.25)",
+    "tags": [
+      "Threat Modeling",
+      "STRIDE",
+      "Cryptography",
+      "PKI",
+      "IAM",
+      "OAuth 2.0",
+      "DevSecOps",
+      "Zero Trust"
+    ],
+    "isFeatured": true,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Grand Projet d'Ingénierie de Sécurité ⭐",
+      "title": "Conception & Sécurisation d'une Plateforme Cloud Distribuée (Architecture Zero-Trust)",
+      "description": "Vous concevez l'architecture technique complète d'une fintech : modélisation de menaces avec STRIDE, mise en place d'une autorité de certification (PKI), gestion centralisée des secrets avec HashiCorp Vault et contrôle d'accès Zero-Trust.",
+      "tags": [
+        "Zero Trust Architecture",
+        "PKI Infrastructure",
+        "Vault Secrets",
+        "STRIDE Modeling",
+        "Cloud Security"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Modélisation des Menaces & Principes d'Ingénierie",
+        "duration": "12 heures",
+        "iconName": "shield",
+        "description": "Anticipez les risques dès la conception. Maîtrisez les méthodologies STRIDE et DREAD et concevez des architectures résilientes respectant le principe de défense en profondeur.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Méthodologie STRIDE & Analyse des Flux de Données",
+            "topic": "Création de Data Flow Diagrams (DFD) et cartographie des menaces",
+            "project": "Modélisation complète des menaces d'un système de paiement en ligne"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Défense en Profondeur & Principes de Conception Sécurisée",
+            "topic": "Moindre privilège, surface d'attaque minimale, gestion des défaillances sûres",
+            "project": "Revue critique d'architecture et plan de remédiation technique"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Cryptographie Appliquée & Infrastructure PKI",
+        "duration": "13 heures",
+        "iconName": "lock",
+        "description": "Implémentez les mécanismes cryptographiques modernes : chiffrement symétrique/asymétrique, hachage sécurisé, déploiement d'une PKI d'entreprise et gestion des certificats TLS.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Algorithmes Cryptographiques & Protocoles Modernes",
+            "topic": "AES-GCM, RSA, courbes elliptiques (ECDSA, Ed25519) et protocole TLS 1.3",
+            "project": "Implémentation d'un canal de communication sécurisé et vérifié"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Déploiement d'une Autorité de Certification (PKI)",
+            "topic": "Root CA, Intermediate CA, révocation CRL/OCSP et rotation de certificats",
+            "project": "Mise en place d'une PKI d'entreprise avec OpenSSL et gestion automatisée"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Gestion des Identités (IAM) & Fédérations d'Accès",
+        "duration": "13 heures",
+        "iconName": "users",
+        "description": "Contrôlez qui a accès à quoi. Implémentez l'authentification moderne (OAuth 2.0, OpenID Connect) et déployez des architectures d'accès Zero-Trust.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Protocoles d'Authentification Moderne (OAuth 2.0 / OIDC)",
+            "topic": "Flux d'autorisation, validation des jetons JWT et serveurs d'autorisation",
+            "project": "Intégration d'un serveur d'authentification centralisé (Keycloak)"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Architecture Zero-Trust & Micro-Segmentation",
+            "topic": "Vérification explicite, segmentation réseau et accès basé sur le contexte",
+            "project": "Conception d'une passerelle d'accès Zero-Trust pour employés distants"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Sécurité Logicielle, Conteneurs & Gestion des Secrets",
+        "duration": "12 heures",
+        "iconName": "terminal",
+        "description": "Éliminez les secrets en clair dans le code. Déployez HashiCorp Vault, durcissez les conteneurs Docker et appliquez la sécurité dans le cycle de développement.",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "Gestion Centralisée des Secrets avec HashiCorp Vault",
+            "topic": "Moteurs de secrets dynamiques, rotation automatique de mots de passe de bases de données",
+            "project": "Déploiement et sécurisation d'un cluster HashiCorp Vault"
+          },
+          {
+            "week": "Semaine 8",
+            "title": "Sécurisation des Conteneurs Docker & Pipelines DevSecOps",
+            "topic": "Création d'images Docker minimales, scans de vulnérabilités et sécurité Kubernetes",
+            "project": "Automatisation de scans de vulnérabilités dans une chaîne CI/CD"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "50 heures · 10 semaines",
+        "features": [
+          "Travaux pratiques sur architectures cloud et conteneurs",
+          "Déploiement réel d'une PKI et de HashiCorp Vault",
           "Certificat CYBERLYMPH Certified Security Engineer",
-          "Pause café offerte ☕ et mentorat technique individuel",
-        ],
-      },
-      earlyBird: {
-        price: "48,000 DA",
-        originalPrice: "55,000 DA",
-        discountText: "Tarif spécial pour les 6 premiers inscrits",
-        seatsLeft: 4,
-        totalSeats: 12,
-      },
+          "Compétences très recherchées en architecture d'entreprise"
+        ]
+      }
     },
-    benefits: [
-      { iconName: "award", title: "Certificat Security Engineer", desc: "Titre certifiant votre maîtrise de l'architecture et de l'ingénierie cyber" },
-      { iconName: "lock", title: "Technologies Industrielles", desc: "Mise en œuvre réelle de HashiCorp Vault, Keycloak OIDC et SonarQube" },
-      { iconName: "book", title: "Templates d'Architecture", desc: "Bibliothèque de patterns de sécurité Zero-Trust prêts au déploiement" },
-      { iconName: "coffee", title: "Pause Café Incluse", desc: "Cadre convivial propice aux échanges techniques de haut niveau" },
-      { iconName: "users", title: "Architectes Cyber Chevronnés", desc: "Formateurs certifiés CISSP et Cloud Security Architects" },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certificat Security Engineer",
+        "desc": "Titre certifiant votre maîtrise de l'architecture et de l'ingénierie cyber"
+      },
+      {
+        "iconName": "terminal",
+        "title": "Laboratoires d'Architecture",
+        "desc": "Mettez en œuvre concrètement des serveurs de secrets et d'identités"
+      }
     ],
-    faqs: [
+    "faqs": [
       {
-        q: "Quelle est la différence entre un Pentester et un Security Engineer ?",
-        a: "Le Pentester recherche et exploite les failles sur des systèmes déjà en place (approche offensive). Le Security Engineer conçoit et implémente les défenses, l'authentification et les architectures pour empêcher l'apparition de failles (approche ingénierie et préventive).",
-      },
-      {
-        q: "Le cours aborde-t-il la sécurité dans le Cloud ?",
-        a: "Oui, les modules d'IAM, de gestion de secrets et de DevSecOps s'appliquent directement aux environnements modernes multi-cloud (AWS, Azure, GCP).",
-      },
+        "q": "Quelle est la différence entre un Pentester et un Security Engineer ?",
+        "a": "Le Pentester recherche et exploite les failles sur des systèmes déjà en place (approche offensive). Le Security Engineer conçoit et implémente les défenses, l'authentification et les architectures pour empêcher l'apparition de failles (approche ingénierie et préventive)."
+      }
     ],
-    registrationUrl: getWhatsAppReservationUrl("Security Engineer : Architecture & Ingénierie Cyber", "Pack Complet", "55,000 DA"),
-  },
-
-  // 6. CISCO CCNA 1 (ITN v7.02)
-  {
-    id: "cisco-ccna-1",
-    slug: "cisco-ccna-1-introduction-aux-reseaux",
-    title: "Cisco CCNA 1 : Introduction aux Réseaux (ITN)",
-    shortTitle: "CCNA 1 (ITN)",
-    tagline: "Programme Officiel Cisco Networking Academy · Packet Tracer & Équipements Réels",
-    category: "network",
-    categoryLabel: "Réseaux & Télécommunications Cisco",
-    badge: "Programme Officiel Cisco NetAcad",
-    badgeType: "open",
-    partner: "Cisco Networking Academy",
-    duration: "60 heures · 10 semaines",
-    totalHours: 60,
-    modulesCount: 4,
-    projectsCount: 15,
-    prerequisites: "Aucun prérequis spécifique — Maîtrise basique de l'informatique",
-    location: "Laboratoire Réseau & Simulation Cisco Packet Tracer",
-    level: "Débutant",
-    summary:
-      "Premier volet de la certification mondiale Cisco CCNA 200-301. Maîtrisez l'architecture des réseaux, l'adressage IPv4/IPv6, le routage et la configuration des switchs et routeurs Cisco IOS.",
-    description:
-      "Ce cursus officiel Cisco Networking Academy vous plonge dans les couches du modèle OSI et TCP/IP. Vous apprendrez à configurer en CLI des commutateurs (switches) et des routeurs Cisco, à calculer des sous-réseaux IPv4 (VLSM) et IPv6, et à diagnostiquer des infrastructures réseau d'entreprise.",
-    accentGradient: "from-sky-400 via-blue-600 to-indigo-700",
-    glowColor: "rgba(14, 165, 233, 0.25)",
-    tags: ["Cisco CCNA", "Packet Tracer", "IPv4 Subnetting", "IPv6", "Cisco IOS", "Switching", "Routing"],
-    isFeatured: true,
-    isOpenForRegistration: true,
-    capstoneProject: {
-      highlightLabel: "Épreuve Pratique Finale de Synthèse Réseau Cisco ⭐",
-      title: "Déploiement d'une Infrastructure d'Entreprise Multi-Sites avec Cisco IOS",
-      description:
-        "Configuration complète sous Packet Tracer et sur racks Cisco réels (Catalyst 2960 & Routeurs 2901/4000) : découpage VLSM de sous-réseaux IPv4/IPv6, routage inter-VLANs, sécurisation SSH/Console, restriction de ports (Port Security) et mise en place de serveurs DHCP/DNS.",
-      tags: ["Cisco CLI", "VLANs", "Inter-VLAN Routing", "IPv4/IPv6", "Port Security", "Packet Tracer"],
-    },
-    modules: [
-      {
-        number: "01",
-        title: "Fondamentaux des Réseaux & Modèles OSI / TCP-IP",
-        duration: "15 heures · Semaines 1 à 3",
-        iconName: "network",
-        description:
-          "Exploration des architectures LAN/WAN, protocoles réseau, encapsulation de données, modèles de référence OSI (7 couches) et TCP/IP.",
-        weeks: [
-          {
-            week: "Semaine 1",
-            title: "Topologies Réseau, Composants LAN/WAN & Représentations",
-            topic: "Le réseau aujourd'hui : composants, topologies LAN/WAN, supports et représentations",
-            project: "Atelier Packet Tracer : Cartographie et schéma d'un réseau local",
-          },
-          {
-            week: "Semaine 2",
-            title: "Protocoles & Modèles de Communication (OSI 7 Couches vs TCP/IP)",
-            topic: "Protocoles et modèles : suites de communication, standardisation OSI vs TCP/IP",
-            project: "Analyse de trames et encapsulation avec Cisco Packet Tracer",
-          },
-          {
-            week: "Semaine 3",
-            title: "Couche Physique & Liaison de Données (Câblage, Ethernet 802.3 & Adresses MAC)",
-            topic: "Couche Physique et Liaison de Données : câblage UTP/Fibre, trame Ethernet 802.3 et adresses MAC",
-            project: "Création et test de câbles RJ45 droits/croisés + inspection de table MAC",
-          },
-        ],
-      },
-      {
-        number: "02",
-        title: "Adressage Réseau : IPv4 Subnetting (VLSM) & IPv6",
-        duration: "15 heures · Semaines 4 à 5",
-        iconName: "terminal",
-        description:
-          "Calcul binaire, classes d'adresses, masques sous-réseaux à longueur variable (VLSM), types d'adresses IPv6 (Unicast, Multicast, Anycast) et autoconfiguration SLAAC.",
-        weeks: [
-          {
-            week: "Semaine 4",
-            title: "Structure IPv4, Masques de Sous-Réseau & Calcul Binaire",
-            topic: "Structure des adresses IPv4, classes d'adresses, masques CIDR et segmentation binaire",
-            project: "Exercices intensifs de calcul de sous-réseaux et optimisation d'espace d'adressage",
-          },
-          {
-            week: "Semaine 5",
-            title: "Sous-Réseaux à Longueur Variable (VLSM) & Adressage Global IPv6",
-            topic: "Découpage avancé VLSM & Transition IPv6 : notation hexadécimale, Link-Local et Global Unicast",
-            project: "Plan d'adressage complet IPv4/IPv6 pour une entreprise multi-départements",
-          },
-        ],
-      },
-      {
-        number: "03",
-        title: "Configuration Initiale des Switchs & Routeurs Cisco (IOS)",
-        duration: "15 heures · Semaines 6 à 7",
-        iconName: "server",
-        description:
-          "Prise en main du système d'exploitation Cisco IOS, modes d'exécution, configuration de base, sécurisation des accès (Console, VTY, Enable Secret) et interfaces de gestion.",
-        weeks: [
-          {
-            week: "Semaine 6",
-            title: "Navigation CLI Cisco IOS & Configuration Initiale des Switchs Catalyst",
-            topic: "Navigation Cisco IOS CLI, fichiers de configuration (running-config / startup-config) et nommage",
-            project: "Configuration initiale complète d'un commutateur Catalyst 2960",
-          },
-          {
-            week: "Semaine 7",
-            title: "Configuration d'Interfaces Routeurs, Passerelle par Défaut & Accès Sécurisé SSH",
-            topic: "Configuration d'interfaces réseau sur routeurs Cisco, passerelle par défaut et accès distant SSH",
-            project: "Configuration et sécurisation d'un routeur Cisco avec SSH v2 et bannières MOTD",
-          },
-        ],
-      },
-      {
-        number: "04",
-        title: "Couches Transport & Application, Services IP & Sécurité",
-        duration: "15 heures · Semaines 8 à 10",
-        iconName: "shield",
-        description:
-          "Protocoles TCP vs UDP, numéros de ports, protocoles applicatifs (DNS, DHCP, HTTP, FTP) et principes fondamentaux de sécurité des périphériques réseau.",
-        weeks: [
-          {
-            week: "Semaine 8",
-            title: "Protocoles de Transport : Fiabilité TCP (3-Way Handshake) vs Vitesse UDP",
-            topic: "Couche Transport : fiabilité TCP (3-Way Handshake) vs rapidité UDP, ports connus et éphémères",
-            project: "Capture et analyse des sessions TCP/UDP avec Packet Tracer",
-          },
-          {
-            week: "Semaine 9",
-            title: "Services IP Fondamentaux : Configuration DHCP, DNS & Requêtes ARP",
-            topic: "Services réseau critiques : configuration de serveur DHCP, résolution DNS et requêtes ARP",
-            project: "Déploiement d'une infrastructure avec adressage automatique DHCP",
-          },
-          {
-            week: "Semaine 10",
-            title: "Sécurisation des Ports de Switch (Port Security) & Synthèse CCNA ITN",
-            topic: "Sécurisation des ports de switch (Port Security), désactivation des ports inutilisés et évaluation finale",
-            project: "Grand Lab de Synthèse Cisco CCNA ITN Skills Assessment",
-          },
-        ],
-      },
-    ],
-    pricing: {
-      packComplet: {
-        price: "45,000 DA",
-        originalPrice: "60,000 DA",
-        savings: "Tarif promotionnel de lancement",
-        durationLabel: "60 heures · 10 semaines intensives",
-        features: [
-          "Programme officiel Cisco Networking Academy CCNA 1 (ITN)",
-          "Accès officiel à la plateforme Cisco NetAcad & matériels de cours",
-          "Travaux pratiques sur simulateur Packet Tracer & switches réels",
-          "Préparation aux examens officiels Cisco CCNA 200-301",
-          "Badge numérique Cisco certifié & Certificat de réussite NetAcad",
-          "Pause café & support continu d'instructeurs certifiés Cisco",
-        ],
-      },
-      earlyBird: {
-        price: "39,000 DA",
-        originalPrice: "45,000 DA",
-        discountText: "Tarif préférentiel pour les 8 premières inscriptions",
-        seatsLeft: 5,
-        totalSeats: 15,
-      },
-    },
-    benefits: [
-      { iconName: "award", title: "Certificat Cisco NetAcad", desc: "Badge officiel Cisco Networking Academy reconnu mondialement" },
-      { iconName: "terminal", title: "Labs Cisco Réels & Virtuels", desc: "Pratique sur commutateurs Catalyst, routeurs et Packet Tracer" },
-      { iconName: "book", title: "Accès Cisco Learning Network", desc: "Supports interactifs officiels, quiz de chapitre et évaluations" },
-      { iconName: "coffee", title: "Pause Café Incluse", desc: "Accueil convivial à chaque session de laboratoire" },
-      { iconName: "users", title: "Instructeurs Certifiés", desc: "Formateurs certifiés Cisco CCNA / CCNP" },
-      { iconName: "building", title: "Laboratoire Réseau Dédié", desc: "Espace équipé avec baies de brassage et consoles Cisco" },
-    ],
-    faqs: [
-      {
-        q: "Ce cours prépare-t-il au nouvel examen Cisco CCNA 200-301 ?",
-        a: "Oui ! Le cours CCNA 1 (Introduction to Networks - ITN) constitue le premier des trois modules indispensables pour se présenter à l'examen de certification mondial Cisco Certified Network Associate (CCNA 200-301).",
-      },
-      {
-        q: "Faut-il savoir coder pour faire du CCNA ?",
-        a: "Non, aucune compétence en programmation n'est requise. Le cours aborde les protocoles réseau, le calcul binaire pour les sous-réseaux et la syntaxe CLI Cisco IOS pas à pas.",
-      },
-      {
-        q: "Obtiendrai-je un certificat à la fin ?",
-        a: "Oui, les étudiants validant les examens de chapitre et l'examen final sur la plateforme Cisco NetAcad reçoivent un certificat officiel Cisco Networking Academy ainsi qu'un badge numérique officiel à partager sur LinkedIn.",
-      },
-    ],
-    registrationUrl: getWhatsAppReservationUrl("Cisco CCNA 1 : Introduction aux Réseaux (ITN)", "Pack Complet", "45,000 DA"),
-  },
-
-  // 7. ETHICAL HACKING (Official Cisco NetAcad Ethical Hacker Curriculum)
-  {
-    id: "cisco-ethical-hacking",
-    slug: "cisco-ethical-hacker-pentesting",
-    title: "Ethical Hacker (Programme Officiel Cisco)",
-    shortTitle: "Cisco Ethical Hacker",
-    tagline: "Programme Officiel Cisco Networking Academy · Kali Linux · OWASP · Pentesting",
-    category: "security",
-    categoryLabel: "Cybersécurité Offensive Officielle",
-    badge: "Programme Officiel Cisco NetAcad",
-    badgeType: "hot",
-    partner: "Cisco Networking Academy",
-    duration: "70 heures · 12 semaines",
-    totalHours: 70,
-    modulesCount: 5,
-    projectsCount: 16,
-    prerequisites: "Notions en réseaux (CCNA recommandé) ou administration système de base",
-    location: "Laboratoire Virtuel Kali Linux & Sandbox d'Entraînement Cisco",
-    level: "Intermédiaire à Avancé",
-    summary:
-      "Cursus officiel Cisco Networking Academy de 70 heures. Maîtrisez les 10 modules Cisco d'audit offensif, de reconnaissance OSINT, d'exploitation réseau/web et de rédaction de rapports de pentest professionnels.",
-    description:
-      "Basé sur le programme officiel Cisco 'Ethical Hacker' de la Networking Academy, ce cursus vous forme aux règles d'engagement professionnelles, aux attaques sur réseaux câblés et sans-fil, à l'exploitation des failles applicatives OWASP Top 10 et aux techniques de post-exploitation sous Kali Linux.",
-    accentGradient: "from-red-500 via-rose-600 to-amber-600",
-    glowColor: "rgba(225, 29, 72, 0.25)",
-    tags: ["Cisco NetAcad", "Ethical Hacking", "Kali Linux", "Metasploit", "OWASP Top 10", "Nmap", "Wi-Fi Hacking"],
-    isFeatured: true,
-    isOpenForRegistration: true,
-    capstoneProject: {
-      highlightLabel: "Examen Pratique & CTF Cisco Ethical Hacker ⭐",
-      title: "Test d'Intrusion Complet d'une Infrastructure d'Entreprise & Rapport d'Audit",
-      description:
-        "Sur une infrastructure réseau d'entreprise virtualisée (environnements Kali Linux) : reconnaissance passive/active (OSINT & Nmap), identification des failles de configuration, exploitation de serveurs vulnérables, pivoting réseau, compromission de base de données et rédaction d'un rapport de restitution professionnel conforme aux normes Cisco.",
-      tags: ["Kali Linux", "Metasploit", "Privilege Escalation", "Pivoting", "Audit Report", "Cisco CTF"],
-    },
-    modules: [
-      {
-        number: "01",
-        title: "Introduction au Hacking Éthique, Législation & Scoping (Modules Cisco 1-2)",
-        duration: "14 heures · Semaines 1 à 2",
-        iconName: "shield",
-        description:
-          "Cadre juridique du test d'intrusion, déontologie, règles d'engagement (Rules of Engagement), scoping et posture de l'attaquant selon les standards Cisco.",
-        weeks: [
-          {
-            week: "Semaine 1",
-            title: "Typologie des Hackers, Cadre Légal & Conformité",
-            topic: "Module 1 Cisco : Introduction au hacking éthique, typologie des hackers, lois et conformité légale",
-            project: "Élaboration d'un contrat de pentest et règles d'engagement conformes aux standards Cisco",
-          },
-          {
-            week: "Semaine 2",
-            title: "Cadrage, Scoping & Règles d'Engagement (Rules of Engagement)",
-            topic: "Module 2 Cisco : Planification et définition du périmètre (Scoping, Black/Grey/White box testing)",
-            project: "Cadrage technique et définition de matrice de risques pour un audit client",
-          },
-        ],
-      },
-      {
-        number: "02",
-        title: "Reconnaissance, Footprinting & Ingénierie Sociale (Modules Cisco 3-4)",
-        duration: "14 heures · Semaines 3 à 5",
-        iconName: "terminal",
-        description:
-          "Collecte d'informations passive (OSINT, Shodan, Whois), scans actifs avec Nmap/Nessus, et attaques par ingénierie sociale (Phishing, Pretexting).",
-        weeks: [
-          {
-            week: "Semaine 3",
-            title: "Techniques OSINT & Footprinting Passif (theHarvester, Shodan)",
-            topic: "Module 3 Cisco : Collecte d'informations et footprinting passif avec outils OSINT, theHarvester et Shodan",
-            project: "Dossier de renseignement et cartographie de cibles réelles",
-          },
-          {
-            week: "Semaine 4",
-            title: "Scanning Réseau Actif & Détection de Failles (Nmap, Nessus)",
-            topic: "Balayage de réseau et détection de vulnérabilités avec Nmap, scripts NSE et scanners Nessus/OpenVAS",
-            project: "Audit de vulnérabilités automatisé d'un sous-réseau complet",
-          },
-          {
-            week: "Semaine 5",
-            title: "Ingénierie Sociale, Vecteurs de Phishing & Facteur Humain",
-            topic: "Module 4 Cisco : Attaques d'ingénierie sociale (Phishing, simulation d'usurpation d'identité et défenses)",
-            project: "Simulation de campagne d'évaluation de la vigilance des employés",
-          },
-        ],
-      },
-      {
-        number: "03",
-        title: "Exploitation des Réseaux Filaire & Sans-Fil (Module Cisco 5)",
-        duration: "14 heures · Semaines 6 à 7",
-        iconName: "network",
-        description:
-          "Attaques sur les protocoles de commutation et routage, interception de trafic (Sniffing, ARP Poisoning), et cassage de sécurité Wi-Fi (WPA2/WPA3).",
-        weeks: [
-          {
-            week: "Semaine 6",
-            title: "Attaques Réseaux Locaux (Man-in-the-Middle & Usurpation ARP)",
-            topic: "Attaques sur réseaux filaires : écoute illicite (Man-in-the-Middle), usurpation ARP et attaques DHCP Starvation",
-            project: "Lab d'interception de communications chiffrées/non-chiffrées sous Kali",
-          },
-          {
-            week: "Semaine 7",
-            title: "Audit de Sécurité Wi-Fi (802.11, Handshake WPA/WPA2 & Failles WPA3)",
-            topic: "Attaques sans-fil : analyse des trames 802.11, Evil Twin, capture de Handshake WPA/WPA2 et failles WPA3",
-            project: "Audit de sécurité Wi-Fi et audit de robustesse de mots de passe",
-          },
-        ],
-      },
-      {
-        number: "04",
-        title: "Exploitation Applicative & Cloud/IoT (Modules Cisco 6-7)",
-        duration: "14 heures · Semaines 8 à 9",
-        iconName: "code",
-        description:
-          "Attaques web basées sur l'OWASP Top 10 (Injections SQL, XSS, CSRF, authentification cassée) et spécificités de la sécurité Cloud et IoT.",
-        weeks: [
-          {
-            week: "Semaine 8",
-            title: "Exploitation Web OWASP Top 10 (SQLi, XSS, Broken Auth & SQLmap)",
-            topic: "Module 6 Cisco : Failles applicatives web (SQL Injection avec SQLmap, XSS réfléchi/stocké et Broken Auth)",
-            project: "Compromission d'une application web vulnérable avec extraction de base de données",
-          },
-          {
-            week: "Semaine 9",
-            title: "Sécurité Cloud, Conteneurs Docker & Objets Connectés (IoT)",
-            topic: "Module 7 Cisco : Sécurité du Cloud, des environnements conteneurisés et des objets connectés (IoT)",
-            project: "Audit d'API cloud non sécurisée et analyse de firmware IoT",
-          },
-        ],
-      },
-      {
-        number: "05",
-        title: "Post-Exploitation, Rapport d'Audit & CTF Cisco (Modules Cisco 8-10)",
-        duration: "14 heures · Semaines 10 à 12",
-        iconName: "zap",
-        description:
-          "Élévation de privilèges Linux/Windows, mouvements latéraux (Pivoting), dissimulation de traces, rédaction de rapports professionnels et CTF final Cisco.",
-        weeks: [
-          {
-            week: "Semaine 10",
-            title: "Post-Exploitation, Élévation de Privilèges & Persistance",
-            topic: "Module 8 Cisco : Post-exploitation, élévation de privilèges (Linux SUID / Windows tokens) et maintien d'accès",
-            project: "Prise de contrôle Root/Admin d'un serveur après brèche initiale",
-          },
-          {
-            week: "Semaine 11",
-            title: "Rapport de Pentest Professionnel & Recommandations de Remédiation",
-            topic: "Module 9 Cisco : Rédaction d'un rapport de pentest professionnel, matrice CVSS et préconisations de remédiation",
-            project: "Rédaction d'un rapport d'audit technique et exécutif complet",
-          },
-          {
-            week: "Semaine 12",
-            title: "Capture The Flag (CTF) Cisco Networking Academy & Certification",
-            topic: "Module 10 Cisco : Analyse de code et outils offensifs + Challenge CTF Cisco U.",
-            project: "Participation au Capture The Flag (CTF) Cisco final sur machines cibles",
-          },
-        ],
-      },
-    ],
-    pricing: {
-      packComplet: {
-        price: "60,000 DA",
-        originalPrice: "85,000 DA",
-        savings: "Cursus officiel 70 heures",
-        durationLabel: "70 heures · 10 modules Cisco complets",
-        features: [
-          "Programme officiel Cisco Networking Academy Ethical Hacker",
-          "Couverture des 10 modules officiels Cisco NetAcad",
-          "Accès aux laboratoires virtuels d'entraînement sous Kali Linux",
-          "Accès aux défis Capture The Flag (CTF) exclusifs Cisco U.",
-          "Préparation au Cisco Certificate in Ethical Hacking",
-          "Pause café offerte ☕ et accompagnement continu",
-        ],
-      },
-      earlyBird: {
-        price: "52,000 DA",
-        originalPrice: "60,000 DA",
-        discountText: "Tarif spécial pour les 6 premiers inscrits",
-        seatsLeft: 3,
-        totalSeats: 12,
-      },
-    },
-    benefits: [
-      { iconName: "award", title: "Certificat Cisco Ethical Hacker", desc: "Attestation officielle reconnue par l'écosystème mondial Cisco" },
-      { iconName: "terminal", title: "Laboratoires Virtuels Kali Linux", desc: "Machine d'entraînement dédiée avec Metasploit, Nmap et suites d'exploitation" },
-      { iconName: "book", title: "Accès Cisco U. & NetAcad", desc: "Documentation officielle complète et exercices pratiques guidés" },
-      { iconName: "coffee", title: "Pause Café Offerte", desc: "Ambiance de travail chaleureuse et collaborative à chaque session" },
-      { iconName: "users", title: "Instructeurs Cybersécurité Certifiés", desc: "Professionnels du pentest certifiés Cisco et OSCP" },
-      { iconName: "building", title: "Centre d'Innovation Partenaire", desc: "Infrastructure de pointe pour les simulations d'attaque et CTF" },
-    ],
-    faqs: [
-      {
-        q: "Ce cursus utilise-t-il le programme officiel de Cisco ?",
-        a: "Oui ! La formation suit fidèlement le cursus officiel 'Ethical Hacker' de 70 heures de la Cisco Networking Academy, structuré en 10 modules couvrant toute la chaîne du test d'intrusion.",
-      },
-      {
-        q: "Est-ce légal d'apprendre ces techniques ?",
-        a: "Absolument. La formation insiste rigoureusement sur le cadre légal et déontologique (Module 1 & 2 Cisco). Toutes les attaques sont exécutées exclusivement dans un environnement de bac à sable (sandbox) isolé et autorisé.",
-      },
-      {
-        q: "Puis-je passer la certification Cisco à la fin ?",
-        a: "Oui, la formation prépare directement au 'Cisco Certificate in Ethical Hacking' et donne accès aux épreuves Capture The Flag (CTF) sur la plateforme officielle Cisco U.",
-      },
-    ],
-    registrationUrl: getWhatsAppReservationUrl("Ethical Hacker (Programme Officiel Cisco)", "Pack Complet", "60,000 DA"),
-  },
-
-  // 8. AI SECURITY & LLM RED TEAMING
-  // 8. AI SECURITY & LLM RED TEAMING (5 MODULES)
-  {
-    id: "ai-security",
-    slug: "securite-de-ia-et-prompt-injection",
-    title: "AI Security & LLM Red Teaming",
-    shortTitle: "AI Security",
-    tagline: "AI Fundamentals · Attacking LLMs · Secure AI Systems · Data Poisoning · Defending AI",
-    category: "security",
-    categoryLabel: "Sécurité Offensive & Défensive de l'IA",
-    badge: "Cursus Complet en 5 Modules",
-    badgeType: "hot",
-    partner: "CYBERLYMPH AI Security Lab",
-    duration: "55 heures · 11 semaines",
-    totalHours: 55,
-    modulesCount: 5,
-    projectsCount: 16,
-    prerequisites: "Notions de base en informatique, web ou utilisation de modèles IA",
-    location: "Laboratoire de Pentest IA & Plateforme Interactive",
-    level: "Intermédiaire à Avancé",
-    summary:
-      "Cursus complet en 5 modules couvrant l'intégralité du cycle de sécurité de l'IA : Fondamentaux AI/ML, Attaque des LLMs (Prompt Injection & Jailbreak), Architecture Sécurisée & OWASP, Empoisonnement de Données & Supply Chain, et Défense avec Guardrails.",
-    description:
-      "Alors que les entreprises déploient massivement des LLMs et des agents autonomes dans leurs infrastructures, l'IA Red Teaming et la défense des systèmes d'IA sont devenues les compétences les plus recherchées du secteur. Ce cursus intensif en 5 modules vous forme à auditer, attaquer, modéliser et défendre les applications d'intelligence artificielle en combinant théorie rigoureuse et travaux pratiques sur des environnements d'entraînement dédiés.",
-    accentGradient: "from-purple-500 via-pink-500 to-rose-600",
-    glowColor: "rgba(236, 72, 153, 0.25)",
-    tags: ["AI Red Teaming", "Prompt Injection", "Jailbreak", "OWASP LLM Top 10", "BankGPT", "Data Poisoning", "RAG Security", "AI Guardrails"],
-    isFeatured: true,
-    isOpenForRegistration: true,
-    capstoneProject: {
-      highlightLabel: "Grand Projet d'Audit & Sécurisation IA ⭐",
-      title: "Compromission Black-Box & Durcissement Complet d'un Agent IA d'Entreprise (Challenge BankGPT / HealthGPT)",
-      description:
-        "Sur une infrastructure d'agent conversationnel bancaire virtualisée : exfiltration du System Prompt, contournement des règles de sécurité par Prompt Injection indirecte, injection de données empoisonnées dans la base vectorielle RAG, puis implémentation complète des défenses correctives avec NeMo Guardrails et Llama Guard.",
-      tags: ["BankGPT CTF", "Indirect Prompt Injection", "System Prompt Extraction", "RAG Defense", "NeMo Guardrails", "Llama Guard"],
-    },
-    modules: [
-      {
-        number: "01",
-        title: "AI Fundamentals (Fondamentaux de l'IA & Surfaces de Menaces)",
-        duration: "10 heures · Semaines 1 à 2",
-        iconName: "brain",
-        description:
-          "Comprendre comment les modèles probabilistes diffèrent du code traditionnel, l'architecture des Transformers, les fenêtres de contexte et la cartographie des vulnérabilités de l'IA.",
-        weeks: [
-          {
-            week: "Semaine 1",
-            title: "Introduction aux Menaces AI/ML & Décalage des Paradigmes de Sécurité",
-            topic: "Comment pensent les modèles d'IA, limites des garanties déterministes, taxonomie des menaces et risques systémiques",
-            project: "Cartographie complète de la surface d'attaque d'une solution d'intelligence artificielle",
-          },
-          {
-            week: "Semaine 2",
-            title: "Modèles d'IA, Cycle de Vie des Données & Réseaux Transformers",
-            topic: "Architecture interne des Transformers, embeddings vectoriels, tokenisation, gestion du contexte et forensics des artefacts d'IA",
-            project: "Analyse forensique et détection de contenus / prompts générés par IA",
-          },
-        ],
-        price: "20,000 DA",
-      },
-      {
-        number: "02",
-        title: "Attacking LLMs (Prompt Injection, Jailbreaking & Challenge BankGPT)",
-        duration: "15 heures · Semaines 3 à 5",
-        iconName: "zap",
-        description:
-          "Toutes les techniques offensives modernes ciblant les modèles de langage : Direct/Indirect Prompt Injection, Jailbreaking avancé, fuite de System Prompt et exploitation applicative.",
-        weeks: [
-          {
-            week: "Semaine 3",
-            title: "Direct Prompt Injection, Jailbreaking Avancé (DAN) & System Prompt Leakage",
-            topic: "Techniques de contournement des politiques éthiques (jailbreaking par persona, multi-shot, obfuscation Base64) et exfiltration du System Prompt secret",
-            project: "Extraction des règles secrètes et clés API cachées d'un assistant RH sécurisé",
-          },
-          {
-            week: "Semaine 4",
-            title: "Indirect Prompt Injection & Exploitation en Environnement Réel",
-            topic: "Injections indirectes via sites web piégés, documents PDF malveillants et emails analysés par des agents IA autonomes",
-            project: "Prise de contrôle d'un bot d'analyse de documents via un PDF contenant un payload invisible",
-          },
-          {
-            week: "Semaine 5",
-            title: "Insecure Output Handling, XSS via LLM & Challenge CTF BankGPT",
-            topic: "Exploitation des sorties LLM non assainies transmises à des backends (XSS, SSRF, injection SQL) et résolution du challenge CTF BankGPT",
-            project: "Challenge BankGPT : contournement de filtres bancaires pour déclencher un virement frauduleux",
-          },
-        ],
-        price: "25,000 DA",
-      },
-      {
-        number: "03",
-        title: "Secure AI Systems (Architecture Sécurisée, OWASP LLM & Modélisation ATLAS)",
-        duration: "10 heures · Semaines 6 à 7",
-        iconName: "shield",
-        description:
-          "Concevoir des architectures IA résilientes en appliquant les référentiels internationaux OWASP Top 10 for LLMs, MITRE ATLAS et la modélisation de menaces STRIDE.",
-        weeks: [
-          {
-            week: "Semaine 6",
-            title: "Cartographie d'Architecture d'Entreprise & Frontières de Confiance (Trust Boundaries)",
-            topic: "Modélisation des flux de données dans les architectures d'assistants d'entreprise, isolation des contextes et gestion des identités de service",
-            project: "Conception du diagramme de flux de données sécurisé d'un agent IA d'entreprise",
-          },
-          {
-            week: "Semaine 7",
-            title: "Modélisation de Menaces IA (OWASP Top 10 for LLMs, MITRE ATLAS & STRIDE)",
-            topic: "Application des frameworks de référence : Excessive Agency (LLM08), Insecure Plugin Design (LLM07) et matrice MITRE ATLAS",
-            project: "Matrice d'évaluation des risques et Threat Model complet d'une intégration LLM",
-          },
-        ],
-        price: "20,000 DA",
-      },
-      {
-        number: "04",
-        title: "Data Poisoning & AI Supply Chain Security (Empoisonnement RAG & Modèles)",
-        duration: "10 heures · Semaines 8 à 9",
-        iconName: "server",
-        description:
-          "Attaques ciblant les données d'entraînement, le fine-tuning, les bases vectorielles (RAG Poisoning) et l'intégrité de la supply chain des modèles open-source.",
-        weeks: [
-          {
-            week: "Semaine 8",
-            title: "Empoisonnement de Données d'Entraînement & Backdoors dans les Checkpoints",
-            topic: "Techniques d'injection de données biaisées ou malveillantes lors du fine-tuning, backdoors dormantes déclenchées par triggers spécifiques",
-            project: "Détection d'un comportement déviant injecté par empoisonnement dans un modèle de classification",
-          },
-          {
-            week: "Semaine 9",
-            title: "Sécurité de la Supply Chain IA & Vulnérabilités RAG (Vector DBs)",
-            topic: "Empoisonnement de bases de données vectorielles (RAG Poisoning), risques sur les dépôts de modèles ouverts (HuggingFace Hub) et vérification d'intégrité",
-            project: "Attaque par injection de faux documents dans un pipeline RAG et audit de base vectorielle",
-          },
-        ],
-        price: "20,000 DA",
-      },
-      {
-        number: "05",
-        title: "Defending AI (Garde-fous, NeMo Guardrails & Détection d'Attaques Adversaires)",
-        duration: "10 heures · Semaines 10 à 11",
-        iconName: "lock",
-        description:
-          "Déployer des mécanismes défensifs en production : filtrage sémantique, garde-fous (NeMo Guardrails, Llama Guard), MLSecOps et détection d'attaques adverses.",
-        weeks: [
-          {
-            week: "Semaine 10",
-            title: "Validation des Entrées, Filtrage Sémantique & Implémentation de Guardrails",
-            topic: "Mise en place de garde-fous stricts : NeMo Guardrails de NVIDIA, Llama Guard de Meta et validation d'entrées/sorties avec classificateurs dédiés",
-            project: "Déploiement d'un proxy défensif NeMo Guardrails bloquant les injections de prompt en temps réel",
-          },
-          {
-            week: "Semaine 11",
-            title: "AI Forensics, Détection d'Attaques Adversaires & Blue Teaming Assisté par IA",
-            topic: "Surveillance et observabilité des LLMs (MLSecOps), détection d'attaques adversaires d'évasion et utilisation de l'IA pour le Threat Hunting Blue Team",
-            project: "Grand CTF d'évaluation pratique finale : audit offensif puis sécurisation complète d'une infrastructure IA",
-          },
-        ],
-        price: "25,000 DA",
-      },
-    ],
-    pricing: {
-      packComplet: {
-        price: "70,000 DA",
-        originalPrice: "90,000 DA",
-        savings: "Cursus complet 5 modules certifiant",
-        durationLabel: "55 heures · 11 semaines intensives",
-        features: [
-          "Les 5 modules complets : AI Fundamentals, Attacking LLMs, Secure AI, Data Poisoning & Defending AI",
-          "Accès aux laboratoires interactifs d'entraînement et CTF BankGPT",
-          "Couverture exhaustive de l'OWASP Top 10 for LLMs et MITRE ATLAS",
-          "Ateliers pratiques sur Prompt Injection, RAG Poisoning et NeMo Guardrails",
-          "Certificat officiel CYBERLYMPH AI Security Specialist",
-          "Pause café offerte ☕ à chaque session et mentorat dédié",
-        ],
-      },
-      earlyBird: {
-        price: "60,000 DA",
-        originalPrice: "70,000 DA",
-        discountText: "Réduction de 10,000 DA pour les 6 premiers inscrits",
-        seatsLeft: 4,
-        totalSeats: 12,
-      },
-      individualModules: {
-        fromPrice: "20,000 DA",
-        periodLabel: "par module individuel",
-        items: [
-          { name: "M01 : AI Fundamentals", price: "20,000 DA" },
-          { name: "M02 : Attacking LLMs (Prompt Injection & CTF)", price: "25,000 DA" },
-          { name: "M03 : Secure AI Systems & OWASP", price: "20,000 DA" },
-          { name: "M04 : Data Poisoning & RAG Security", price: "20,000 DA" },
-          { name: "M05 : Defending AI & Guardrails", price: "25,000 DA" },
-        ],
-      },
-    },
-    benefits: [
-      { iconName: "terminal", title: "Laboratoire de Pentest IA Dédié", desc: "Pratique sur des scénarios réels d'attaque et d'évasion de modèles LLM" },
-      { iconName: "award", title: "Certificat AI Security Specialist", desc: "Attestation de compétences sur la nouvelle frontière de la cybersécurité" },
-      { iconName: "book", title: "Playbooks & Payloads Prêts à l'Emploi", desc: "Payloads d'injection, configurations de guardrails et templates de Threat Modeling" },
-      { iconName: "coffee", title: "Pause Café Offerte", desc: "Échanges techniques et retours d'expérience à chaque séance" },
-      { iconName: "users", title: "Encadrement par des AI Red Teamers", desc: "Formateurs spécialisés en sécurité des modèles et audit d'agents IA" },
-      { iconName: "server", title: "Environnements Sandboxed", desc: "Instances dédiées pour tester sans risque les exploits de modèles" },
-    ],
-    faqs: [
-      {
-        q: "Quels sont les 5 modules abordés dans cette formation ?",
-        a: "Le cursus est découpé en 5 grands modules progressifs : 1) AI Fundamentals, 2) Attacking LLMs, 3) Secure AI Systems, 4) Data Poisoning & AI Supply Chain Security, et 5) Defending AI.",
-      },
-      {
-        q: "Qu'est-ce que le Prompt Injection exactement ?",
-        a: "Le Prompt Injection est une faille où un attaquant manipule les entrées textuelles fournies à un modèle d'IA pour lui faire ignorer ses consignes de sécurité, divulguer des données confidentielles ou exécuter des actions non autorisées.",
-      },
-      {
-        q: "Qu'est-ce que le RAG Poisoning abordé dans le Module 4 ?",
-        a: "Le RAG (Retrieval-Augmented Generation) Poisoning consiste à insérer des documents malicieux ou corrompus dans la base de données vectorielle d'une entreprise pour tromper l'assistant IA et lui faire diffuser des informations erronées ou voler des données sensibles.",
-      },
-      {
-        q: "Comment réserver sa place pour cette formation ?",
-        a: "Vous pouvez réserver directement depuis cette page via WhatsApp en cliquant sur 'Réserver ma place via WhatsApp'. Notre équipe vous confirmera immédiatement les prochaines dates de session et les modalités de paiement (BaridiMob, CCP, espèces sur place).",
-      },
-    ],
-    registrationUrl: getWhatsAppReservationUrl("AI Security & LLM Red Teaming", "Pack Complet (5 modules)", "70,000 DA"),
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Security%20Engineer%20%3A%20Architecture%20%26%20Ing%C3%A9nierie%20Cyber*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
   },
   {
-    id: "linux-fundamentals",
-    slug: "linux-fundamentals",
-    title: "Linux Fundamentals : Administration & Ligne de Commande (CompTIA Linux+)",
-    shortTitle: "Linux Fundamentals",
-    tagline: "Maîtrisez le terminal Linux, la gestion des utilisateurs, les permissions, les processus et l'automatisation bash selon les standards officiels CompTIA Linux+ (XK0-005).",
-    category: "security",
-    categoryLabel: "Systèmes & Administration Linux",
-    badge: "1 Semaine Intensive",
-    badgeType: "open",
-    partner: "CompTIA Linux+ (XK0-005)",
-    duration: "1 semaine intensive",
-    totalHours: 15,
-    modulesCount: 1,
-    projectsCount: 5,
-    prerequisites: "Aucun prérequis technique nécessaire. Cursus ouvert aux débutants souhaitant acquérir les bases indispensables de Linux.",
-    location: "En présentiel (Bab Ezzouar / Alger) ou Hybride interactif",
-    level: "Débutant",
-    summary: "Une formation intensive d'une semaine axée sur les fondamentaux incontournables de Linux tirés du programme officiel CompTIA Linux+ : maîtrise du shell Bash, arborescence FHS, gestion des droits et utilisateurs, paquets, processus et introduction au scripting.",
-    description: "Linux est le système d'exploitation fondamental qui propulse le Cloud, l'infrastructure Internet, le DevOps et la Cybersécurité mondiale. Cette formation intensive d'une semaine vous enseigne les compétences essentielles de la certification internationale CompTIA Linux+ (XK0-005). De la prise en main du terminal Bash à l'administration des utilisateurs, la gestion des droits chmod/chown, la supervision des processus systemd, la gestion des paquets logiciels et l'écriture de scripts Bash avec automatisation Cron, chaque session combine explications ciblées et ateliers pratiques sur machine virtuelle dédiée.",
-    accentGradient: "from-amber-400 via-orange-500 to-yellow-500",
-    glowColor: "rgba(245, 158, 11, 0.4)",
-    tags: ["Linux", "CompTIA Linux+", "Bash", "Terminal", "Ubuntu", "Debian", "FHS", "Permissions", "SSH", "Crontab", "Administration"],
-    capstoneProject: {
-      title: "Déploiement et Sécurisation Complète d'un Serveur Linux de Production",
-      description: "Configuration d'une instance Linux headless : arborescence FHS organisée, création d'utilisateurs restreints avec privilèges sudoers, durcissement du service OpenSSH avec clés asymétriques, règles de pare-feu UFW, et déploiement d'un script Bash de sauvegarde automatique chiffrée orchestré par crontab.",
-      tags: ["Ubuntu Server", "Bash Automation", "SSH Keys", "UFW Firewall", "Crontab", "Sudoers"],
-      highlightLabel: "Projet Pratique de Fin de Session",
+    "id": "devsecops",
+    "slug": "devsecops-securisation-cicd-conteneurs-kubernetes",
+    "title": "DevSecOps : Sécurisation CI/CD, Conteneurs & Kubernetes",
+    "shortTitle": "DevSecOps",
+    "tagline": "Pipelines CI/CD · SAST/DAST · Sécurité Docker · Kubernetes RBAC · OPA Gatekeeper · Supply Chain",
+    "category": "security",
+    "categoryLabel": "Ingénierie DevSecOps & Sécurité Cloud Native",
+    "badge": "Cloud Native",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH Cloud Native Security Unit",
+    "duration": "45 heures · 9 semaines",
+    "totalHours": 45,
+    "modulesCount": 5,
+    "projectsCount": 15,
+    "prerequisites": "Notions sur Docker, Git et les principes fondamentaux de développement logiciel ou d'intégration continue",
+    "location": "Laboratoire CI/CD Cloud Privé",
+    "level": "Intermédiaire à Avancé",
+    "summary": "Automatisez la sécurité logicielle à la vitesse du DevOps. Intégrez des scans SAST/DAST/SCA dans vos pipelines GitHub Actions / GitLab CI, durcissez vos conteneurs Docker et verrouillez vos clusters Kubernetes.",
+    "description": "Le DevSecOps est l'intégration systématique et continue des contrôles de sécurité à chaque étape du cycle de développement logiciel. Ce cursus intensif vous apprend à automatiser l'analyse de code source (SAST), la détection de dépendances vulnérables (SCA), la conformité des conteneurs et la politique de gouvernance des clusters Kubernetes.",
+    "accentGradient": "from-cyan-500 via-blue-600 to-indigo-700",
+    "glowColor": "rgba(6, 182, 212, 0.25)",
+    "tags": [
+      "DevSecOps",
+      "CI/CD Security",
+      "Docker Security",
+      "Kubernetes RBAC",
+      "Semgrep",
+      "Trivy",
+      "OPA Gatekeeper",
+      "SBOM"
+    ],
+    "isFeatured": true,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Projet Industriel DevSecOps ⭐",
+      "title": "Pipeline CI/CD 100% Automatisé avec Blocage des Failles & Déploiement Kubernetes Durci",
+      "description": "Vous construisez une chaîne d'intégration continue de bout en bout : tests unitaires, analyse SAST avec Semgrep, scan de conteneurs avec Trivy, signature cryptographique avec Cosign et déploiement sous Kubernetes avec politiques de sécurité OPA Gatekeeper bloquant toute tentative de pod privilégié.",
+      "tags": [
+        "GitHub Actions",
+        "Semgrep SAST",
+        "Trivy Container Scan",
+        "Cosign Signature",
+        "Kubernetes Admission Controller"
+      ]
     },
-    modules: [
+    "modules": [
       {
-        number: "M01",
-        title: "CompTIA Linux+ : Les Fondamentaux du Système et de la Ligne de Commande",
-        duration: "1 semaine · 5 sessions intensives (15h)",
-        iconName: "terminal",
-        description: "Programme accéléré couvrant les objectifs fondamentaux du CompTIA Linux+ (XK0-005) : navigation, gestion des fichiers, droits d'accès, gestion des packages et processus, et automatisation Bash.",
-        weeks: [
+        "number": "01",
+        "title": "Culture DevSecOps & Intégration dans les Pipelines CI/CD",
+        "duration": "9 heures",
+        "iconName": "zap",
+        "description": "Comprenez le Shift-Left de la sécurité. Configurez vos pipelines GitHub Actions et GitLab CI pour exécuter des contrôles de sécurité automatisés sans ralentir les développeurs.",
+        "weeks": [
           {
-            week: "Jour 1 (Session 1)",
-            title: "Prise en main du Shell Bash et Arborescence FHS (Navigation & Fichiers)",
-            topic: "Architecture du noyau Linux, terminal et shell Bash, arborescence standard FHS (/etc, /var, /bin, /home), commandes de navigation (ls, cd, pwd), manipulation de fichiers et dossiers (cp, mv, rm, mkdir, touch), et recherche rapide avec find et locate.",
-            project: "Navigation complète en terminal et organisation méthodique d'un système de fichiers d'entreprise sous Debian/Ubuntu",
+            "week": "Semaine 1",
+            "title": "Principes du Shift-Left & Modélisation des Pipelines",
+            "topic": "Intégration continue, déclencheurs d'événements et barrières de qualité (Quality Gates)",
+            "project": "Construction d'un pipeline d'intégration continue avec alertes de sécurité"
           },
           {
-            week: "Jour 2 (Session 2)",
-            title: "Édition de Texte, Filtres et Redirections de Flux (Vim, Nano, Grep, Pipes)",
-            topic: "Éditeurs de texte en ligne de commande (Nano et bases de Vim), flux standards (stdin, stdout, stderr), redirections (> , >> , 2>&1) et tubes (pipes |). Filtrage et manipulation de données textuelles avec grep, sort, uniq, cut, head, tail et wc.",
-            project: "Extraction et filtrage de données précises à partir de logs systèmes bruts avec grep, awk et redirections",
-          },
-          {
-            week: "Jour 3 (Session 3)",
-            title: "Gestion des Utilisateurs, Groupes et Droits d'Accès (Chmod, Chown, Sudo, SUID)",
-            topic: "Modèle de sécurité Linux : comptes utilisateurs (/etc/passwd), mots de passe (/etc/shadow), et groupes (/etc/group). Commandes useradd, usermod, groupadd. Droits d'accès rwx (lecture, écriture, exécution) en notation symbolique et octale (chmod, chown). Droits spéciaux (SUID, SGID, Sticky Bit) et privilèges administratifs avec sudo et /etc/sudoers.",
-            project: "Configuration d'un environnement multi-utilisateurs cloisonné avec groupes de travail et privilèges restreints",
-          },
-          {
-            week: "Jour 4 (Session 4)",
-            title: "Gestion des Processus, Services Systemd et Gestionnaires de Paquets (APT & DNF)",
-            topic: "Cycle de vie des processus Linux : identification (ps, top, htop, pgrep), signaux et interruption (kill, pkill, killall). Démarrage et contrôle des services avec systemd et systemctl (status, start, stop, restart, enable). Gestion des paquets logiciels avec APT (Debian/Ubuntu) et DNF (RHEL/Fedora) : installation, mise à jour et suppression propre.",
-            project: "Installation, surveillance et gestion d'un service web (Nginx) avec analyse des ressources CPU/RAM et systemctl",
-          },
-          {
-            week: "Jour 5 (Session 5)",
-            title: "Fondamentaux Réseau, Connexion SSH Sécurisée et Scripting Bash Automatisé",
-            topic: "Vérification des interfaces réseau et connectivité (ip, ping, ss, curl, netstat). Configuration et durcissement du serveur OpenSSH (génération de clés RSA/Ed25519, désactivation du login root par mot de passe). Introduction aux scripts Bash : variables, conditions if/else, boucles, et planification de tâches récurrentes avec Cron / Crontab.",
-            project: "Déploiement d'un script Bash de sauvegarde automatique chiffrée avec planification crontab et accès SSH par clés",
-          },
-        ],
-        price: "20,000 DA",
+            "week": "Semaine 2",
+            "title": "Détection des Secrets dans le Code (GitLeaks)",
+            "topic": "Recherche de clés API, mots de passe et certificats commités par erreur dans Git",
+            "project": "Mise en place de hooks de pre-commit bloquant les secrets avant commit"
+          }
+        ]
       },
+      {
+        "number": "02",
+        "title": "Tests Automatisés : SAST, DAST & Dépendances (SCA)",
+        "duration": "9 heures",
+        "iconName": "code",
+        "description": "Déployez l'analyse statique (SAST), l'analyse dynamique (DAST) et la sécurité des dépendances tierces (SCA) : Semgrep, SonarQube, OWASP ZAP et Snyk.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Analyse Statique du Code (SAST) avec Semgrep",
+            "topic": "Écriture de règles Semgrep personnalisées, détection de failles OWASP dans le code",
+            "project": "Automatisation de l'audit statique avec blocage des Pull Requests vulnérables"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Sécurité des Dépendances (SCA) & Inventaire SBOM",
+            "topic": "Vulnérabilités de librairies tierces, génération de SBOM (CycloneDX / SPDX)",
+            "project": "Audit automatisé des dépendances npm/pip et génération de rapport SBOM"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Sécurité des Conteneurs Docker & Registres d'Images",
+        "duration": "9 heures",
+        "iconName": "server",
+        "description": "Construisez des conteneurs imperméables. Rédigez des Dockerfiles sécurisés, utilisez des images de base minimales (Distroless), scannez avec Trivy et signez avec Cosign.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Durcissement de Dockerfile & Exécution Non-Root",
+            "topic": "Images multi-stages, suppression des outils superflus et gestion d'utilisateurs sans privilèges",
+            "project": "Réécriture et optimisation sécurisée de 5 Dockerfiles vulnérables"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Scan de Vulnérabilités & Signature Cryptographique",
+            "topic": "Analyse d'images avec Trivy, signature avec Sigstore/Cosign et validation de registre",
+            "project": "Pipeline interdisant le déploiement de tout conteneur non signé cryptographiquement"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Sécurité des Clusters Kubernetes (KubeSec)",
+        "duration": "9 heures",
+        "iconName": "shield",
+        "description": "Verrouillez l'orchestration de conteneurs : contrôle d'accès RBAC, Network Policies d'isolation, sécurité des Service Accounts et gestion des Secrets Kubernetes.",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "Contrôle d'Accès RBAC & Isolation Réseau Kubernetes",
+            "topic": "Rôles, RoleBindings, ClusterRoles et politiques réseau (NetworkPolicies Calico/Cilium)",
+            "project": "Conception d'une politique d'isolation réseau stricte entre microservices"
+          }
+        ]
+      },
+      {
+        "number": "05",
+        "title": "Gouvernance par le Code avec OPA Gatekeeper & Kyverno",
+        "duration": "9 heures",
+        "iconName": "lock",
+        "description": "Appliquez la politique de sécurité sous forme de code (Policy-as-Code). Bloquez les conteneurs root, imposez des limites de ressources et auditez la conformité en temps réel.",
+        "weeks": [
+          {
+            "week": "Semaine 8",
+            "title": "Admission Controllers & Politiques avec Kyverno / OPA",
+            "topic": "Validation Webhooks, politiques Rego, interdiction de conteneurs privilégiés",
+            "project": "Déploiement de 10 politiques d'admission Kyverno bloquant les dérives de sécurité"
+          },
+          {
+            "week": "Semaine 9",
+            "title": "Surveillance Runtime des Conteneurs avec Falco",
+            "topic": "Détection en direct d'exécutions suspectes au niveau du noyau (eBPF) avec Falco",
+            "project": "Détection en temps réel d'un shell interactif lancé dans un conteneur en production"
+          }
+        ]
+      }
     ],
-    pricing: {
-      packComplet: {
-        price: "20,000 DA",
-        savings: "Tarif unique tout inclus · 1 semaine intensive",
-        durationLabel: "1 semaine intensive · 15 heures de pratique (5 sessions de 3h)",
-        features: [
-          "Formation complète 100% pratique basée sur CompTIA Linux+ (XK0-005)",
-          "Accès aux machines virtuelles de TP Linux (Debian / Ubuntu)",
-          "Aide-mémoires et cheat sheets des commandes essentielles du terminal",
-          "Scripts Bash et modèles de configuration prêts à l'emploi",
-          "Attestation officielle de réussite CYBERLYMPH Linux Fundamentals",
-          "Pause café offerte ☕ à chaque séance en présentiel et assistance formateur",
-        ],
-      },
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "45 heures · 9 semaines",
+        "features": [
+          "Pipelines CI/CD cloud configurés et opérationnels",
+          "Environnement de test Kubernetes dédié",
+          "Certificat CYBERLYMPH Certified DevSecOps Professional",
+          "Aligné sur les meilleures pratiques de l'industrie Cloud Native"
+        ]
+      }
     },
-    benefits: [
-      { iconName: "terminal", title: "Pratique 100% en Terminal Bash", desc: "Apprentissage direct en ligne de commande sur des distributions réelles (Debian / Ubuntu)" },
-      { iconName: "award", title: "Attestation Linux Fundamentals", desc: "Validez vos compétences selon les objectifs officiels du CompTIA Linux+" },
-      { iconName: "book", title: "Cheat Sheet & Scripts Inclus", desc: "Répertoire exhaustif des commandes indispensables et templates de scripts Bash" },
-      { iconName: "coffee", title: "Pause Café Offerte", desc: "Moments conviviaux et échanges entre passionnés à chaque session" },
-      { iconName: "users", title: "Accompagnement par des Admins Système", desc: "Des formateurs chevronnés pour vous guider pas-à-pas et débloquer chaque exercice" },
-      { iconName: "server", title: "Environnements Sandboxed", desc: "Pratique sans risque sur machines virtuelles préconfigurées" },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certification DevSecOps",
+        "desc": "Atteste de votre capacité à industrialiser et automatiser la sécurité applicative"
+      }
     ],
-    faqs: [
+    "faqs": [
       {
-        q: "À qui s'adresse cette formation Linux Fundamentals ?",
-        a: "Cette formation s'adresse aux débutants, étudiants, développeurs et futurs spécialistes en cybersécurité ou devops qui souhaitent acquérir une maîtrise solide et rapide de l'environnement Linux en ligne de commande.",
-      },
-      {
-        q: "Quel est le programme abordé au cours de cette semaine ?",
-        a: "Le cursus se déroule sur 5 sessions intensives couvrant l'arborescence FHS, la manipulation de fichiers, les éditeurs (Vim/Nano), les filtres et pipes (grep, awk), la gestion des utilisateurs et droits (chmod, sudo), les processus (systemd), les paquets (APT) et les scripts Bash.",
-      },
-      {
-        q: "Cette formation prépare-t-elle à la certification CompTIA Linux+ ?",
-        a: "Oui, elle couvre l'intégralité du socle fondamental des compétences requises pour l'examen officiel CompTIA Linux+ (XK0-005), constituant le tremplin idéal pour la certification.",
-      },
-      {
-        q: "Comment s'inscrire et quelles sont les modalités de paiement ?",
-        a: "L'inscription se fait directement via WhatsApp en 1 clic. Le tarif est fixé à 10,000 DA tout inclus pour la semaine. Les paiements sont acceptés par BaridiMob, virement CCP ou en espèces sur place.",
-      },
+        "q": "Faut-il être développeur pour suivre ce cours ?",
+        "a": "Non, le cours s'adresse aux développeurs, administrateurs système et ingénieurs DevOps désireux de maîtriser la sécurité logicielle automatisée."
+      }
     ],
-    registrationUrl: getWhatsAppReservationUrl("Linux Fundamentals : CompTIA Linux+", "Pack Complet", "10,000 DA"),
-    isOpenForRegistration: true,
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*DevSecOps*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
   },
+  {
+    "id": "defending-aws",
+    "slug": "defending-aws-cloud-security-et-detection",
+    "title": "Defending AWS : Sécurité Cloud & Détection d'Attaques",
+    "shortTitle": "Defending AWS",
+    "tagline": "AWS IAM · CloudTrail · GuardDuty · AWS Security Hub · VPC Security · Remédiation Lambda",
+    "category": "security",
+    "categoryLabel": "Sécurité Cloud & Surveillance Amazon Web Services",
+    "badge": "AWS Security",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH Cloud Defense Practice",
+    "duration": "40 heures · 8 semaines",
+    "totalHours": 40,
+    "modulesCount": 4,
+    "projectsCount": 12,
+    "prerequisites": "Connaissances de base sur les services cloud Amazon Web Services (EC2, S3, IAM)",
+    "location": "Laboratoire AWS Cloud Dédié",
+    "level": "Intermédiaire",
+    "summary": "Sécurisez et surveillez les infrastructures Amazon Web Services. Maîtrisez le durcissement d'IAM, l'analyse des journaux CloudTrail et la détection d'intrusions avec Amazon GuardDuty et Security Hub.",
+    "description": "AWS héberge une part colossale des applications critiques mondiales. Ce cursus pratique vous apprend à protéger une infrastructure cloud AWS contre les vols de clés d'accès, les mauvaises configurations de compartiments S3, les élévations de privilèges IAM et les attaques réseau avec AWS WAF et GuardDuty.",
+    "accentGradient": "from-amber-500 via-orange-600 to-indigo-700",
+    "glowColor": "rgba(245, 158, 11, 0.25)",
+    "tags": [
+      "AWS Security",
+      "AWS IAM",
+      "CloudTrail",
+      "Amazon GuardDuty",
+      "Security Hub",
+      "S3 Security",
+      "VPC Security"
+    ],
+    "isFeatured": false,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Opération de Sécurité Cloud AWS ⭐",
+      "title": "Audit & Déploiement d'une Architecture de Détection Automatisée sur Multi-Comptes AWS",
+      "description": "Vous configurez la sécurité d'une infrastructure AWS d'entreprise : politiques IAM avec conditions strictes, centralisation des logs CloudTrail/VPC Flow dans un compte de sécurité dédié, règles de détection d'anomalies GuardDuty et isolation automatique d'instances compromises.",
+      "tags": [
+        "AWS Organizations",
+        "GuardDuty Alerts",
+        "CloudTrail Centralization",
+        "Lambda Remediation",
+        "AWS WAF"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Sécurité des Identités AWS IAM & Politiques Avancées",
+        "duration": "10 heures",
+        "iconName": "lock",
+        "description": "Maîtrisez la gestion des accès sous AWS : politiques basées sur l'identité vs politiques basées sur les ressources (S3 bucket policies), rôles IAM, Service Control Policies (SCP) et accès temporaires STS.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Structure des Politiques JSON & Évaluation IAM",
+            "topic": "Effets Deny/Allow, éléments Principal/Action/Resource et blocs Condition",
+            "project": "Correction de politiques IAM trop permissives (suppression des privilèges AdministratorAccess)"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Fédération d'Identité & Sécurisation des Rôles IAM",
+            "topic": "AssumeRole, jetons temporaires AWS STS, fédération SAML et clés d'accès temporaires",
+            "project": "Mise en place d'un accès sécurisé basé sur les rôles avec MFA obligatoire"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Surveillance, Journaux & Détection (CloudTrail & GuardDuty)",
+        "duration": "10 heures",
+        "iconName": "search",
+        "description": "Enregistrez et analysez chaque action exécutée sur votre infrastructure AWS. Exploitez AWS CloudTrail, VPC Flow Logs et le moteur d'intelligence artificielle Amazon GuardDuty.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Centralisation & Intégrité des Logs CloudTrail",
+            "topic": "Validation d'intégrité de fichiers journaux, stockage sécurisé S3 et analyse Athena",
+            "project": "Requêtes SQL avec Amazon Athena pour tracer une compromission de clé d'API"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Détection des Menaces avec Amazon GuardDuty",
+            "topic": "Détection de minage de cryptomonnaie, exfiltration S3 et connexions depuis des relais Tor",
+            "project": "Simulation d'attaque sur instance EC2 et analyse des alertes GuardDuty"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Sécurité Réseau VPC & Protection des Données S3",
+        "duration": "10 heures",
+        "iconName": "shield",
+        "description": "Verrouillez l'architecture réseau cloud : Security Groups, Network ACLs, VPC Endpoints privés et chiffrement de données avec AWS KMS.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Sécurité Réseau : VPC Endpoints & AWS WAF",
+            "topic": "Élimination des passerelles Internet pour les services internes via PrivateLink",
+            "project": "Déploiement d'un AWS WAF protégeant une application contre les attaques SQLi"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Protection des Données S3 & Gestion des Clés KMS",
+            "topic": "Chiffrement SSE-KMS, politiques de compartiments S3 et blocage d'accès public",
+            "project": "Sécurisation étanche d'un compartiment de stockage de données bancaires sensibles"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Automatisation de la Réponse aux Incidents (Lambda & EventBridge)",
+        "duration": "10 heures",
+        "iconName": "zap",
+        "description": "Réagissez en temps réel aux attaques. Déployez des fonctions AWS Lambda déclenchées par Amazon EventBridge pour révoquer des identifiants compromis et isoler des serveurs.",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "Orchestration d'Événements avec Amazon EventBridge",
+            "topic": "Règles d'événements déclenchées par GuardDuty et AWS Config",
+            "project": "Création d'un flux d'alerte en temps réel sur Discord / Slack pour alertes critiques"
+          },
+          {
+            "week": "Semaine 8",
+            "title": "Remédiation Automatisée avec AWS Lambda",
+            "topic": "Scripts Lambda de confinement d'instance EC2 (changement de Security Group) et révocation IAM",
+            "project": "Déploiement d'une remédiation automatique neutralisant une clé d'API compromise en 15 secondes"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "40 heures · 8 semaines",
+        "features": [
+          "Environnement de laboratoire AWS dédié",
+          "Mise en œuvre des services natifs de sécurité AWS",
+          "Certificat CYBERLYMPH Certified AWS Defense Specialist",
+          "Aligné sur les exigences de sécurité cloud mondiales"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certification AWS Security Specialist",
+        "desc": "Atteste de votre capacité à concevoir et surveiller des environnements cloud Amazon hautement sécurisés"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Les laboratoires AWS sont-ils compris dans le cursus ?",
+        "a": "Oui, un compte AWS sandbox est fourni à chaque participant pour réaliser l'ensemble des travaux pratiques."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Defending%20AWS*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  },
+  {
+    "id": "ai-security",
+    "slug": "securite-de-ia-et-prompt-injection",
+    "title": "AI Security & LLM Red Teaming : Sécurité Offensive & Défensive de l'IA",
+    "shortTitle": "AI Security",
+    "tagline": "LLM Red Teaming · Prompt Injection · Jailbreaking · OWASP Top 10 for LLMs · Data Poisoning · Guardrails",
+    "category": "ai",
+    "categoryLabel": "Sécurité Offensive & Défensive de l'IA",
+    "badge": "Cursus d'Élite IA & Cyber",
+    "badgeType": "hot",
+    "partner": "CYBERLYMPH AI Security Lab",
+    "duration": "55 heures · 11 semaines",
+    "totalHours": 55,
+    "modulesCount": 6,
+    "projectsCount": 18,
+    "prerequisites": "Notions de base en informatique, web ou utilisation de modèles de langage (LLMs)",
+    "location": "Laboratoire de Pentest IA & Plateforme Interactive",
+    "level": "Intermédiaire à Avancé",
+    "summary": "Le cursus le plus complet du secteur sur la sécurité de l'intelligence artificielle. Maîtrisez le Red Teaming de modèles de langage (LLMs), l'injection de prompts (directe et indirecte), le jailbreak, la compromission de bases vectorielles RAG et le déploiement de défenses avec Guardrails.",
+    "description": "Alors que les entreprises déploient massivement des LLMs et des agents autonomes dans leurs infrastructures, l'IA Red Teaming et la défense des systèmes d'IA sont devenues les compétences les plus recherchées du secteur. Ce cursus intensif en 6 modules vous forme à auditer, attaquer, modéliser et défendre les applications d'intelligence artificielle en combinant théorie rigoureuse et travaux pratiques sur des environnements d'entraînement dédiés.",
+    "accentGradient": "from-purple-500 via-pink-500 to-rose-600",
+    "glowColor": "rgba(236, 72, 153, 0.25)",
+    "tags": [
+      "AI Red Teaming",
+      "Prompt Injection",
+      "Jailbreak",
+      "OWASP LLM Top 10",
+      "BankGPT",
+      "Data Poisoning",
+      "RAG Security",
+      "AI Guardrails",
+      "NeMo Guardrails",
+      "Llama Guard"
+    ],
+    "isFeatured": true,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Grand Projet d'Audit & Sécurisation IA ⭐",
+      "title": "Compromission Black-Box & Durcissement Complet d'un Agent IA d'Entreprise (Challenge BankGPT / HealthGPT)",
+      "description": "Sur une infrastructure d'agent conversationnel bancaire virtualisée : exfiltration du System Prompt, contournement des règles de sécurité par Prompt Injection indirecte, injection de données empoisonnées dans la base vectorielle RAG, puis implémentation complète des défenses correctives avec NeMo Guardrails et Llama Guard.",
+      "tags": [
+        "BankGPT CTF",
+        "Indirect Prompt Injection",
+        "System Prompt Extraction",
+        "RAG Defense",
+        "NeMo Guardrails",
+        "Llama Guard"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Fondamentaux des Architectures LLMs & Risques Spécifiques",
+        "duration": "9 heures",
+        "iconName": "brain",
+        "description": "Comprenez en profondeur le fonctionnement des Transformers, des fenêtres de contexte, des mécanismes d'attention et la nature stochastique des LLMs qui rend les attaques par langage naturel si difficiles à contrer.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Architecture des Transformers & Traitement du Langage",
+            "topic": "Mécanismes d'attention, tokens, embeddings, température et pipeline d'inférence",
+            "project": "Analyse des probabilités de sortie et manipulation de tokens sur modèle open-source"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Surface d'Attaque de l'IA & Paradigme Offensive AI",
+            "topic": "Différence entre sécurité logicielle classique et sécurité probabiliste de l'IA",
+            "project": "Cartographie de la surface d'attaque d'une application d'entreprise connectée à un LLM"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Techniques d'Injection de Prompts (Directes & Indirectes)",
+        "duration": "10 heures",
+        "iconName": "terminal",
+        "description": "Maîtrisez l'arme maîtresse du hacking de LLMs : injections directes pour détourner les instructions, et injections indirectes logées dans des documents ou pages web consultés par l'agent IA.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Injections de Prompts Directes & Débordement de Contexte",
+            "topic": "Techniques d'oubli d'instructions, délimiteurs spéciaux et encodages Unicode",
+            "project": "Bypass des filtres de modération d'un assistant d'entreprise"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Injections de Prompts Indirectes (IPI) & Fichiers Piégés",
+            "topic": "Attaques via e-mails, PDFs, pages web explorées et données de base vectorielle",
+            "project": "Exfiltration automatique de données confidentielles via injection indirecte dans un PDF"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Jailbreaking Avancé & Exfiltration de Prompts Système",
+        "duration": "9 heures",
+        "iconName": "lock",
+        "description": "Apprenez les techniques des chercheurs en sécurité pour contourner les garde-fous d'alignement des modèles (RLHF) et extraire les instructions système secrètes (System Prompts).",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Jailbreaks Multimodaux & Jeux de Rôles Complexes",
+            "topic": "Scénarios DAN, induction cognitive, encodage multi-langues et attaques adversariales",
+            "project": "Jailbreak réussi d'un modèle d'IA commercial en environnement de test"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Exfiltration & Reconstitution de System Prompts",
+            "topic": "Extraction de variables secrètes, clés d'API et logique interne d'agents IA",
+            "project": "Extraction à 100% du prompt système d'une application de support client"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Vulnérabilités OWASP Top 10 for LLMs & Applications RAG",
+        "duration": "9 heures",
+        "iconName": "shield",
+        "description": "Auditez méthodiquement les applications exploitant des bases vectorielles (Retrieval-Augmented Generation) et des outils externes (Function Calling / Agents).",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "OWASP Top 10 for LLMs & Insecure Output Handling",
+            "topic": "Gestion non sécurisée des sorties du modèle (XSS via LLM, exécution de code)",
+            "project": "Exploitation d'une faille XSS et RCE générée par la sortie d'un modèle d'IA"
+          },
+          {
+            "week": "Semaine 8",
+            "title": "Sécurité des Architectures RAG & Bases Vectorielles",
+            "topic": "Empoisonnement d'embeddings, injection vectorielle et divulgation de documents privés",
+            "project": "Empoisonnement de base vectorielle Pinecone / ChromaDB pour altérer les réponses"
+          }
+        ]
+      },
+      {
+        "number": "05",
+        "title": "Empoisonnement de Données & Supply Chain de l'IA",
+        "duration": "9 heures",
+        "iconName": "search",
+        "description": "Découvrez les menaces pesant sur les modèles open-source : backdoors intégrées dans les poids de modèles, modèles malveillants sur HuggingFace (Pickle exploits) et empoisonnement de jeux d'entraînement.",
+        "weeks": [
+          {
+            "week": "Semaine 9",
+            "title": "Exploits Pickle & Modèles Malveillants sur HuggingFace",
+            "topic": "Sérialisation Pickle, exécution de code lors du chargement de poids de modèles",
+            "project": "Création et détection d'une porte dérobée dans un modèle de langage open-source"
+          }
+        ]
+      },
+      {
+        "number": "06",
+        "title": "Défense d'IA, Guardrails & Surveillance Continue",
+        "duration": "9 heures",
+        "iconName": "zap",
+        "description": "Implémentez les contre-mesures de niveau entreprise : NeMo Guardrails de NVIDIA, Llama Guard de Meta, filtres d'entrées/sorties et détection de dérive comportementale.",
+        "weeks": [
+          {
+            "week": "Semaine 10",
+            "title": "Déploiement de NeMo Guardrails & Llama Guard",
+            "topic": "Rails d'entrée, rails de sortie, classification d'intentions et blocage temps réel",
+            "project": "Sécurisation complète d'un agent IA d'entreprise avec NeMo Guardrails"
+          },
+          {
+            "week": "Semaine 11",
+            "title": "Audit de Conformité IA & Soutenance de Projet",
+            "topic": "Référentiels de sécurité IA (NIST AI RMF, ISO 42001, EU AI Act) et soutenance",
+            "project": "Soutenance finale du Grand Projet d'Audit et Sécurisation IA"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "55 heures · 11 semaines",
+        "features": [
+          "Environnement complet de Red Teaming d'IA",
+          "Modèles open-source et APIs d'évaluation fournies",
+          "Certificat CYBERLYMPH Certified AI Security Specialist",
+          "Pionnier sur les compétences de sécurité les plus demandées"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certification AI Security Specialist",
+        "desc": "Titre d'avant-garde certifiant votre maîtrise du Red Teaming et de la sécurisation des LLMs"
+      },
+      {
+        "iconName": "brain",
+        "title": "Laboratoire d'IA Privé",
+        "desc": "Entraînez-vous sur des modèles et architectures d'agents réels en toute sécurité"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Pourquoi la sécurité de l'IA est-elle devenue cruciale ?",
+        "a": "Toutes les grandes entreprises intègrent aujourd'hui des LLMs dans leurs processus critiques. Savoir auditer et protéger ces systèmes est l'une des compétences les plus rares et les mieux rémunérées de la tech."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*AI%20Security%20%26%20LLM%20Red%20Teaming*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  },
+  {
+    "id": "pre-security",
+    "slug": "pre-security-fondamentaux-cybersecurite",
+    "title": "Pre Security : Fondamentaux de la Cybersécurité & Réseaux",
+    "shortTitle": "Pre Security",
+    "tagline": "Architecture Ordinateur · Réseaux IP · Modèle OSI · Fondations Web · Cryptographie de Base",
+    "category": "security",
+    "categoryLabel": "Fondations de la Cybersécurité",
+    "badge": "Idéal pour Débutants",
+    "badgeType": "open",
+    "partner": "CYBERLYMPH Foundations Academy",
+    "duration": "30 heures · 6 semaines",
+    "totalHours": 30,
+    "modulesCount": 3,
+    "projectsCount": 10,
+    "prerequisites": "Aucun prérequis technique — Ouvert à tous",
+    "location": "Présentiel & Plateforme Interactive",
+    "level": "Débutant",
+    "summary": "Le point de départ parfait. Découvrez comment fonctionnent les réseaux, les systèmes d'exploitation, Internet et les principes fondamentaux de la sécurité numérique.",
+    "description": "Avant d'apprendre à défendre ou attaquer un système, il est indispensable de comprendre comment il fonctionne sous le capot. Ce cursus accessible vous donne les bases solides en informatique, réseaux, fonctionnement du web et cybersécurité pour aborder les spécialisations professionnelles avec sérénité.",
+    "accentGradient": "from-teal-400 via-emerald-500 to-cyan-600",
+    "glowColor": "rgba(16, 185, 129, 0.25)",
+    "tags": [
+      "Cyber Foundations",
+      "Networking Basics",
+      "OSI Model",
+      "TCP/IP",
+      "Web Basics",
+      "Security Principles"
+    ],
+    "isFeatured": false,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Projet de Synthèse Débutant ⭐",
+      "title": "Analyse & Sécurisation d'un Réseau Domestique / Petite Entreprise",
+      "description": "Vous configurez et analysez un réseau local complet : adressage IP, règles de pare-feu de base, sécurisation Wi-Fi et audit des services exposés.",
+      "tags": [
+        "Network Setup",
+        "Packet Capture",
+        "Wireshark Basics",
+        "Firewall Rules"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Fondations des Réseaux & Protocoles IP",
+        "duration": "10 heures",
+        "iconName": "network",
+        "description": "Comprenez le trajet des données sur Internet : adresses IP, masques de sous-réseau, modèle OSI et protocoles TCP/UDP.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Le Modèle OSI & Adressage IP",
+            "topic": "Couches 1 à 7, adresses IPv4 privées vs publiques et routage",
+            "project": "Conception d'un plan d'adressage IP pour 3 départements d'entreprise"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Protocoles Essentiels : DNS, DHCP & ARP",
+            "topic": "Résolution de noms de domaine, attribution d'adresses et inspection",
+            "project": "Capture et analyse d'échanges DNS et DHCP dans Wireshark"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Fonctionnement du Web & Navigateurs",
+        "duration": "10 heures",
+        "iconName": "code",
+        "description": "Comprenez ce qui se passe quand vous tapez une URL : requêtes HTTP/S, serveurs web, cookies, sessions et code client/serveur.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Le Protocole HTTP & En-Têtes Réseau",
+            "topic": "Méthodes GET/POST, codes de statut (200, 301, 404, 500) et requêtes",
+            "project": "Inspection des flux HTTP et décodage des requêtes web"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Cookies, Sessions & Chiffrement SSL/TLS",
+            "topic": "Gestion de l'état de connexion et bases du chiffrement asymétrique",
+            "project": "Observation de sessions web et analyse de certificats HTTPS"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Principes de la Sécurité Numérique & Menaces Courantes",
+        "duration": "10 heures",
+        "iconName": "shield",
+        "description": "Découvrez les piliers de la sécurité : triade CIA, ingénierie sociale, malwares courants et bonnes pratiques de protection.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "La Triade CIA & Ingénierie Sociale",
+            "topic": "Confidentialité, Intégrité, Disponibilité et techniques de manipulation humaine",
+            "project": "Audit de sensibilisation et détection de tentatives de phishing"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Panorama des Menaces & Hygiène Numérique",
+            "topic": "Virus, vers, chevaux de Troie, ransomwares et configuration d'antivirus/pare-feu",
+            "project": "Mise en place d'une politique de sécurité personnelle et professionnelle"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "30 heures · 6 semaines",
+        "features": [
+          "Accessible sans aucun prérequis mathématique ou informatique",
+          "Exercices interactifs et visuels",
+          "Certificat CYBERLYMPH Cyber Foundations",
+          "Passerelle idéale vers les filières SOC ou Pentest"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certificat Pre Security",
+        "desc": "Atteste de l'acquisition des bases indispensables en réseaux et cybersécurité"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Est-ce adapté si je n'ai jamais fait d'informatique ?",
+        "a": "Oui, c'est précisément le but de ce programme : tout expliquer avec des analogies simples et des démonstrations pratiques."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Pre%20Security*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  },
+  {
+    "id": "linux-fundamentals",
+    "slug": "linux-fundamentals-administration-et-terminal",
+    "title": "Linux Fundamentals : Administration Système & Ligne de Commande",
+    "shortTitle": "Linux Fundamentals",
+    "tagline": "Terminal Bash · Système de Fichiers · Permissions & Droits · Processus · Réseau Linux",
+    "category": "network",
+    "categoryLabel": "Administration Système Linux & Shell",
+    "badge": "Compétence Fondamentale",
+    "badgeType": "open",
+    "partner": "CYBERLYMPH Open Source Academy",
+    "duration": "30 heures · 6 semaines",
+    "totalHours": 30,
+    "modulesCount": 3,
+    "projectsCount": 10,
+    "prerequisites": "Aucun prérequis — Accessible à tous",
+    "location": "Présentiel & Lab Linux en Ligne",
+    "level": "Débutant",
+    "summary": "Linux est le système qui propulse Internet, le cloud et la cybersécurité. Apprenez à maîtriser le terminal, naviguer dans le système de fichiers, gérer les permissions, manipuler les processus et écrire des scripts Bash.",
+    "description": "Plus de 90% des serveurs cloud, des outils de hacking et des environnements d'entreprise tournent sous Linux. Ce cursus pratique vous affranchit de la souris : vous apprenez à tout contrôler en ligne de commande avec aisance et rapidité, préparant le terrain pour les métiers du cloud, du DevOps et de la cybersécurité.",
+    "accentGradient": "from-amber-400 via-orange-500 to-red-600",
+    "glowColor": "rgba(245, 158, 11, 0.25)",
+    "tags": [
+      "Linux",
+      "Bash",
+      "Terminal",
+      "System Administration",
+      "File Permissions",
+      "Shell Scripting",
+      "CompTIA Linux+"
+    ],
+    "isFeatured": false,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Projet d'Administration Linux ⭐",
+      "title": "Déploiement & Sécurisation d'un Serveur Linux de Production (Debian / Ubuntu Server)",
+      "description": "Vous installez et durcissez de zéro un serveur Linux : configuration réseau, utilisateurs sans privilèges avec sudo, restriction SSH par clés cryptographiques, pare-feu UFW et script Bash d'automatisation de sauvegarde quotidienne.",
+      "tags": [
+        "Linux Server",
+        "Bash Automation",
+        "SSH Keys",
+        "UFW Firewall",
+        "Systemd Services"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Navigation, Commandes Fondamentales & Manipulation de Fichiers",
+        "duration": "10 heures",
+        "iconName": "terminal",
+        "description": "Prenez en main le shell Bash : déplacement dans l'arborescence, création, copie, déplacement et recherche efficace de fichiers avec grep et find.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Le Terminal & l'Arborescence Linux (/etc, /var, /home)",
+            "topic": "Commandes cd, ls, pwd, mkdir, rm, touch, cat, less et nano",
+            "project": "Organisation et gestion d'une arborescence de fichiers complexe"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Filtres, Redirections & Recherche (Grep, Find, Pipes)",
+            "topic": "Flux standards (stdin, stdout, stderr), tubes (|) et expressions régulières",
+            "project": "Extraction rapide d'erreurs critiques dans un fichier de logs de 50 000 lignes"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Gestion des Utilisateurs, Permissions & Droits d'Accès",
+        "duration": "10 heures",
+        "iconName": "lock",
+        "description": "Maîtrisez le modèle de sécurité Linux : lecture, écriture, exécution (rwx), permissions numériques (chmod 755), propriété (chown) et privilèges sudo.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Utilisateurs, Groupes & Permissions Numériques",
+            "topic": "Fichiers /etc/passwd et /etc/shadow, chmod, chown et umask",
+            "project": "Création d'un espace collaboratif partagé avec permissions strictes"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Privilèges Sudo & Sécurité des Accès",
+            "topic": "Configuration sécurisée du fichier sudoers, binaires SUID et audit des droits",
+            "project": "Configuration d'un utilisateur administrateur restreint sans mot de passe root"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Gestion des Processus, Réseau & Initiation aux Scripts Bash",
+        "duration": "10 heures",
+        "iconName": "code",
+        "description": "Contrôlez les programmes en cours d'exécution, gérez les services systemd, analysez les connexions réseau et écrivez vos premiers scripts d'automatisation.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Gestion des Processus & Services Systemd",
+            "topic": "Commandes ps, top, kill, systemctl (start, stop, enable, status) et crontab",
+            "project": "Automatisation d'une tâche de maintenance planifiée avec Cron"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Commandes Réseau & Écriture de Scripts Bash",
+            "topic": "Outils ip, ss, ping, curl, variables Bash, boucles for et conditions if/else",
+            "project": "Script Bash de surveillance de serveur avec alerte automatique par e-mail"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "30 heures · 6 semaines",
+        "features": [
+          "Accès à un serveur Linux dédié par étudiant",
+          "100% pratique en ligne de commande",
+          "Certificat CYBERLYMPH Certified Linux Administrator",
+          "Compétence tremplin indispensable pour toute carrière tech"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certificat Linux Fundamentals",
+        "desc": "Attestation certifiante validant votre maîtrise opérationnelle de Linux"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Quelle distribution Linux est utilisée ?",
+        "a": "Ubuntu Server et Debian, qui représentent la majorité des serveurs professionnels dans le monde."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Linux%20Fundamentals*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  },
+  {
+    "id": "cisco-ccna-1",
+    "slug": "cisco-ccna-1-introduction-aux-reseaux",
+    "title": "Cisco CCNA 1 : Introduction aux Réseaux (ITN)",
+    "shortTitle": "Cisco CCNA 1",
+    "tagline": "Programme Officiel Cisco Networking Academy · Packet Tracer · Commutation · Routage IP",
+    "category": "network",
+    "categoryLabel": "Réseaux d'Entreprise Cisco (Certifié)",
+    "badge": "Programme Officiel Cisco",
+    "badgeType": "hot",
+    "partner": "Cisco Networking Academy",
+    "duration": "45 heures · 9 semaines",
+    "totalHours": 45,
+    "modulesCount": 3,
+    "projectsCount": 12,
+    "prerequisites": "Intérêt pour les réseaux informatiques — Aucun prérequis préalable",
+    "location": "Présentiel (Laboratoire Cisco Annaba) & Simulateur Packet Tracer",
+    "level": "Débutant",
+    "summary": "La certification réseau la plus prestigieuse au monde. Apprenez à concevoir, câbler, configurer et dépanner des commutateurs (switches) et routeurs Cisco réels.",
+    "description": "Le cursus officiel Cisco CCNA 1 (Introduction to Networks) constitue la référence internationale absolue en matière d'ingénierie réseau. Vous acquérez les compétences indispensables pour configurer des équipements Cisco, concevoir des plans d'adressage IPv4/IPv6 d'entreprise et sécuriser les accès de gestion d'infrastructure.",
+    "accentGradient": "from-blue-600 via-sky-500 to-cyan-400",
+    "glowColor": "rgba(14, 165, 233, 0.25)",
+    "tags": [
+      "Cisco CCNA",
+      "Packet Tracer",
+      "IPv4 Subnetting",
+      "IPv6",
+      "Switch Configuration",
+      "Router Setup",
+      "Cisco IOS"
+    ],
+    "isFeatured": true,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Examen Pratique Cisco Packet Tracer ⭐",
+      "title": "Conception & Configuration Complète d'une Infrastructure Réseau d'Entreprise Multi-Sites",
+      "description": "Vous concevez et déployez l'infrastructure réseau d'une société sur 3 étages : segmentation VLAN, routage inter-VLAN sur routeur Cisco, sous-réseaux IPv4/IPv6 optimisés, serveurs DHCP et sécurisation des accès console et SSH.",
+      "tags": [
+        "Cisco Packet Tracer",
+        "VLAN Segmentation",
+        "Inter-VLAN Routing",
+        "IPv4 Subnetting",
+        "SSH Hardening"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Communication Réseau, Protocoles & Médias Physiques",
+        "duration": "15 heures",
+        "iconName": "network",
+        "description": "Découvrez les principes de communication réseau : modèle OSI, modèle TCP/IP, normes Ethernet, médias cuivre (paires torsadées RJ45) et fibre optique.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Réseaux Aujourd'hui & Modèles en Couches",
+            "topic": "Réseaux LAN/WAN, protocoles et standards ouverts de communication",
+            "project": "Modélisation de la topologie réseau d'un campus universitaire"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Couche Physique & Commutation Ethernet",
+            "topic": "Trames Ethernet, adresses MAC et fonctionnement d'un commutateur",
+            "project": "Câblage et inspection des tables d'adresses MAC dans Packet Tracer"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Adressage Réseau IPv4, IPv6 & Découpage en Sous-Réseaux",
+        "duration": "15 heures",
+        "iconName": "terminal",
+        "description": "Maîtrisez le calcul de sous-réseaux (VLSM), la conversion binaire/décimale et la transition vers le protocole moderne IPv6.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Adressage IPv4 & Découpage VLSM",
+            "topic": "Masques de sous-réseau, calcul de plages IP et masques à longueur variable",
+            "project": "Découpage VLSM d'une plage réseau pour 5 départements distincts"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Adressage IPv6 : Unicast, Multicast & Configuration",
+            "topic": "Structure d'une adresse IPv6, types d'adresses et configuration sur équipement",
+            "project": "Configuration d'un réseau IPv6 complet avec routage local"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Configuration & Sécurisation des Routeurs et Commutateurs Cisco",
+        "duration": "15 heures",
+        "iconName": "shield",
+        "description": "Prenez les commandes de Cisco IOS : modes utilisateur, privilégié et configuration globale, mots de passe chiffrés, accès SSH et interfaces réseau.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Navigation dans Cisco IOS & Configuration Initiale",
+            "topic": "Bannières, noms d'hôtes, interfaces réseau et sauvegarde de running-config",
+            "project": "Configuration initiale sécurisée de 2 switches et 1 routeur Cisco"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Sécurisation des Accès de Gestion (SSH / Console)",
+            "topic": "Chiffrement des mots de passe (secret), génération de clés RSA et SSH v2",
+            "project": "Élimination de Telnet et activation de l'administration distante SSH"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "45 heures · 9 semaines",
+        "features": [
+          "Accès officiel à la plateforme Cisco NetAcad",
+          "Laboratoires réels et simulations Packet Tracer",
+          "Certificat officiel Cisco Networking Academy",
+          "Préparation directe à la certification mondiale CCNA"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certificat Officiel Cisco NetAcad",
+        "desc": "Reconnaissance internationale délivrée directement par Cisco Networking Academy"
+      },
+      {
+        "iconName": "network",
+        "title": "Matériel Réseau Professionnel",
+        "desc": "Manipulez de véritables switches et routeurs Cisco en laboratoire"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Ce cours donne-t-il droit à un certificat Cisco officiel ?",
+        "a": "Oui, la formation se déroule sous l'égide du programme Cisco Networking Academy avec délivrance du badge numérique officiel Cisco."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Cisco%20CCNA%201%20%3A%20Introduction%20aux%20R%C3%A9seaux*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  },
+  {
+    "id": "cisco-ethical-hacking",
+    "slug": "cisco-ethical-hacker-pentesting",
+    "title": "Ethical Hacker : Pentesting Réseau & Infrastructure (Programme Officiel Cisco)",
+    "shortTitle": "Cisco Ethical Hacker",
+    "tagline": "Programme Officiel Cisco NetAcad · Reconnaissance · Infiltration Réseau · Sécurité Wi-Fi · IoT & Cloud",
+    "category": "pentest",
+    "categoryLabel": "Sécurité Offensive Certifiée Cisco",
+    "badge": "Certification Cisco Officielle",
+    "badgeType": "hot",
+    "partner": "Cisco Networking Academy",
+    "duration": "50 heures · 10 semaines",
+    "totalHours": 50,
+    "modulesCount": 5,
+    "projectsCount": 16,
+    "prerequisites": "Bonnes bases en réseaux (niveau CCNA 1 recommandé) et aisance avec la ligne de commande",
+    "location": "Laboratoire Cisco Présentiel & Cyber Range Virtuel",
+    "level": "Intermédiaire à Avancé",
+    "summary": "Le nouveau cursus offensif officiel de Cisco Networking Academy. Apprenez à évaluer la posture de sécurité d'infrastructures d'entreprises complètes : réseaux locaux, réseaux sans fil Wi-Fi, services cloud et objets connectés (IoT).",
+    "description": "Développé par les experts de Cisco, ce programme prépare les professionnels à endosser le rôle d'auditeur de sécurité éthique. Vous combinez la rigueur méthodologique des architectures réseau Cisco avec les techniques d'intrusion les plus modernes pour identifier les vulnérabilités avant qu'elles ne soient exploitées par des cybercriminels.",
+    "accentGradient": "from-sky-500 via-indigo-600 to-purple-600",
+    "glowColor": "rgba(14, 165, 233, 0.25)",
+    "tags": [
+      "Cisco Certified",
+      "Ethical Hacking",
+      "Network Pentesting",
+      "Wi-Fi Security",
+      "Cloud Security",
+      "IoT Hacking",
+      "Vulnerability Assessment"
+    ],
+    "isFeatured": true,
+    "isOpenForRegistration": true,
+    "capstoneProject": {
+      "highlightLabel": "Grand Projet d'Audit Certifié Cisco ⭐",
+      "title": "Audit de Sécurité Complet d'une Infrastructure Entreprise Cisco Hybride (LAN, Wi-Fi & Cloud)",
+      "description": "Vous menez un test d'intrusion autorisé de bout en bout : cartographie réseau, exploitation de failles de commutation (VLAN Hopping, ARP Spoofing), audit de sécurité du réseau Wi-Fi d'entreprise (WPA2/WPA3 Enterprise) et préconisations de remédiation conformes au référentiel Cisco SAFE.",
+      "tags": [
+        "Cisco SAFE Framework",
+        "VLAN Hopping",
+        "WPA3 Audit",
+        "Arp Poisoning",
+        "Official Cisco Audit Report"
+      ]
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Fondations de l'Ethical Hacking selon Cisco",
+        "duration": "10 heures",
+        "iconName": "shield",
+        "description": "Comprenez la vision Cisco de la sécurité offensive : framework Cisco SAFE, cadre réglementaire d'audit, méthodologies d'évaluation des menaces et mise en place de la machine d'attaque.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Méthodologie de Test d'Intrusion & Architecture Cisco SAFE",
+            "topic": "Périmètre d'audit, types de tests (Black/White/Gray box) et conformité légale",
+            "project": "Élaboration d'une convention d'audit pour une infrastructure Cisco"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Cartographie Passive & Découverte de Cible",
+            "topic": "Collecte d'informations d'infrastructure, énumération DNS et empreinte d'adresses IP",
+            "project": "Cartographie de la surface d'attaque externe d'une organisation partenaire"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Analyse de Vulnérabilités & Infiltration Réseau",
+        "duration": "10 heures",
+        "iconName": "search",
+        "description": "Scannez et identifiez les failles des équipements réseau et serveurs : scanners de vulnérabilités, exploitation de failles de protocoles réseau et usurpation d'identité.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Scans de Vulnérabilités Réseau avec Nessus & OpenVAS",
+            "topic": "Configuration de scans authentifiés, élimination des faux positifs et analyse de risques",
+            "project": "Rapport d'audit de vulnérabilités sur 15 commutateurs et serveurs"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Attaques sur la Couche Liaison de Données (Couche 2)",
+            "topic": "ARP Poisoning, usurpation de passerelle, attaques DHCP Starvation et VLAN Hopping",
+            "project": "Démonstration d'interception de trafic non chiffré par attaque Man-in-the-Middle"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Sécurité des Réseaux Sans Fil (Wi-Fi Pentesting)",
+        "duration": "10 heures",
+        "iconName": "network",
+        "description": "Auditez la sécurité des réseaux sans fil : analyse des trames 802.11, capture de handshakes WPA/WPA2, failles d'implémentation WPA3 et points d'accès malveillants (Rogue APs).",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Protocoles Wi-Fi & Capture de Handshake WPA2",
+            "topic": "Trames de désauthentification, capture du 4-way handshake et cassage par dictionnaire",
+            "project": "Audit de résistance d'un réseau Wi-Fi d'entreprise face au cassage de mot de passe"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Points d'Accès Pirates (Evil Twin) & Sécurité WPA3",
+            "topic": "Attaques Evil Twin, portails captifs malveillants et analyse des limites de WPA3",
+            "project": "Déploiement d'un laboratoire de détection de points d'accès non autorisés"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Sécurité Cloud, Conteneurs & Objets Connectés (IoT)",
+        "duration": "10 heures",
+        "iconName": "server",
+        "description": "Explorez les nouveaux vecteurs d'attaque : failles d'équipements IoT (caméras, capteurs), sécurité des environnements cloud hybrides et conteneurs virtuels.",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "Attaques sur les Objets Connectés (IoT)",
+            "topic": "Mots de passe d'usine, protocoles MQTT/CoAP vulnérables et micrologiciels non sécurisés",
+            "project": "Audit de sécurité d'un équipement IoT connecté au réseau local"
+          },
+          {
+            "week": "Semaine 8",
+            "title": "Sécurité des Déploiements Cloud Hybrides",
+            "topic": "Ponts de connexion réseau VPN / DirectConnect entre réseau local et cloud public",
+            "project": "Identification d'une faille de configuration de passerelle VPN Cloud"
+          }
+        ]
+      },
+      {
+        "number": "05",
+        "title": "Rédaction du Rapport d'Audit & Certification Cisco",
+        "duration": "10 heures",
+        "iconName": "award",
+        "description": "Consolidez vos compétences d'auditeur certifié : rédaction du rapport d'audit technique et managérial selon les exigences Cisco et passage de l'évaluation finale.",
+        "weeks": [
+          {
+            "week": "Semaine 9",
+            "title": "Plan de Remédiation selon les Directives Cisco SAFE",
+            "topic": "Priorisation des corrections, remédiations par ACLs, segmentation et chiffrement",
+            "project": "Élaboration du plan d'action de sécurité pour l'équipe réseau d'entreprise"
+          },
+          {
+            "week": "Semaine 10",
+            "title": "Examen Final & Délivrance du Badge Cisco",
+            "topic": "Passage de l'examen théorique et pratique officiel sur la plateforme Cisco NetAcad",
+            "project": "Obtention du titre officiel Cisco Certified Ethical Hacker"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "50 heures · 10 semaines",
+        "features": [
+          "Cursus officiel Cisco Networking Academy",
+          "Accès aux simulateurs et matériels Cisco",
+          "Badge numérique mondial Cisco Certified Ethical Hacker",
+          "Double compétence réseau et cybersécurité très valorisée"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Badge Numérique Officiel Cisco",
+        "desc": "Titre délivré directement par Cisco Networking Academy et vérifiable sur Credly"
+      },
+      {
+        "iconName": "shield",
+        "title": "Crédibilité Industrielle Maximale",
+        "desc": "Associez votre expertise en sécurité au nom le plus respecté des réseaux mondiaux"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Ce cours prépare-t-il à un titre reconnu à l'international ?",
+        "a": "Oui, le badge Cisco Certified Ethical Hacker est émis directement par Cisco sur la plateforme internationale Credly, reconnu par les employeurs du monde entier."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Cisco%20Ethical%20Hacker*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  }
 ];
+
 
 export function getFormationById(idOrSlug: string): Formation | undefined {
   return formationsData.find(

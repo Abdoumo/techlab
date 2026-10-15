@@ -19,6 +19,7 @@ import {
   Shield,
   Server,
   SlidersHorizontal,
+  Lock,
 } from "lucide-react";
 import { soundManager } from "@/utils/soundManager";
 
@@ -32,9 +33,11 @@ export default function Formations() {
 
   const categories = [
     { id: "all", label: isEn ? "All Courses" : "Toutes les formations" },
-    { id: "ai", label: isEn ? "AI & Automation" : "IA & Automatisation", icon: Brain },
-    { id: "security", label: isEn ? "Cybersecurity & Systems" : "Cybersécurité & Hacking", icon: Shield },
-    { id: "network", label: isEn ? "Cisco Networking" : "Réseaux Cisco", icon: Server },
+    { id: "soc", label: isEn ? "SOC & Cyber Defense" : "SOC & Défense Cyber", icon: Shield },
+    { id: "pentest", label: isEn ? "Pentest & Red Team" : "Pentest & Red Team", icon: Flame },
+    { id: "security", label: isEn ? "Security Engineering & Cloud" : "Ingénierie & Cloud Security", icon: Lock },
+    { id: "ai", label: isEn ? "AI & LLM Security" : "IA & LLM Security", icon: Brain },
+    { id: "network", label: isEn ? "Networking & Systems" : "Réseaux & Systèmes", icon: Server },
   ];
 
   // Real levels from the dataset
@@ -301,7 +304,7 @@ export default function Formations() {
             </div>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {filteredFormations.map((formation) => {
+              {filteredFormations.slice(0, 999).map((formation) => {
                 const isHighlight = formation.isFeatured;
 
                 return (
@@ -415,7 +418,7 @@ export default function Formations() {
                   {/* Card Bottom / CTA */}
                   <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
                     <div className="text-xs text-slate-400">
-                      {formation.pricing.packComplet?.price ? (
+                      {formation.pricing.packComplet?.price && formation.pricing.packComplet.price !== "Sur devis" ? (
                         <>
                           <span className="block text-[10px] uppercase font-semibold text-slate-500">
                             {isEn ? "Complete Pack" : "Formule pack"}
@@ -425,7 +428,14 @@ export default function Formations() {
                           </span>
                         </>
                       ) : (
-                        <span>{isEn ? "On request" : "Sur demande"}</span>
+                        <div>
+                          <span className="block text-[10px] uppercase font-semibold text-cyan-400">
+                            {isEn ? "Tariff" : "Tarification"}
+                          </span>
+                          <span className="font-bold text-cyan-300 text-sm">
+                            {isEn ? "On quotation" : "Sur devis"}
+                          </span>
+                        </div>
                       )}
                     </div>
 
