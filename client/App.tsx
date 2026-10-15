@@ -1,6 +1,7 @@
 import "./global.css";
 import "@/lib/i18n";
 
+import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/toaster";
 import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -25,11 +26,21 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <I18nextProvider i18n={i18n}>
-    <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
+  <ThemeProvider
+    attribute="class"
+    defaultTheme="dark"
+    value={{
+      light: "light",
+      dark: "dark",
+    }}
+    enableSystem={false}
+    storageKey="cyberlymph-theme"
+  >
+    <I18nextProvider i18n={i18n}>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -51,6 +62,7 @@ const App = () => (
     </TooltipProvider>
   </QueryClientProvider>
   </I18nextProvider>
+  </ThemeProvider>
 );
 
 createRoot(document.getElementById("root")!).render(<App />);

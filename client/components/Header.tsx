@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { soundManager } from "@/utils/soundManager";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeToggle from "./ThemeToggle";
 import logoImg from "@/assets/logo.png";
 
 export default function Header() {
@@ -90,7 +91,10 @@ export default function Header() {
           >
             {t("nav.getStarted")}
           </button>
-          <LanguageSwitcher />
+          <div className="flex items-center gap-2 pl-2 border-l border-slate-800 theme-toggle-border">
+            <ThemeToggle />
+            <LanguageSwitcher />
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
@@ -197,7 +201,8 @@ export default function Header() {
             >
               {t("nav.getStarted")}
             </button>
-            <div className="flex justify-center py-2">
+            <div className="flex items-center justify-center gap-4 py-2 border-t border-slate-800/60 theme-toggle-border pt-3">
+              <ThemeToggle />
               <LanguageSwitcher />
             </div>
           </div>
