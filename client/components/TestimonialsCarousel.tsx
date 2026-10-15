@@ -92,14 +92,14 @@ export default function TestimonialsCarousel({
                 >
                   <div
                     ref={index === current ? cardRef : null}
-                    className="group relative bg-slate-800/50 backdrop-blur rounded-xl p-8 border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 h-full overflow-hidden"
+                    className="group relative bg-white dark:bg-slate-800/50 backdrop-blur rounded-xl p-8 border border-slate-200 dark:border-slate-700 hover:border-cyan-400/50 transition-all duration-300 h-full overflow-hidden shadow-md hover:shadow-xl dark:shadow-none"
                     style={{
                       transform: index === current ? transform : "perspective(1000px)",
                       transformStyle: "preserve-3d",
                       boxShadow:
                         index === current
                           ? "0 20px 50px rgba(34, 197, 238, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
-                          : "0 10px 25px rgba(0, 0, 0, 0.3)",
+                          : "0 10px 25px rgba(0, 0, 0, 0.08)",
                     }}
                     onMouseMove={index === current ? handleCardMouseMove : undefined}
                     onMouseLeave={index === current ? handleCardMouseLeave : undefined}
@@ -130,16 +130,16 @@ export default function TestimonialsCarousel({
                       </div>
 
                       {/* Testimonial Text */}
-                      <p className="text-slate-300 mb-6 leading-relaxed italic group-hover:text-slate-200 transition-colors">
+                      <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed italic group-hover:text-slate-900 dark:group-hover:text-slate-200 transition-colors">
                         "{testimonial.text}"
                       </p>
 
                       {/* Author Info */}
                       <div className="relative z-10">
-                        <p className="text-white font-semibold group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-500 transition-all">
+                        <p className="text-slate-900 dark:text-white font-semibold group-hover:text-cyan-600 dark:group-hover:text-transparent dark:group-hover:bg-clip-text dark:group-hover:bg-gradient-to-r dark:group-hover:from-cyan-400 dark:group-hover:to-blue-500 transition-all">
                           {testimonial.author}
                         </p>
-                        <p className="text-slate-400 text-sm group-hover:text-slate-300 transition-colors">
+                        <p className="text-slate-600 dark:text-slate-400 text-sm group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors">
                           {testimonial.role} at {testimonial.company}
                         </p>
                       </div>
