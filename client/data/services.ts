@@ -14,9 +14,9 @@ export interface Service {
   category: string;
   categoryId: string;
   description: string;
-  priceMin: number;
-  priceMax: number;
-  priceLabel: string;
+  priceMin?: number;
+  priceMax?: number;
+  priceLabel?: string;
   formFields: FormField[];
   isSpecial?: boolean; // For E-commerce, Custom Solution, WordPress Templates
   specialQuestionnaire?: "ecommerce" | "custom-solution" | "wordpress";

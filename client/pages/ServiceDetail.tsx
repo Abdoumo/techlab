@@ -112,12 +112,9 @@ export default function ServiceDetail() {
                 <h1 className="text-5xl font-bold text-white mb-4">{service.name}</h1>
                 <p className="text-xl text-slate-300 mb-6">{service.description}</p>
 
-                {/* Pricing Info */}
-                <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-6 w-fit">
-                  <p className="text-slate-400 text-sm mb-2">Starting Price</p>
-                  <p className="text-3xl font-bold text-cyan-400">
-                    {service.priceLabel}
-                  </p>
+                {/* Custom Proposal Badge */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-400/10 border border-cyan-400/30 rounded-lg text-cyan-400 text-sm font-semibold">
+                  <span>Custom Quote & Tailored Proposal</span>
                 </div>
               </div>
             </div>
@@ -175,10 +172,10 @@ export default function ServiceDetail() {
                 </p>
               </div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
-                <h3 className="font-semibold text-white mb-2">What's the price range?</h3>
+                <h3 className="font-semibold text-white mb-2">How do I get a custom quote?</h3>
                 <p className="text-slate-400">
-                  Prices range from {service.priceLabel}. The exact cost depends on your specific
-                  requirements and customizations.
+                  Fill out the form above with your specific requirements. We analyze your scope
+                  and deliver a personalized quote and technical roadmap within 24-48 hours.
                 </p>
               </div>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">

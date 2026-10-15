@@ -242,7 +242,7 @@ export default function AdvancedHeroParallax() {
             className="text-xl text-slate-300 max-w-3xl mx-auto mb-8 relative"
             style={{
               opacity: isMouseInside ? 1 : 0.8,
-              filter: `blur(${Math.max(0, (1 - isMouseInside ? 0.5 : 0)) * 1}px)`,
+              filter: `blur(${isMouseInside ? 0 : 0.5}px)`,
               transform: `translateY(${-mousePosition.y * 0.03}px)`,
               transition: "all 0.2s ease-out",
             }}

@@ -48,6 +48,17 @@ export default function Header() {
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
           </Link>
           <Link
+            to="/formations"
+            onMouseEnter={handleNavHover}
+            className="text-slate-300 hover:text-cyan-400 transition-colors relative group flex items-center gap-1.5"
+          >
+            {t("nav.formations")}
+            <span className="px-1.5 py-0.5 text-[10px] uppercase font-bold tracking-wider bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 rounded-full">
+              New
+            </span>
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
+          </Link>
+          <Link
             to="/our-projects"
             onMouseEnter={handleNavHover}
             className="text-slate-300 hover:text-cyan-400 transition-colors relative group"
@@ -120,6 +131,23 @@ export default function Header() {
               }}
             >
               {t("nav.services")}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
+            </Link>
+            <Link
+              to="/formations"
+              onMouseEnter={handleNavHover}
+              className="block text-slate-300 hover:text-cyan-400 py-2 transition-colors relative group"
+              onClick={() => {
+                soundManager.playTransitionSound(600, 900);
+                setMobileMenuOpen(false);
+              }}
+            >
+              <div className="flex items-center gap-2">
+                <span>{t("nav.formations")}</span>
+                <span className="px-1.5 py-0.5 text-[10px] uppercase font-bold tracking-wider bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 rounded-full">
+                  New
+                </span>
+              </div>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link

@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import AdvancedHeroParallax from "@/components/AdvancedHeroParallax";
 import Card3D from "@/components/Card3D";
+import FormationsSection from "@/components/FormationsSection";
 import { testimonialsData } from "@/data/testimonials";
 import { soundManager } from "@/utils/soundManager";
 import {
@@ -163,6 +164,9 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* Les Formations Section (Zero2AI) */}
+      <FormationsSection />
 
       {/* Infrastructure Section with 3D Cards */}
       <section className="bg-slate-950 py-20 sm:py-32">

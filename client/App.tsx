@@ -15,6 +15,8 @@ import ServiceDetail from "./pages/ServiceDetail";
 import EcommerceQuestionnaire from "./pages/EcommerceQuestionnaire";
 import CustomSolutionQuestionnaire from "./pages/CustomSolutionQuestionnaire";
 import WordPressQuestionnaire from "./pages/WordPressQuestionnaire";
+import Formations from "./pages/Formations";
+import FormationDetail from "./pages/FormationDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import OurProjects from "./pages/OurProjects";
@@ -32,6 +34,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/formations" element={<Formations />} />
+          <Route path="/formation/:id" element={<FormationDetail />} />
+          <Route path="/formations/:id" element={<FormationDetail />} />
           <Route path="/service/:serviceId" element={<ServiceDetail />} />
           <Route path="/our-projects" element={<OurProjects />} />
           <Route path="/ecommerce-questionnaire" element={<EcommerceQuestionnaire />} />

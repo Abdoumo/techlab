@@ -6,8 +6,10 @@ import { handleSendInquiry } from "./routes/sendInquiry";
 import { initializeDatabase } from "./db/init";
 
 export async function createServer() {
-  // Initialize database on server startup
-  await initializeDatabase();
+  // Initialize database only if explicitly enabled
+  if (process.env.ENABLE_DB === "true" && process.env.DATABASE_URL) {
+    await initializeDatabase();
+  }
 
   const app = express();
 

@@ -34,18 +34,20 @@ export const handleSendInquiry: RequestHandler = async (req, res) => {
 
     let inquiryId = null;
 
-    // Try to save inquiry to database (non-critical)
-    try {
-      const dbResult = await pool.query(
-        `INSERT INTO inquiries (service_name, email, phone, business_name, data)
-         VALUES ($1, $2, $3, $4, $5)
-         RETURNING id, created_at`,
-        [serviceName, email, phone, businessName, JSON.stringify(inquiryData)]
-      );
-      inquiryId = dbResult.rows[0]?.id;
-    } catch (dbError) {
-      console.error("Database error (non-critical):", dbError);
-      // Continue with email sending even if database fails
+    // Try to save inquiry to database (non-critical, only if enabled)
+    if (process.env.ENABLE_DB === "true" && process.env.DATABASE_URL) {
+      try {
+        const dbResult = await pool.query(
+          `INSERT INTO inquiries (service_name, email, phone, business_name, data)
+           VALUES ($1, $2, $3, $4, $5)
+           RETURNING id, created_at`,
+          [serviceName, email, phone, businessName, JSON.stringify(inquiryData)]
+        );
+        inquiryId = dbResult.rows[0]?.id;
+      } catch (dbError) {
+        console.error("Database error (non-critical):", dbError);
+        // Continue with email sending even if database fails
+      }
     }
 
     // Send emails (non-critical - continue even if emails fail)

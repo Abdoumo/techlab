@@ -55,13 +55,8 @@ export default function ServicesCatalog() {
 
                       <p className="text-slate-400 text-sm mb-6">{service.description}</p>
 
-                      <div className="bg-slate-700/50 rounded p-4 mb-6">
-                        <p className="text-xs text-slate-400 mb-1">Starting From</p>
-                        <p className="text-lg font-bold text-cyan-400">{service.priceLabel}</p>
-                      </div>
-
-                      <div className="flex items-center gap-2 text-cyan-400 group-hover:gap-3 transition-all">
-                        <span className="text-sm font-semibold">Learn More</span>
+                      <div className="flex items-center justify-between text-cyan-400 group-hover:gap-3 transition-all pt-4 border-t border-slate-700/50">
+                        <span className="text-sm font-semibold">Explore Service</span>
                         <ChevronRight className="w-4 h-4" />
                       </div>
                     </Link>
