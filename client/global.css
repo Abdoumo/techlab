@@ -434,9 +434,23 @@ html.light .border-slate-600 {
   border-color: #cbd5e1 !important;
 }
 
-/* Text typography (protects buttons with solid colored/gradient backgrounds) */
-html.light .text-white:not(button):not(button *):not(.btn):not(.btn *):not([class*="bg-gradient"]):not([class*="bg-emerald"]):not([class*="bg-green"]):not([class*="bg-cyan"]):not([class*="bg-blue"]):not([class*="bg-purple"]):not([class*="bg-indigo"]):not([class*="bg-rose"]):not([class*="bg-red"]):not([class*="bg-amber"]):not([class*="text-transparent"]):not([class*="bg-clip-text"]) {
+/* Text typography (protects buttons with solid colored backgrounds and gradient text) */
+html.light .text-white:not(button):not(button *):not(.btn):not(.btn *):not([class*="bg-emerald"]):not([class*="bg-green"]):not([class*="bg-cyan"]):not([class*="bg-blue"]):not([class*="bg-purple"]):not([class*="bg-indigo"]):not([class*="bg-rose"]):not([class*="bg-red"]):not([class*="bg-amber"]):not([class*="text-transparent"]):not([class*="fill-white"]) {
   color: #0f172a !important;
+}
+
+/* Card headings safeguard in light mode */
+html.light .group h3,
+html.light .group h4,
+html.light [class*="rounded-xl"] h3,
+html.light [class*="rounded-2xl"] h3,
+html.light [class*="rounded-3xl"] h3 {
+  color: #0f172a !important;
+}
+
+html.light .group:hover h3.group-hover\:text-cyan-600,
+html.light .group:hover h3.group-hover\:text-cyan-400 {
+  color: #0284c7 !important;
 }
 
 html.light .text-slate-200 {
