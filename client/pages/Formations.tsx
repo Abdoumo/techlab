@@ -125,7 +125,7 @@ export default function Formations() {
         <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-xl sm:text-2xl font-bold text-white">
-              {filteredFormations.length} formation{filteredFormations.length > 1 ? "s" : ""} disponible{filteredFormations.length > 1 ? "s" : ""}
+              {filteredFormations.length} {isEn ? (filteredFormations.length > 1 ? "courses available" : "course available") : (filteredFormations.length > 1 ? "formations disponibles" : "formation disponible")}
             </h2>
           </div>
 
@@ -156,7 +156,7 @@ export default function Formations() {
                       {formation.isOpenForRegistration ? (
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-300 text-xs font-bold animate-pulse">
                           <Flame className="w-3.5 h-3.5 fill-cyan-400 text-cyan-400" />
-                          <span>Inscriptions Ouvertes</span>
+                          <span>{isEn ? "Open for Registration" : "Inscriptions Ouvertes"}</span>
                         </span>
                       ) : (
                         <span className="px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 text-xs font-medium">
@@ -190,7 +190,7 @@ export default function Formations() {
                     <div className="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-3.5 mb-5">
                       <div className="text-[11px] font-bold uppercase tracking-wider text-cyan-400 mb-2.5 flex items-center gap-1.5">
                         <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                        <span>Ce que vous allez apprendre (Modules) :</span>
+                        <span>{isEn ? "What you will learn (Modules):" : "Ce que vous allez apprendre (Modules) :"}</span>
                       </div>
                       <div className="space-y-1.5">
                         {formation.modules.map((mod) => (
@@ -210,7 +210,7 @@ export default function Formations() {
                       </div>
                       <div className="flex items-center gap-2">
                         <Layers className="w-4 h-4 text-cyan-400 shrink-0" />
-                        <span>{formation.projectsCount} projets pratiques</span>
+                        <span>{formation.projectsCount} {isEn ? "hands-on projects" : "projets pratiques"}</span>
                       </div>
                     </div>
 
@@ -237,18 +237,20 @@ export default function Formations() {
                     <div className="text-xs text-slate-400">
                       {formation.pricing.packComplet?.price ? (
                         <>
-                          <span className="block text-[10px] uppercase font-semibold text-slate-500">Formule pack</span>
+                          <span className="block text-[10px] uppercase font-semibold text-slate-500">
+                            {isEn ? "Complete Pack" : "Formule pack"}
+                          </span>
                           <span className="font-extrabold text-white text-base">
                             {formation.pricing.packComplet.price}
                           </span>
                         </>
                       ) : (
-                        <span>Sur demande</span>
+                        <span>{isEn ? "On request" : "Sur demande"}</span>
                       )}
                     </div>
 
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 group-hover:bg-cyan-400 group-hover:text-slate-950 text-slate-200 font-bold text-xs transition-all">
-                      <span>Découvrir</span>
+                      <span>{isEn ? "Explore Course" : "Découvrir"}</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
@@ -262,20 +264,22 @@ export default function Formations() {
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 text-xs font-semibold mb-3">
                 <Building2 className="w-3.5 h-3.5" />
-                <span>Formations Entreprises & Équipes</span>
+                <span>{isEn ? "Corporate & Team Upskilling" : "Formations Entreprises & Équipes"}</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
-                Besoin d'une formation sur mesure pour vos collaborateurs ?
+                {isEn ? "Need custom technical training for your teams?" : "Besoin d'une formation sur mesure pour vos collaborateurs ?"}
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                CYBERLYMPH conçoit des programmes intra-entreprises adaptés aux défis spécifiques de votre secteur : initiation des équipes à l'IA générative, sécurité applicative, ou déploiement d'automatisations internes.
+                {isEn
+                  ? "CYBERLYMPH designs custom corporate training programs tailored to your industry challenges: AI adoption, application security, or internal automation."
+                  : "CYBERLYMPH conçoit des programmes intra-entreprises adaptés aux défis spécifiques de votre secteur : initiation des équipes à l'IA générative, sécurité applicative, ou déploiement d'automatisations internes."}
               </p>
             </div>
             <Link
               to="/contact"
               className="shrink-0 px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-bold text-sm hover:shadow-lg hover:shadow-cyan-400/40 transition-all"
             >
-              Demander un devis sur mesure
+              {isEn ? "Request a Custom Quote" : "Demander un devis sur mesure"}
             </Link>
           </div>
         </section>

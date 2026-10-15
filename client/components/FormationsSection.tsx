@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   Sparkles,
   Flame,
@@ -10,13 +11,19 @@ import {
   Star,
   CheckCircle2,
 } from "lucide-react";
-import { formationsData } from "@/data/formations";
+import { formationsData, getLocalizedFormation } from "@/data/formations";
 import { soundManager } from "@/utils/soundManager";
 
 export default function FormationsSection() {
   const navigate = useNavigate();
-  const zeroToAi = formationsData.find((f) => f.id === "zero-to-ai") || formationsData[0];
-  const otherFormations = formationsData.filter((f) => f.id !== zeroToAi.id);
+  const { t, i18n } = useTranslation();
+  const isEn = i18n.language === "en";
+
+  const rawZeroToAi = formationsData.find((f) => f.id === "zero-to-ai") || formationsData[0];
+  const zeroToAi = getLocalizedFormation(rawZeroToAi, i18n.language);
+  const otherFormations = formationsData
+    .filter((f) => f.id !== rawZeroToAi.id)
+    .map((f) => getLocalizedFormation(f, i18n.language));
 
   return (
     <section id="formations" className="py-24 bg-slate-950 relative overflow-hidden border-t border-b border-slate-800/80">
@@ -29,19 +36,29 @@ export default function FormationsSection() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 text-xs sm:text-sm font-semibold mb-6 shadow-sm shadow-cyan-500/20">
             <GraduationCap className="w-4 h-4 text-cyan-400" />
-            <span>Pôle Formation & Académie Technologique</span>
+            <span>{isEn ? "Training Hub & Tech Academy" : "Pôle Formation & Académie Technologique"}</span>
           </div>
 
           <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight mb-4">
-            Nos <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">Formations</span> Certifiantes
+            {isEn ? (
+              <>
+                Our Certified <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">Courses</span>
+              </>
+            ) : (
+              <>
+                Nos <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">Formations</span> Certifiantes
+              </>
+            )}
           </h2>
 
           <p className="text-lg text-slate-300 leading-relaxed mb-6">
-            Développez des compétences de pointe directement applicables. Des cursus intensifs animés par des ingénieurs experts avec projets réels et encadrement en présentiel.
+            {isEn
+              ? "Develop cutting-edge, high-impact tech skills. Intensive curriculums taught by industry engineers with real-world projects and hands-on guidance."
+              : "Développez des compétences de pointe directement applicables. Des cursus intensifs animés par des ingénieurs experts avec projets réels et encadrement en présentiel."}
           </p>
 
           <div className="inline-flex items-center gap-2 text-xs text-slate-400 font-medium">
-            <span>Cliquez sur une formation pour consulter son programme complet</span>
+            <span>{isEn ? "Click any course to explore the complete syllabus" : "Cliquez sur une formation pour consulter son programme complet"}</span>
             <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
           </div>
         </div>
