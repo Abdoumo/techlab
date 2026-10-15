@@ -1,7 +1,8 @@
 import { useState, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { formationsData, Formation } from "@/data/formations";
+import { formationsData, Formation, getLocalizedFormation } from "@/data/formations";
+import { useTranslation } from "react-i18next";
 import {
   GraduationCap,
   Sparkles,
@@ -22,27 +23,31 @@ import { soundManager } from "@/utils/soundManager";
 
 export default function Formations() {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const isEn = i18n.language === "en";
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const categories = [
-    { id: "all", label: "Toutes les formations" },
-    { id: "ai", label: "IA & Automatisation", icon: Brain },
-    { id: "security", label: "Cybersécurité & Hacking", icon: Shield },
-    { id: "network", label: "Réseaux Cisco", icon: Server },
+    { id: "all", label: isEn ? "All Courses" : "Toutes les formations" },
+    { id: "ai", label: isEn ? "AI & Automation" : "IA & Automatisation", icon: Brain },
+    { id: "security", label: isEn ? "Cybersecurity & Systems" : "Cybersécurité & Hacking", icon: Shield },
+    { id: "network", label: isEn ? "Cisco Networking" : "Réseaux Cisco", icon: Server },
   ];
 
   const filteredFormations = useMemo(() => {
-    return formationsData.filter((f) => {
-      const matchesCategory = selectedCategory === "all" || f.category === selectedCategory;
-      const matchesSearch =
-        searchQuery === "" ||
-        f.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        f.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        f.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchesCategory && matchesSearch;
-    });
-  }, [selectedCategory, searchQuery]);
+    return formationsData
+      .map((f) => getLocalizedFormation(f, i18n.language))
+      .filter((f) => {
+        const matchesCategory = selectedCategory === "all" || f.category === selectedCategory;
+        const matchesSearch =
+          searchQuery === "" ||
+          f.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          f.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          f.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+        return matchesCategory && matchesSearch;
+      });
+  }, [selectedCategory, searchQuery, i18n.language]);
 
   return (
     <Layout>
@@ -61,12 +66,21 @@ export default function Formations() {
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6">
-              Catalogue de nos <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">Formations</span>
+              {isEn ? (
+                <>
+                  Explore Our <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">Courses</span>
+                </>
+              ) : (
+                <>
+                  Catalogue de nos <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">Formations</span>
+                </>
+              )}
             </h1>
 
             <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
-              Découvrez nos programmes intensifs conçus pour accélérer votre carrière technologique. 
-              Des cursus 100% orientés pratique animés par des ingénieurs experts avec projets concrets à la clé.
+              {isEn
+                ? "Discover our intensive programs designed to accelerate your tech career. 100% practical, lab-oriented tracks led by industry engineers with real-world projects."
+                : "Découvrez nos programmes intensifs conçus pour accélérer votre carrière technologique. Des cursus 100% orientés pratique animés par des ingénieurs experts avec projets concrets à la clé."}
             </p>
 
             {/* Quick Filter & Search Bar */}
@@ -74,7 +88,11 @@ export default function Formations() {
               <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
-                placeholder="Rechercher une formation (ex: Python, IA, Machine Learning, Pentest...)"
+                placeholder={
+                  isEn
+                    ? "Search courses (e.g. Python, AI, Machine Learning, Pentest, Linux...)"
+                    : "Rechercher une formation (ex: Python, IA, Machine Learning, Pentest...)"
+                }
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-400 text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all shadow-lg"

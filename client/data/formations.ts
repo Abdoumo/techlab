@@ -79,10 +79,23 @@ export interface Formation {
   };
   benefits: FormationBenefit[];
   faqs: FormationFaq[];
-    registrationUrl: string;
+  registrationUrl: string;
   externalRegistrationUrl?: string;
   isFeatured?: boolean;
   isOpenForRegistration: boolean;
+  en?: {
+    title?: string;
+    shortTitle?: string;
+    tagline?: string;
+    categoryLabel?: string;
+    badge?: string;
+    duration?: string;
+    level?: string;
+    prerequisites?: string;
+    location?: string;
+    summary?: string;
+    description?: string;
+  };
 }
 
 export function getWhatsAppReservationUrl(
@@ -1715,10 +1728,10 @@ export const formationsData: Formation[] = [
       },
       {
         q: "Comment s'inscrire et quelles sont les modalités de paiement ?",
-        a: "L'inscription se fait directement via WhatsApp en 1 clic. Le tarif est fixé à 20,000 DA tout inclus pour la semaine. Les paiements sont acceptés par BaridiMob, virement CCP ou en espèces sur place.",
+        a: "L'inscription se fait directement via WhatsApp en 1 clic. Le tarif est fixé à 10,000 DA tout inclus pour la semaine. Les paiements sont acceptés par BaridiMob, virement CCP ou en espèces sur place.",
       },
     ],
-    registrationUrl: getWhatsAppReservationUrl("Linux Fundamentals : CompTIA Linux+", "Pack Complet", "20,000 DA"),
+    registrationUrl: getWhatsAppReservationUrl("Linux Fundamentals : CompTIA Linux+", "Pack Complet", "10,000 DA"),
     isOpenForRegistration: true,
   },
 ];
@@ -1731,4 +1744,24 @@ export function getFormationById(idOrSlug: string): Formation | undefined {
 
 export function getAllFormations(): Formation[] {
   return formationsData;
+}
+
+export function getLocalizedFormation(f: Formation, lang: string): Formation {
+  if (lang === "en" && f.en) {
+    return {
+      ...f,
+      title: f.en.title || f.title,
+      shortTitle: f.en.shortTitle || f.shortTitle,
+      tagline: f.en.tagline || f.tagline,
+      categoryLabel: f.en.categoryLabel || f.categoryLabel,
+      badge: f.en.badge || f.badge,
+      duration: f.en.duration || f.duration,
+      level: (f.en.level || f.level) as any,
+      prerequisites: f.en.prerequisites || f.prerequisites,
+      location: f.en.location || f.location,
+      summary: f.en.summary || f.summary,
+      description: f.en.description || f.description,
+    };
+  }
+  return f;
 }
