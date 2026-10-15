@@ -3161,6 +3161,358 @@ export const formationsData: Formation[] = [
       }
     ],
     "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Cisco%20Ethical%20Hacker*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription."
+  },
+  {
+    "id": "burp-suite",
+    "slug": "burp-suite-pro-web-pentesting",
+    "title": "Burp Suite Pro : Maîtrise Complète & Audit Web Approfondi",
+    "shortTitle": "Burp Suite Pro",
+    "tagline": "Proxy Intercept · Intruder & Repeater · Extensions BApp · Automatisation & API Testing",
+    "category": "pentest",
+    "categoryLabel": "Tests d'Intrusion & Sécurité Applicative",
+    "badge": "Cursus Technique Pratique",
+    "badgeType": "hot",
+    "partner": "PortSwigger Web Security Standards",
+    "duration": "36 heures · 6 semaines",
+    "totalHours": 36,
+    "modulesCount": 4,
+    "projectsCount": 12,
+    "prerequisites": "Bases du Web (HTTP, requêtes GET/POST, notions JavaScript)",
+    "location": "Présentiel à Annaba & Accès En Ligne",
+    "level": "Intermédiaire",
+    "summary": "Formation de référence pour maîtriser le couteau suisse mondial de l'audit web : interception fine du trafic, attaques par dictionnaire ciblées avec Intruder, analyse des jetons avec Sequencer, scanners de vulnérabilités et développement d'extensions Montoya API.",
+    "description": "Burp Suite est le standard incontournable utilisé par 100% des auditeurs de sécurité et bug hunters mondiaux. Ce cursus vous propulse de l'interception élémentaire aux techniques d'exploitation les plus pointues : contournement de WAF, fuzzing haute cadence, attaques sur WebSockets & GraphQL, extraction automatisée de données, et automatisation personnalisée via des extensions Python / Java.",
+    "accentGradient": "from-orange-500 via-amber-500 to-yellow-500",
+    "glowColor": "rgba(249, 115, 22, 0.3)",
+    "tags": [
+      "Burp Suite Pro",
+      "Proxy Intercept",
+      "Intruder",
+      "Repeater",
+      "BApp Store",
+      "Web Pentest",
+      "API Testing",
+      "WAF Bypass"
+    ],
+    "capstoneProject": {
+      "title": "Audit Complet d'une Plateforme E-Commerce avec Burp Suite",
+      "description": "Audit intrusif complet d'une application d'achat complexe : découverte de failles de logique métier, exploitation d'injections SQL via Repeater/Intruder, et automatisation du vol de session par script BApp.",
+      "tags": [
+        "Burp Suite Pro",
+        "Intruder",
+        "API Testing",
+        "Business Logic"
+      ],
+      "highlightLabel": "Projet Audit Réel"
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Fondations de Burp & Interception de Trafic",
+        "duration": "8 heures",
+        "iconName": "network",
+        "description": "Configurez l'environnement d'interception complet : certificats CA, gestion des scopes, règles de remplacement automatique et contournement du SSL Pinning.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Configuration Proxy, Certificats CA & Scope",
+            "topic": "Mise en place de Burp avec navigateurs et émulateurs, filtres de périmètre et Target Site Map",
+            "project": "Cartographie passive et cartographie des endpoints d'une application cible"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Match & Replace, History & Décoder",
+            "topic": "Modification à la volée des en-têtes HTTP, encodages URL/Base64/HTML et analyse des réponses",
+            "project": "Contournement d'un contrôle de validation côté client via Match & Replace"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Fuzzing Haute Performance avec Repeater & Intruder",
+        "duration": "10 heures",
+        "iconName": "terminal",
+        "description": "Maîtrisez les modules offensifs phares : répétition manuelle ciblée, attaques par dictionnaire Sniper, Battering Ram, Pitchfork et Cluster Bomb.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "Burp Repeater & Analyse Fine des Réponses",
+            "topic": "Rejeu de requêtes, manipulation de paramètres cachés et détection des failles IDOR/XSS",
+            "project": "Découverte et exploitation manuelle d'une faille IDOR via Repeater"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Burp Intruder : Modes d'Attaque & Payloads",
+            "topic": "Sniper, Pitchfork, Cluster Bomb, listes de mots de passe, règles de mutation et limitation de débit",
+            "project": "Attaque par force brute distribuée et fuzzing de répertoires cachés"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Audit des API REST, GraphQL & WebSockets",
+        "duration": "10 heures",
+        "iconName": "code",
+        "description": "Adaptez Burp Suite aux architectures modernes : inspection de jetons JWT, manipulation de requêtes GraphQL et interception de canaux WebSockets bidirectionnels.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Sécurité des API Modernes & Tokens JWT",
+            "topic": "Signature JWT, attaque par algorithme None, test d'injections dans les endpoints GraphQL",
+            "project": "Contournement d'authentification par altération de token JWT dans Burp"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Interception & Manipulation WebSockets",
+            "topic": "Inspection des trames WebSockets en direct, injection de payloads dans les flux de chat en temps réel",
+            "project": "Exploitation d'une faille XSS stockée transmise via canal WebSocket"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Automatisation, BApp Extensions & Scanners Avancés",
+        "duration": "8 heures",
+        "iconName": "zap",
+        "description": "Décuplez votre productivité : utilisation du scanner pro, gestion des sessions et des macros, et intégration des meilleures extensions (Autorize, Turbo Intruder, Hackvertor).",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "Extensions BApp Essentielles (Autorize, Turbo Intruder)",
+            "topic": "Détection automatique de failles de contrôle d'accès avec Autorize et fuzzing ultra-rapide avec Turbo Intruder",
+            "project": "Audit automatisé des autorisations sur 50 routes API d'un portail SAAS"
+          },
+          {
+            "week": "Semaine 8",
+            "title": "Macros de Session & Personnalisation Montoya API",
+            "topic": "Maintien de sessions actives avec macros, règles de gestion des tokens anti-CSRF et initiation aux scripts Burp",
+            "project": "Développement d'un script d'automatisation pour rafraîchir automatiquement les jetons CSRF"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "36 heures · 6 semaines",
+        "features": [
+          "Pratique intensive sur cibles réelles",
+          "Maîtrise des modules Pro (Intruder, Scanner, Sequencer)",
+          "Ateliers API REST, GraphQL & WebSockets",
+          "Bibliothèque de payloads et configurations BApp fournies"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Outil N°1 des Pénétreurs & Bug Hunters",
+        "desc": "La compétence la plus demandée lors des entretiens techniques de pentest web"
+      },
+      {
+        "iconName": "terminal",
+        "title": "100% Orienté Labs Pratiques",
+        "desc": "Auditez des applications vulnérables réalistes représentatives des systèmes de production actuels"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "La formation nécessite-t-elle obligatoirement Burp Suite Professional ?",
+        "a": "La version Community convient pour les bases d'interception et de rejeu. Des accès à des machines de lab équipées de la version Professional sont mis à disposition pour les modules de scan automatisé et de fuzzing Intruder non bridé."
+      },
+      {
+        "q": "Cette formation est-elle recommandée pour le Bug Bounty ?",
+        "a": "Oui, Burp Suite est l'arme maîtresse de tous les chasseurs de primes sur HackerOne, Bugcrowd et YesWeHack pour identifier des vulnérabilités critiques."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*Burp%20Suite%20Pro*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription.",
+    "isOpenForRegistration": true
+  },
+  {
+    "id": "pentest-plus",
+    "slug": "comptia-pentest-plus",
+    "title": "CompTIA PenTest+ : Certification & Méthodologie Offensive",
+    "shortTitle": "CompTIA PenTest+",
+    "tagline": "Reconnaissance · Exploitation Réseau & Web · Post-Exploitation · Rédaction de Rapport",
+    "category": "pentest",
+    "categoryLabel": "Certification & Méthodologie Offensive",
+    "badge": "Préparation Certification Mondiale",
+    "badgeType": "hot",
+    "partner": "CompTIA Approved Quality Standards",
+    "duration": "50 heures · 8 semaines",
+    "totalHours": 50,
+    "modulesCount": 5,
+    "projectsCount": 15,
+    "prerequisites": "Notions réseau (TCP/IP) et bases d'administration Linux / Windows",
+    "location": "Présentiel à Annaba & Accès En Ligne",
+    "level": "Intermédiaire à Avancé",
+    "summary": "Cursus aligné à 100% sur les objectifs de l'examen officiel CompTIA PenTest+. Maîtrisez le cycle complet d'un test d'intrusion : cadrage légal, reconnaissance passive/active, attaques réseau et cloud, élévation de privilèges et rédaction de rapports professionnels.",
+    "description": "La certification CompTIA PenTest+ valide votre capacité pratique à auditer et sécuriser des environnements d'entreprise complexes. Contrairement aux certifications purement théoriques, ce programme vous entraîne sur des scénarios réels comprenant l'engagement client, l'analyse de vulnérabilités, l'exploitation multi-vecteurs (Web, Réseau, Cloud, Sans-Fil), la persistance et la restitution stratégique devant un comité de direction.",
+    "accentGradient": "from-red-500 via-rose-600 to-pink-600",
+    "glowColor": "rgba(244, 63, 94, 0.3)",
+    "tags": [
+      "CompTIA PenTest+",
+      "PT0-002",
+      "Reconnaissance",
+      "Nmap & Metasploit",
+      "Élévation de Privilèges",
+      "Reporting",
+      "Cloud Pentest"
+    ],
+    "capstoneProject": {
+      "title": "Simulation Complète d'un Test d'Intrusion d'Entreprise & Rapport Exécutif",
+      "description": "Audit complet d'une infrastructure d'entreprise fictive (Active Directory, serveurs web, bases de données) de la phase de cadrage légal jusqu'à la remise du rapport technique et de synthèse managériale.",
+      "tags": [
+        "CompTIA PenTest+",
+        "Active Directory",
+        "Executive Report",
+        "Remediation"
+      ],
+      "highlightLabel": "Audit Réel & Rapport"
+    },
+    "modules": [
+      {
+        "number": "01",
+        "title": "Cadrage, Éthique & Règles d'Engagement (Planning & Scoping)",
+        "duration": "8 heures",
+        "iconName": "file-text",
+        "description": "Comprenez le cadre juridique et contractuel : élaboration des règles d'engagement (RoE), autorisations écrites, conformité légale (RGPD, PCI-DSS) et gestion des risques d'indisponibilité.",
+        "weeks": [
+          {
+            "week": "Semaine 1",
+            "title": "Contrats d'Audit, RoE & Autorisations Légales",
+            "topic": "Définition du périmètre (Black/Grey/White Box), exclusions, clauses de non-responsabilité et NDA",
+            "project": "Rédaction d'un document complet de Rules of Engagement (RoE) pour un client fictif"
+          },
+          {
+            "week": "Semaine 2",
+            "title": "Gestion des Risques & Protocoles d'Urgence",
+            "topic": "Procédures d'escalade en cas d'incident critique ou de découverte de compromission active",
+            "project": "Établissement du protocole de communication d'urgence avec les RSSI"
+          }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Reconnaissance Avancée & Analyse de Vulnérabilités",
+        "duration": "10 heures",
+        "iconName": "search",
+        "description": "Collectez un maximum de renseignements sur la cible sans vous faire repérer : OSINT, reconnaissance DNS, balayage réseau furtif avec Nmap et scanners automatisés Nessus.",
+        "weeks": [
+          {
+            "week": "Semaine 3",
+            "title": "OSINT, Fuites de Données & Social Engineering",
+            "topic": "Reconnaissance d'entreprise avec theHarvester, Shodan, certificats SSL et fuites d'identifiants",
+            "project": "Cartographie de l'empreinte numérique et de l'organigramme d'une cible avec des outils OSINT"
+          },
+          {
+            "week": "Semaine 4",
+            "title": "Scanning Réseau Furtif & Scanners de Vulnérabilités",
+            "topic": "Scans SYN furtifs, détection de scripts NSE Nmap, interprétation des rapports Nessus/OpenVAS",
+            "project": "Identification et priorisation des vulnérabilités critiques d'un sous-réseau d'entreprise"
+          }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Attaques Réseau, Sans-Fil, Web & Cloud",
+        "duration": "12 heures",
+        "iconName": "shield",
+        "description": "Exploitez les faiblesses identifiées à travers plusieurs vecteurs : attaques Active Directory, exploitation de failles logicielles via Metasploit, attaques Wi-Fi et audit d'environnements cloud AWS/Azure.",
+        "weeks": [
+          {
+            "week": "Semaine 5",
+            "title": "Exploitation Réseau & Active Directory",
+            "topic": "Exploitation de services SMB/RDP, attaques par relais NTLM, password spraying et Kerberoasting",
+            "project": "Compromission d'un contrôleur de domaine via Kerberoasting et extraction de hashs"
+          },
+          {
+            "week": "Semaine 6",
+            "title": "Attaques Web, Sans-Fil & Vecteurs Cloud",
+            "topic": "Injections SQL, contournement d'authentification, interception WPA2/WPA3 et mauvaises configurations S3",
+            "project": "Exploitation combinée d'une faille web pour rebondir vers un bucket Cloud privé"
+          }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Post-Exploitation, Pivoting & Évasion Défensive",
+        "duration": "10 heures",
+        "iconName": "lock",
+        "description": "Maximisez votre emprise après l'accès initial : élévation de privilèges Linux/Windows, mouvements latéraux par tunneling SSH/Chisel, extraction d'identifiants avec Mimikatz et persistance discrète.",
+        "weeks": [
+          {
+            "week": "Semaine 7",
+            "title": "Élévation de Privilèges Linux & Windows",
+            "topic": "Exploitation de binaires SUID, tâches cron vulnérables, tokens SeImpersonate et faiblesses de services Windows",
+            "project": "Obtention des privilèges SYSTEM sur un serveur Windows durci via Potato exploit"
+          },
+          {
+            "week": "Semaine 8",
+            "title": "Mouvements Latéraux, Pivoting & Nettoyage",
+            "topic": "Routage de trafic via proxychains/chisel, contournement d'antivirus basique et effacement propre des traces",
+            "project": "Rebondissement depuis une machine DMZ vers un serveur interne isolé"
+          }
+        ]
+      },
+      {
+        "number": "05",
+        "title": "Scripts d'Automatisation & Rédaction du Rapport Professionnel",
+        "duration": "10 heures",
+        "iconName": "award",
+        "description": "Maîtrisez les scripts d'automatisation (Python, Bash, PowerShell) et la compétence la plus valorisée en entreprise : la rédaction et la présentation d'un rapport d'audit aux normes internationales.",
+        "weeks": [
+          {
+            "week": "Semaine 9",
+            "title": "Scripting pour Pentester (Python, Bash & PowerShell)",
+            "topic": "Automatisation de requêtes HTTP, analyseurs de logs, extraction de données et scripts de balayage",
+            "project": "Développement d'un scanner de ports et de bannières personnalisé en Python"
+          },
+          {
+            "week": "Semaine 10",
+            "title": "Formalisation CVSS, Rapport d'Audit & Restitution",
+            "topic": "Notation des vulnérabilités selon le standard CVSS v3.1, rédaction de la synthèse managériale et remédiation",
+            "project": "Rédaction intégrale du livrable d'audit prêt à soumettre à un client grand compte"
+          }
+        ]
+      }
+    ],
+    "pricing": {
+      "packComplet": {
+        "price": "Sur devis",
+        "durationLabel": "50 heures · 8 semaines",
+        "features": [
+          "Préparation complète à l'examen officiel CompTIA PenTest+",
+          "Couverture de 100% des domaines d'objectifs (PT0-002 / PT0-003)",
+          "Labs pratiques sur infrastructures réseau et Active Directory",
+          "Modèles professionnels de rapports d'audit et contrat RoE inclus"
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "iconName": "award",
+        "title": "Certification Professionnelle Reconnue Mondialement",
+        "desc": "Titre délivré par CompTIA validant votre compétence pratique d'auditeur en entreprise"
+      },
+      {
+        "iconName": "shield",
+        "title": "Méthodologie Complète de A à Z",
+        "desc": "De la contractualisation initiale jusqu'à la présentation devant la direction"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Ce cursus prépare-t-il directement au passage de l'examen CompTIA PenTest+ ?",
+        "a": "Oui, tous les domaines de compétences théoriques et pratiques (PBQs) sont traités en détail, avec des sessions intensives d'entraînement sur des questions types."
+      },
+      {
+        "q": "Quelle est la valeur de CompTIA PenTest+ par rapport aux autres certifications ?",
+        "a": "PenTest+ est hautement prisée par les cabinets d'audit car elle certifie non seulement la capacité technique d'intrusion, mais aussi la gestion des risques et la qualité irréprochable du reporting client."
+      }
+    ],
+    "registrationUrl": "https://wa.me/213699326406?text=Bonjour%20CYBERLYMPH%2C%0A%0AJe%20souhaite%20r%C3%A9server%20ma%20place%20pour%20la%20formation%20%3A%0A*CompTIA%20PenTest%2B*%0A%0A-%20Formule%20choisie%20%3A%20Pack%20Complet%0A-%20Lieu%20%3A%20Pr%C3%A9sentiel%20(Annaba)%20%2F%20En%20ligne%0A%0AMerci%20de%20m'indiquer%20la%20d%C3%A9marche%20pour%20confirmer%20mon%20inscription.",
+    "isOpenForRegistration": true
   }
 ];
 
