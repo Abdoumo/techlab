@@ -65,7 +65,7 @@ export default function Footer() {
                   to="/formations"
                   className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors text-sm flex items-center gap-1.5"
                 >
-                  <span>Formations (Zero2AI)</span>
+                  <span>{t("nav.formations")}</span>
                   <span className="text-[10px] bg-cyan-400/20 text-cyan-300 px-1.5 py-0.2 rounded font-bold">New</span>
                 </Link>
               </li>
